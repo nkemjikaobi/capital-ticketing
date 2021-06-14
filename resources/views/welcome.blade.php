@@ -1649,7 +1649,7 @@
                 }
                 @media screen and (min-width: 767px) {
                   .css-115yac6 {
-                    background-image: url("/storage/images/bg-fans.jpg") !important;
+                    background-image: url("/images/bg-fans.jpg") !important;
                   }
                 }
                 @media screen and (min-width: 767px) {
@@ -2178,9 +2178,9 @@
                             style="overflow: hidden; -webkit-line-clamp: 1"
                             class="css-1i04fkn"
                           >
-                            <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
+                            <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
                             <span style="">MANCITY</span> - CHELSEA
-                            <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
+                            <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
                           </div>
                           <style data-emotion-css="gvje9d">
                             .css-gvje9d {
@@ -2384,7 +2384,7 @@
                             style="overflow: hidden; -webkit-line-clamp: 1"
                             class="css-1i04fkn"
                           >
-                          <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
+                          <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
                           </div>
                           <div
                             data-bn-type="text"
@@ -2460,7 +2460,7 @@
                             style="overflow: hidden; -webkit-line-clamp: 1"
                             class="css-1i04fkn"
                           >
-                          <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
+                          <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
                           </div>
                           <div
                             data-bn-type="text"
@@ -2536,7 +2536,7 @@
                             style="overflow: hidden; -webkit-line-clamp: 1"
                             class="css-1i04fkn"
                           >
-                          <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
+                          <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
                           </div>
                           <div
                             data-bn-type="text"
@@ -3042,7 +3042,7 @@
                     }
                  </style>
                     <div class="start_buying_tickets_image ">
-                        <img src="{{ asset('storage/images/bitcoin.png') }}" width="100%" alt="">
+                        <img src="{{ asset('/images/bitcoin.png') }}" width="100%" alt="">
                     </div>
 
                 </div>
