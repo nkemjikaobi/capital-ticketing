@@ -27,7 +27,7 @@
     <title data-shuvi-head="true">
       Capital Marketing | Tickets Exchange
     </title>
-    
+
     <meta
       name="viewport"
       content="width=device-width,minimum-scale=1,maximum-scale=1.0,initial-scale=1,user-scalable=no,viewport-fit=true"
@@ -112,7 +112,7 @@
     />
   </head>
   <body>
-  
+
     <div id="__APP">
       <style data-emotion-css="mtnwj">
         #__APP {
@@ -731,7 +731,7 @@
             }
           </style>
           <div class="css-1w2cmbz">
-            
+
             <style data-emotion-css="1qqh4qo">
               .css-1qqh4qo {
                 box-sizing: border-box;
@@ -785,7 +785,7 @@
             ></span>
           </div>
           <div class="css-1w2cmbz">
-          
+
           </div>
           <style data-emotion-css="1ke7bwx">
             .css-1ke7bwx {
@@ -848,9 +848,9 @@
             class="css-1ke7bwx"
             >Contact</a
           >
-          
-          
-          
+
+
+
           <style data-emotion-css="1h690ep">
             .css-1h690ep {
               box-sizing: border-box;
@@ -1460,7 +1460,7 @@
                   }
                 </style>
                 <div class="css-hwzmrg">
-             
+
                   <style data-emotion-css="o3h2xh">
                     .css-o3h2xh {
                       box-sizing: border-box;
@@ -1723,7 +1723,7 @@
                   overflow: hidden;
                 }
               </style>
-             
+
             </div>
           </div>
           <style data-emotion-css="1e3asyk">
@@ -1866,7 +1866,7 @@
                   ></path>
                 </svg>
                 <div data-bn-type="text" class="css-vurnku">
-                  Upcoming matches 
+                  Upcoming matches
                 </div>
                 <style data-emotion-css="waz29z">
                   .css-waz29z {
@@ -2178,9 +2178,9 @@
                             style="overflow: hidden; -webkit-line-clamp: 1"
                             class="css-1i04fkn"
                           >
-                            <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
-                            <span style="">MANCITY</span> - CHELSEA 
-                            <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
+                            <img src="/storage/images/manu-logo.png" height="20px" width="20px">
+                            <span style="">MANCITY</span> - CHELSEA
+                            <img src="/storage/images/manu-logo.png" height="20px" width="20px">
                           </div>
                           <style data-emotion-css="gvje9d">
                             .css-gvje9d {
@@ -2205,7 +2205,7 @@
                             style="direction: ltr"
                             class="css-1bvcra4"
                           >
-                            
+
                           </div>
                         </div>
                         <style data-emotion-css="e8qat">
@@ -2391,7 +2391,7 @@
                             style="direction: ltr"
                             class="css-1bvcra4"
                           >
-                            
+
                           </div>
                         </div>
                         <div class="css-e8qat">
@@ -2424,7 +2424,7 @@
                         style="overflow: hidden; -webkit-line-clamp: 1"
                         class="css-1vv3pu9"
                       >
-                        
+
                       </div>
                     </div>
                     <div class="css-3j2kqe">
@@ -2467,7 +2467,7 @@
                             style="direction: ltr"
                             class="css-1bvcra4"
                           >
-                        
+
                           </div>
                         </div>
                         <div class="css-e8qat">
@@ -2500,7 +2500,7 @@
                         style="overflow: hidden; -webkit-line-clamp: 1"
                         class="css-1vv3pu9"
                       >
-                    
+
                       </div>
                     </div>
                     <div class="css-3j2kqe">
@@ -2543,7 +2543,7 @@
                             style="direction: ltr"
                             class="css-1bvcra4"
                           >
-                            
+
                           </div>
                         </div>
                         <div class="css-e8qat">
@@ -2576,7 +2576,7 @@
                         style="overflow: hidden; -webkit-line-clamp: 1"
                         class="css-1vv3pu9"
                       >
-                        
+
                       </div>
                     </div>
                     <div class="css-3j2kqe">
@@ -2763,7 +2763,7 @@
                     </style>
                     <div class="active css-82f717" style="color:white;">Deposit Now</div>
                   </div>
-                  
+
                 </div>
                 <style data-emotion-css="gnqbje">
                   .css-gnqbje {
@@ -2817,7 +2817,7 @@
                         box-sizing: border-box;
                         margin: 0;
                         min-width: 0;
-                        
+
                         margin-bottom: 24px;
                       }
                       @media screen and (min-width: 767px) {
@@ -2839,7 +2839,7 @@
                           position: relative;
                         }
                       </style>
-                     
+
                     </div>
                     <style data-emotion-css="8nsl08">
                       .css-8nsl08 {
@@ -3029,17 +3029,17 @@
                   </div>
                   <style>
                   .start_buying_tickets_image{
-                      margin-top: -100px !important;   
-                  } 
+                      margin-top: -100px !important;
+                  }
                   @media screen and (max-width: 767px) {
                     .css-gnqbje {
                       display: flex !important;
                       flex-direction: column-reverse !important;
                     }
                       .start_buying_tickets_image{
-                      margin-top: 100px !important;   
-                  } 
-                    } 
+                      margin-top: 100px !important;
+                  }
+                    }
                  </style>
                     <div class="start_buying_tickets_image ">
                         <img src="{{ asset('storage/images/bitcoin.png') }}" width="100%" alt="">
@@ -3049,7 +3049,7 @@
               </div>
             </div>
           </div>
-     
+
           <div class="css-inn0bn">
             <div class="css-6sm2ml">
               <div class="css-1l1j6yu">
@@ -3212,7 +3212,7 @@
                       }
                       </style>
                     <i class="fab fa-telegram" style="font-size:300% !important;color:#0088cc;"></i>
-                    
+
                   </div>
                   <style data-emotion-css="be8fvo">
                     .css-be8fvo {
@@ -3266,10 +3266,10 @@
                                 /* Also define standard property for compatibility */
                                 background-clip: text;
                         -webkit-text-fill-color: transparent;
-                        
+
                         font-size: 200px; /* change this to change the size*/
-                        
-                    }  
+
+                    }
                 </style><a
                   href="https://www.instagram.com/binanceafrican"
                   class="css-1pcqvr2"
@@ -3377,7 +3377,7 @@
                 .footer_links{
                   font-size: 16px !important;
                   margin: 15px auto;
-                  
+
                 }
                 </style>
                  <div class="css-w7l0py">
@@ -3394,12 +3394,12 @@
                     </div></a
                   ><a
                     href="https://www.binance.com/en-NG/fee/schedule"
-                    class="css-1myvhw3" 
+                    class="css-1myvhw3"
                     ><div data-bn-type="text"  class="css-1cjl26j footer_links">
                       Buy Tickets<!-- -->
                     </div></a>
                 </div>
-               
+
                 <style data-emotion-css="1pysja1">
                   .css-1pysja1 {
                     box-sizing: border-box;
@@ -3411,7 +3411,7 @@
                   }
                 </style>
                 <div class="css-1pysja1"></div>
-                
+
               </div>
               <style data-emotion-css="1myvhw3">
                 .css-1myvhw3 {
@@ -3454,7 +3454,7 @@
               <div class="css-1hc1bzm">
                 <div data-bn-type="text" class="css-1ofolr4">Get in touch</div>
                 <div class="css-1pysja1"></div>
-                
+
               </div>
               <a href="download.html"  class="css-1myvhw3"
                 ><div data-bn-type="text"  class="css-1cjl26j footer_links">
@@ -3466,12 +3466,12 @@
                 </div></a
               ><a
                 href="https://www.binance.com/en-NG/fee/schedule"
-                class="css-1myvhw3" 
+                class="css-1myvhw3"
                 ><div data-bn-type="text" class="css-1cjl26j footer_links">
                   Submit a request<!-- -->
                 </div></a>
             </div>
-           
+
           </div>
           <style data-emotion-css="1tr0qpm">
             .css-1tr0qpm {
@@ -3595,7 +3595,7 @@
                   >
                 </div>
               </div>
-             
+
               <div class="css-19ph8gz">
                 <div class="css-vurnku">
                   <div data-bn-type="text" class="css-1jsf87b">Account</div>
@@ -3612,8 +3612,8 @@
                       Create an account<!-- -->
                     </div></a
                   >
-                
-                  
+
+
                 </div>
               </div>
               <div class="css-19ph8gz">
@@ -3640,7 +3640,7 @@
                   >
                 </div>
               </div>
-             
+
             </div>
             <style data-emotion-css="1ti7za9">
               .css-1ti7za9 {
@@ -3667,7 +3667,7 @@
                 }
               }
               }
-             
+
             </style>
             <div class="css-1ti7za9">
               <div data-bn-type="text" class="css-1jsf87b">Community</div>
@@ -3718,10 +3718,10 @@
                                 /* Also define standard property for compatibility */
                                 background-clip: text;
                         -webkit-text-fill-color: transparent;
-                        
+
                         /* font-size: 200px; change this to change the size */
-                        
-                    }  
+
+                    }
                 </style>
                 <a href="https://www.instagram.com/Binance/" class="css-wyeq5d"
                   ><i class="fab fa-instagram" id="insta-footer"></i></a
@@ -4000,7 +4000,7 @@
               }
             </style>
             <div class="css-136a9lx">
-              
+
               <a href="https://www.telegram.com/binance" class="css-wyeq5d"
                   ><i class="fab fa-telegram" style="color:#0088cc;"></i></a
                 ><a href="https://www.facebook.com/binance" class="css-wyeq5d"
@@ -4010,7 +4010,7 @@
                   <a href="https://www.instagram.com/Binance/" class="css-wyeq5d"
                   ><i class="fab fa-instagram" id="insta-footer"></i></a
                 >
-              
+
               <div class="css-1pysja1"></div>
               <div class="css-ybbx55">
                 <style data-emotion-css="1bbpiq1">
@@ -4346,7 +4346,7 @@
     <script src="https://bin.bnbstatic.com/static/chunks/framework.9f18b86c.js"></script>
     <script src="https://bin.bnbstatic.com/static/chunks/commons.4fd994c7.js"></script>
     <script src="https://bin.bnbstatic.com/static/runtime/sentry-e94d2124b2d13e95ae52.js"></script>
-  
+
     <script src="https://bin.bnbstatic.com/static/runtime/main-50071f34c817560ef908.js"></script>
   </body>
 </html>
