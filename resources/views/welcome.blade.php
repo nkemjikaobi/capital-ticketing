@@ -2178,9 +2178,9 @@
                             style="overflow: hidden; -webkit-line-clamp: 1"
                             class="css-1i04fkn"
                           >
-                            <img src="/storage/images/manu-logo.png" height="20px" width="20px">
+                            <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
                             <span style="">MANCITY</span> - CHELSEA
-                            <img src="/storage/images/manu-logo.png" height="20px" width="20px">
+                            <img src="{{ asset('/storage/images/manu-logo.png') }}" height="20px" width="20px">
                           </div>
                           <style data-emotion-css="gvje9d">
                             .css-gvje9d {
