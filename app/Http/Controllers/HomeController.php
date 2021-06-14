@@ -96,7 +96,8 @@ class HomeController extends Controller
                     ->update([
                         'final_pay'  => request('final_pay'),
                         'transaction_status' => 1,
-                        'tickets_available' => request('tickets_available') - request('purchase_number')
+                        'tickets_available' => request('tickets_available') - request('purchase_number'),
+                        'roi' => request('final_pay')
                     ]);
                if($soccer_pay){
                    //Update user balance
@@ -128,6 +129,76 @@ class HomeController extends Controller
 
     public function calculate_roi(){
 
+        //Get all tickets that are active
+        $tickets = DB::table('soccer_pays')
+            ->where('transaction_status', '=', 1)
+            ->get();
+
+       //Initialize arrays
+        $id = [];
+        $profit = [];
+        $roi = [];
+        $amount_paid = [];
+
+        //Get each of the array fields
+        foreach ($tickets as $ticket){
+            $id[] = $ticket->id;
+            $profit[] = $ticket->expected_profit;
+            $roi[] = $ticket->roi;
+            $amount_paid[] = $ticket->final_pay;
+        }
+
+        //Convert profits to percentage
+        $profit_percentage = [];
+        for($i = 0; $i < count($tickets); $i++){
+            $profit_percentage[] = $profit[$i] / 100;
+        }
+
+        //Calculate the increment
+        $max_increment = [];
+        for($i = 0; $i < count($tickets); $i++){
+            $max_increment[] = $profit_percentage[$i] * $amount_paid[$i];
+        }
+
+        //Calculate the maximum amount it gets to
+        $max_amount = [];
+        for($i = 0; $i < count($tickets); $i++){
+            $max_amount[] = $max_increment[$i] + $amount_paid[$i];
+        }
+
+        //Get the random roi increments
+        $new_roi = [];
+        for($i = 0; $i < count($tickets); $i++){
+            $new_roi[] = (rand(1, 100)/100)  + $roi[$i];
+        }
+
+        //Do the increments accordingly
+        for($i = 0; $i < count($tickets); $i++){
+//            if($new_roi[$i] == $max_amount[$i]){
+//                //Actually update the database with the exact roi
+//                    DB::table('soccer_pays')
+//                        ->where('id', '=', $id[$i])
+//                        ->update([
+//                            'roi' => $max_amount[$i]
+//                        ]);
+//            }
+//            else if($new_roi[$i] > $max_amount[$i]){
+//                //Actually update the database with the exact roi
+//                    DB::table('soccer_pays')
+//                        ->where('id', '=', $id[$i])
+//                        ->update([
+//                            'roi' => $max_amount[$i]
+//                        ]);
+//            }
+           // else{
+                //Actually update the database with the new roi
+                    DB::table('soccer_pays')
+                        ->where('id', '=', $id[$i])
+                        ->update([
+                            'roi' => $new_roi[$i]
+                        ]);
+            //}
+        }
     }
 
     public function deposits(){
@@ -140,38 +211,41 @@ class HomeController extends Controller
 
     public function fund_wallet(){
 
-        $user_id = auth()->user()->id;
-        $user = User::findorfail($user_id);
-
-        return view ("dashboard.fund_wallet",compact('user'));
+        return view ("dashboard.fund_wallet");
     }
 
-    public function fund_wallet_create(){
+    public function fund_wallet_create(Request $request){
 
-//        $data = request()->validate([
-//            'amount' => 'required',
-//        ]);
+        $customer_id = rand(100000,999999);
+
+        //Create a charge
+        $result = Http::withHeaders([
+            "Content-Type" => "application/json",
+            "X-CC-Api-Key" => "ba6e8f85-1992-44a8-9aa6-e5ac2b102423",
+            "X-CC-Version" => "2018-03-22"
+        ])->post("https://api.commerce.coinbase.com/charges", [
+            "name" => "Wallet TopUp",
+            "description" => "Funds top up for your account on Capital Ticketing",
+            "pricing_type" => "fixed_price",
+            "local_price" => [
+                "amount" => request('amount'),
+                "currency" => "USD"
+            ],
+            "metadata" => [
+            "customer_id" => $customer_id,
+                "customer_email" => auth()->user()->email
+       ],
+       "redirect_url" => "http://127.0.0.1:8000/fund_wallet/completed/",
+       "cancel_url" => "http://127.0.0.1:8000/fund_wallet/canceled/"
+        ]);
+
+        dd($result->json());
+
 //        $list = Http::withHeaders([
 //            "X-CC-Api-Key" => "ba6e8f85-1992-44a8-9aa6-e5ac2b102423",
 //            "X-CC-Version" => "2018-03-22"
 //        ])->get("https://api.commerce.coinbase.com/charges");
-//        dd($list->json());
-//        //Create a charge
-//        $result = Http::withHeaders([
-//            "Content-Type" => "application/json",
-//            "X-CC-Api-Key" => "ba6e8f85-1992-44a8-9aa6-e5ac2b102423",
-//            "X-CC-Version" => "2018-03-22"
-//        ])->post("https://api.commerce.coinbase.com/charges", [
-//            "name" => "Wallet TopUp",
-//            "description" => "Funds top up for your account",
-//            "pricing_type" => "fixed_price",
-//            "local_price" => [
-//                "amount" => 300,
-//                "currency" => "USD"
-//            ],
-//        ]);
-//
-//        dd($result->json());
+        //dd($list->json());
     }
 
     public function index()

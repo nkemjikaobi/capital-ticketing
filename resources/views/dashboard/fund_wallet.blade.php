@@ -182,7 +182,7 @@
                         <!-- User Account -->
                         <li class="dropdown user-menu">
                             <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                <span class="d-none d-lg-inline-block">{{ucwords($user->username)}}</span>
+                                <span class="d-none d-lg-inline-block">{{ucwords(auth()->user()->username)}}</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <!-- User image -->
@@ -248,9 +248,9 @@
                                 <form class="form-pill" method='POST' action="{{ route('fund_wallet_create') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="exampleFormControlPassword3">Amount</label>
+                                        <label for="exampleFormControlPassword3">Amount you wish to deposit($)</label>
                                         <input type="text" class="form-control @error('amount') is-invalid @enderror" id="exampleFormControlPassword3"
-                                               name="amount"   required>
+                                               name="amount" placeholder="400"   required>
                                         @error('amount')
                                         <div style="color:red;">{{ $message }}</div>
                                         @enderror
