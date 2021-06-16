@@ -235,8 +235,8 @@ class HomeController extends Controller
             "customer_id" => $customer_id,
                 "customer_email" => auth()->user()->email
        ],
-       "redirect_url" => "http://127.0.0.1:8000/webhook",
-       "cancel_url" => "http://127.0.0.1:8000/deposits/canceled/"
+       "redirect_url" => "http://127.0.0.1:8000/home",
+       "cancel_url" => "http://127.0.0.1:8000/home"
         ]);
 
         dd($result->json());
@@ -268,6 +268,7 @@ class HomeController extends Controller
     }
 
     public function webhook(Request $request){
+        dd("let us start");
         Log::info("response is -",$request->all());
         return response()->json('success');
     }

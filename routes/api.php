@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/webhook', [App\Http\Controllers\HomeController::class, 'webhook'])->name('webhook');
+//Route::get('/webhook', [App\Http\Controllers\HomeController::class, 'webhook'])->name('webhook');

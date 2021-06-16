@@ -38,4 +38,4 @@ Route::post('/sell_tickets', [App\Http\Controllers\HomeController::class, 'sell_
 Route::get('/deposits', [App\Http\Controllers\HomeController::class, 'deposits'])->name('deposits');
 Route::get('/view_tickets', [App\Http\Controllers\HomeController::class, 'view_tickets'])->name('view_tickets');
 Route::get('/withdrawals', [App\Http\Controllers\HomeController::class, 'withdrawals'])->name('withdrawals');
-Route::post('/webhook', [App\Http\Controllers\HomeController::class, 'webhook'])->name('webhook');
+Route::post('/webhook', [App\Http\Controllers\CoinBaseController::class, 'webhook'])->name('webhook');
