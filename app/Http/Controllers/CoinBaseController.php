@@ -10,6 +10,5 @@ class CoinBaseController extends Controller
     public function webhook(Request $request){
 
         return $request->all();
-       // return response()->json();
     }
 }
