@@ -183,7 +183,7 @@
                         <!-- User Account -->
                         <li class="dropdown user-menu">
                             <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                                <span class="d-none d-lg-inline-block">{{ucwords($user->username)}}</span>
+                                <span class="d-none d-lg-inline-block">{{ucwords(auth()->user()->username)}}</span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <!-- User image -->

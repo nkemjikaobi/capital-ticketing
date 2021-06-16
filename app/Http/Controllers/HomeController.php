@@ -34,20 +34,16 @@ class HomeController extends Controller
 
     public function buy_tickets(){
 
-        $user_id = auth()->user()->id;
-        $user = User::findorfail($user_id);
 
-        return view('dashboard.buy_tickets',compact('user'));
+        return view('dashboard.buy_tickets');
     }
 
     public function buy_tickets_soccer(){
-        $user_id = auth()->user()->id;
-        $user = User::findorfail($user_id);
-
+      
         //Get Tickets
         $tickets = SoccerTicket::all();
 
-        return view("dashboard.buy_tickets_soccer",compact('user','tickets'));
+        return view("dashboard.buy_tickets_soccer",compact('tickets'));
     }
 
     public function buy_tickets_soccer_fixture($id){
@@ -327,7 +323,7 @@ class HomeController extends Controller
 
         $user_id = auth()->user()->id;
 
-        $user = User::findorfail($user_id);
+        $user = User::find($user_id);
 
         $user->firstname = $data['firstname'];
         $user->lastname = $data['lastname'];
