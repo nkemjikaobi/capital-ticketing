@@ -43,14 +43,14 @@ class HomeController extends Controller
         //Get Tickets
         $tickets = SoccerTicket::all();
 
-        return view("dashboard.buy_tickets_soccer",compact('tickets'));
+        return view("dashboard.soccer.buy_tickets_soccer",compact('tickets'));
     }
 
     public function buy_tickets_soccer_fixture($id){
 
         $fixture_details = SoccerTicket::findorfail($id);
 
-        return view('dashboard.buy_tickets_soccer_fixture',compact('fixture_details'));
+        return view('dashboard.soccer.buy_tickets_soccer_fixture',compact('fixture_details'));
     }
 
     public function buy_tickets_soccer_pay(Request $request){
@@ -75,7 +75,7 @@ class HomeController extends Controller
         $ticket_id = request('ticket_id');
         $pay = SoccerPay::where('email', '=', $email)->orderBy('id', 'DESC')->take(1)->get();
 
-        return view("dashboard.buy_tickets_soccer_pay",compact('pay','ticket_id'));
+        return view("dashboard.soccer.buy_tickets_soccer_pay",compact('pay','ticket_id'));
     }
 
     public function buy_tickets_soccer_pay_process(Request $request){

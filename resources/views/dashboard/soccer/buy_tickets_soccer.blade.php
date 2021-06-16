@@ -247,13 +247,13 @@
                                     <div class="card-body">
                                         <h5 class="card-title">
                                             <img
-                                                src="{{ asset('/storage/images/arsenal-logo.png') }}"
+                                                src="{{ asset('/images/arsenal-logo.png') }}"
                                                 height="30px"
                                                 width="30px"
                                                 alt="">
                                          {{$ticket->home_team }} - {{$ticket->away_team}}
                                             <img
-                                                src="{{asset('/storage/images/chelsea-logo.png')}}"
+                                                src="{{asset('/images/chelsea-logo.png')}}"
                                                 height="30px"
                                                 width="30px"
                                                 alt="">
