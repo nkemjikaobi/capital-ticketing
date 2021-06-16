@@ -182,7 +182,7 @@
                   <!-- User Account -->
                   <li class="dropdown user-menu">
                     <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                      <span class="d-none d-lg-inline-block">{{ucwords($user->username)}}</span>
+                      <span class="d-none d-lg-inline-block">{{ucwords(auth()->user()->username)}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                       <!-- User image -->
@@ -250,12 +250,12 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="exampleFormControlInput3">Username</label>
-                                <input type="text" name="username" class="form-control" id="exampleFormControlInput3" value={{$user->username}} disabled>
+                                <input type="text" name="username" class="form-control" id="exampleFormControlInput3" value={{auth()->user()->username}} disabled>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlPassword3">First Name</label>
                                 <input type="text" class="form-control @error('firstname') is-invalid @enderror" id="exampleFormControlPassword3"
-                                      name="firstname"  value="{{$user->firstname}}" required>
+                                      name="firstname"  value={{auth()->user()->firstname}} required>
                                 @error('firstname')
                                 <div style="color:red;">{{ $message }}</div>
                                 @enderror
@@ -263,14 +263,14 @@
                             <div class="form-group">
                                 <label for="exampleFormControlPassword3">Last Name</label>
                                 <input type="text" class="form-control @error('lastname') is-invalid @enderror" id="exampleFormControlPassword3"
-                                       name="lastname" value="{{$user->lastname}}" required>
+                                       name="lastname" value={{auth()->user()->lastname}} required>
                                 @error('lastname')
                                 <div style="color:red;">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlInput3">Email</label>
-                                <input type="text" name="email" class="form-control" id="exampleFormControlInput3" value="{{$user->email}}" disabled>
+                                <input type="text" name="email" class="form-control" id="exampleFormControlInput3" value={{auth()->user()->email}} disabled>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlPassword3">Plan</label>

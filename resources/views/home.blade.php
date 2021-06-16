@@ -184,7 +184,7 @@
                   <li class="dropdown user-menu">
                     <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
 
-                      <span class="d-none d-lg-inline-block">{{$user->firstname}}</span>
+                      <span class="d-none d-lg-inline-block">{{auth()->user()->firstname}}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                       <!-- User image -->
@@ -241,7 +241,7 @@
                     <div class="col-xl-6 col-sm-6">
                       <div class="card card-mini mb-4">
                         <div class="card-body">
-                          <h2 class="mb-1">${{number_format($user->portfolio->balance,2)}}</h2>
+                          <h2 class="mb-1">${{number_format(auth()->user()->portfolio->balance,2)}}</h2>
                           <p>BALANCE</p>
                         </div>
                       </div>
@@ -253,7 +253,7 @@
                            @if($ticket_number > 0)
                                {{$ticket_number}}
                            @else
-                               {{$user->portfolio->tickets_number}}
+                               {{auth()->user()->portfolio->tickets_number}}
                            @endif
                           </h2>
                           <p>
@@ -269,7 +269,7 @@
                     <div class="col-xl-6 col-sm-4">
                       <div class="card card-mini mb-4">
                         <div class="card-body">
-                          <h2 class="mb-1">${{$user->portfolio->ref_bonus}}</h2>
+                          <h2 class="mb-1">${{auth()->user()->portfolio->ref_bonus}}</h2>
                           <p>REF BONUS</p>
                         </div>
                       </div>
@@ -278,7 +278,7 @@
                       <div class="card card-mini mb-4">
                         <div class="card-body">
                           <h2 class="mb-1">
-                              @if($user->portfolio->account_status == 0)
+                              @if(auth()->user()->portfolio->account_status == 0)
                                   <span style="color: red;">INACTIVE</span>
                               @else
                                   <span style="color: green;">ACTIVE</span>

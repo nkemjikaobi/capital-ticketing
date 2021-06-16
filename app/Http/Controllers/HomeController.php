@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Deposit;
 use App\Models\Portfolio;
 use App\Models\SoccerPay;
 use App\Models\SoccerTeam;
@@ -124,7 +125,7 @@ class HomeController extends Controller
                }
             }
         }
-            return redirect("/home");
+            return redirect("/view_tickets");
     }
 
     public function calculate_roi(){
@@ -203,10 +204,12 @@ class HomeController extends Controller
 
     public function deposits(){
 
-        $user_id = auth()->user()->id;
-        $user = User::findorfail($user_id);
+        $deposits = DB::table('deposits')
+            ->where('customer_email', '=', auth()->user()->email)
+            ->orderBy("id","desc")
+            ->get();
 
-        return view('dashboard.deposits',compact('user'));
+        return view('dashboard.deposits',compact("deposits"));
     }
 
     public function fund_wallet(){
@@ -235,38 +238,27 @@ class HomeController extends Controller
             "customer_id" => $customer_id,
                 "customer_email" => auth()->user()->email
        ],
-       "redirect_url" => "http://127.0.0.1:8000/home",
-       "cancel_url" => "http://127.0.0.1:8000/home"
+       "redirect_url" => "http://127.0.0.1:8000/deposits",
+       "cancel_url" => "http://127.0.0.1:8000/deposits"
         ]);
-
-//        dd($result->json());
-//        $data = $result->data;
-
-        //Store relevant details relating to the charge
-//        $code = $result->data['code'];
-//        $transaction_id = $result->data['id'];
-//        $customer_id = $result->data['metadata']['customer_id'];
-//        $customer_email = $result->data['metadata']['customer_email'];
-//        $created_at = $result->data['created_at'];
-//        $description = $result->data['name'];
-//        $local_amount = $result->data['pricing']['local']['amount'];
-//        $transaction_status = "charge:created";
 
         //Store relevant details in the deposits table
         $deposits = Deposit::create([
-            'code' => $result->data['code'],
-            'transaction_id' => $result->data['id'],
-            'customer_id' => $result->data['metadata']['customer_id'],
-            'customer_email' => $result->data['metadata']['customer_email'],
-            'description' => $result->data['name'],
-            'local_amount' => $result->data['pricing']['local']['amount'],
+            'code' => $result['data']['code'],
+            'transaction_id' => $result['data']['id'],
+            'customer_id' => $result['data']['metadata']['customer_id'],
+            'customer_email' => $result['data']['metadata']['customer_email'],
+            'description' => $result['data']['name'],
+            'local_amount' => $result['data']['pricing']['local']['amount'],
             'transaction_status' => "charge:created",
-            'created_at' => $result->data['created_at'],
+            'created_at' => $result['data']['created_at'],
         ]);
+
+        $redirect_url = $result['data']['hosted_url'];
 
         if($deposits){
             //redirect the users to make payment
-            return redirect("$result->data['hosted_url']");
+            return redirect("$redirect_url");
         }
         else{
             return redirect("/home");
@@ -275,11 +267,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        //Get logged in user
-        $auth_user_id = auth()->user()->id;
-
-        $user = User::findorfail($auth_user_id);
-
+        //Get ticket details
         $ticket_details = DB::table('soccer_pays')
                             ->where([
                                 ['email', '=', auth()->user()->email],
@@ -289,7 +277,23 @@ class HomeController extends Controller
 
         $ticket_number = (count($ticket_details));
 
-        return view('home', compact('user','ticket_number'));
+        //Check if balance is zero, then update account status
+        if(auth()->user()->portfolio->balance != 0){
+            DB::table('portfolios')
+                ->where('user_id', '=', auth()->user()->id)
+                ->update([
+                    'account_status' => 1
+                ]);
+        }
+        else{
+            DB::table('portfolios')
+                ->where('user_id', '=', auth()->user()->id)
+                ->update([
+                    'account_status' => 0
+                ]);
+        }
+
+        return view('home', compact('ticket_number'));
     }
 
 
@@ -346,15 +350,11 @@ class HomeController extends Controller
        // return view('dashboard.profile', compact('user','ip_address','device','browser','operating_system','success'));
 
         //return view('dashboard.profile')->with(['user' => $user,'ip_address' => $ip_address,'device' => $device,'browser' => $browser,'operating_system' => $operating_system, 'success' => $success]);
-        return view('dashboard.profile', compact('user','ip_address','device','browser','operating_system','success'))->withSuccess('Profile Updated');
+        return view('dashboard.profile', compact('user','ip_address','device','browser','operating_system','success'));
 
     }
 
     public function view_profile(Request $request){
-
-        //Get logged in user
-        $user_id = auth()->user()->id;
-        $user = User::findorfail($user_id);
 
         //Get Ip Address
         $ip_address = $request->ip();
@@ -365,7 +365,7 @@ class HomeController extends Controller
         $browser = $agent->browser();
         $device = $agent->device();
 
-        return view('dashboard.profile', compact('user','ip_address','device','browser','operating_system'));
+        return view('dashboard.profile', compact('ip_address','device','browser','operating_system'));
     }
 
     public function view_tickets(){

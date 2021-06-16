@@ -15,7 +15,7 @@ class CreateDepositsTable extends Migration
     {
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('transaction_id');
             $table->bigInteger('customer_id');
             $table->string('customer_email');
@@ -23,6 +23,8 @@ class CreateDepositsTable extends Migration
             $table->integer('local_amount');
             $table->string('transaction_status');
             $table->string('created_at');
+            $table->string('updated_at');
+            $table->boolean('isCredited')->default(0);
         });
     }
 
