@@ -235,8 +235,8 @@ class HomeController extends Controller
             "customer_id" => $customer_id,
                 "customer_email" => auth()->user()->email
        ],
-       "redirect_url" => "http://127.0.0.1:8000/fund_wallet/completed/",
-       "cancel_url" => "http://127.0.0.1:8000/fund_wallet/canceled/"
+       "redirect_url" => "http://127.0.0.1:8000/webhook",
+       "cancel_url" => "http://127.0.0.1:8000/deposits/canceled/"
         ]);
 
         dd($result->json());
@@ -265,6 +265,11 @@ class HomeController extends Controller
         $ticket_number = (count($ticket_details));
 
         return view('home', compact('user','ticket_number'));
+    }
+
+    public function webhook(Request $request){
+        Log::info("response is -",$request->all());
+        return response()->json('success');
     }
 
     public function sell_tickets(){
