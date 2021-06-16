@@ -239,13 +239,38 @@ class HomeController extends Controller
        "cancel_url" => "http://127.0.0.1:8000/home"
         ]);
 
-        dd($result->json());
+//        dd($result->json());
+//        $data = $result->data;
 
-//        $list = Http::withHeaders([
-//            "X-CC-Api-Key" => "ba6e8f85-1992-44a8-9aa6-e5ac2b102423",
-//            "X-CC-Version" => "2018-03-22"
-//        ])->get("https://api.commerce.coinbase.com/charges");
-        //dd($list->json());
+        //Store relevant details relating to the charge
+//        $code = $result->data['code'];
+//        $transaction_id = $result->data['id'];
+//        $customer_id = $result->data['metadata']['customer_id'];
+//        $customer_email = $result->data['metadata']['customer_email'];
+//        $created_at = $result->data['created_at'];
+//        $description = $result->data['name'];
+//        $local_amount = $result->data['pricing']['local']['amount'];
+//        $transaction_status = "charge:created";
+
+        //Store relevant details in the deposits table
+        $deposits = Deposit::create([
+            'code' => $result->data['code'],
+            'transaction_id' => $result->data['id'],
+            'customer_id' => $result->data['metadata']['customer_id'],
+            'customer_email' => $result->data['metadata']['customer_email'],
+            'description' => $result->data['name'],
+            'local_amount' => $result->data['pricing']['local']['amount'],
+            'transaction_status' => "charge:created",
+            'created_at' => $result->data['created_at'],
+        ]);
+
+        if($deposits){
+            //redirect the users to make payment
+            return redirect("$result->data['hosted_url']");
+        }
+        else{
+            return redirect("/home");
+        }
     }
 
     public function index()
@@ -267,11 +292,6 @@ class HomeController extends Controller
         return view('home', compact('user','ticket_number'));
     }
 
-    public function webhook(Request $request){
-        dd("let us start");
-        Log::info("response is -",$request->all());
-        return response()->json('success');
-    }
 
     public function sell_tickets(){
 
