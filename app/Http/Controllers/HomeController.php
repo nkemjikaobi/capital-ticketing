@@ -273,6 +273,27 @@ class HomeController extends Controller
 
         $ticket_number = (count($ticket_details));
 
+        //Get all roi's
+        $roi = DB::table('soccer_pays')
+                ->where([
+                    ['email', '=', auth()->user()->email],
+                    ['transaction_status', '=', 1],
+                    ['isSold', '=', 0]
+                ])
+                ->get();
+
+        //Get the roi and put in array
+        $rois = [];
+        foreach($roi as $r){
+            $rois[] = $r->roi; 
+        }
+        
+        $current_roi = 0;
+
+        for($i = 0; $i < count($rois); $i++){
+            $current_roi = $current_roi + $rois[$i];
+        }
+
         //Check if balance is zero, then update account status
         if(auth()->user()->portfolio->balance != 0){
             DB::table('portfolios')
@@ -289,7 +310,7 @@ class HomeController extends Controller
                 ]);
         }
 
-        return view('home', compact('ticket_number'));
+        return view('home', compact('ticket_number','current_roi'));
     }
 
 

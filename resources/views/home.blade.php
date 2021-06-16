@@ -269,8 +269,8 @@
                     <div class="col-xl-6 col-sm-4">
                       <div class="card card-mini mb-4">
                         <div class="card-body">
-                          <h2 class="mb-1">${{auth()->user()->portfolio->ref_bonus}}</h2>
-                          <p>REF BONUS</p>
+                          <h2 class="mb-1">${{number_format($current_roi,2)}}</h2>
+                          <p>TOTAL ROI</p>
                         </div>
                       </div>
                     </div>
