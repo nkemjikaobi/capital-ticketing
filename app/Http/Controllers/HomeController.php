@@ -217,7 +217,7 @@ class HomeController extends Controller
             "customer_id" => $customer_id,
                 "customer_email" => auth()->user()->email
        ],
-       "redirect_url" => "http://127.0.0.1:8000/deposits",
+       "redirect_url" => "https://capitalticketing.herokuapp.com/deposits",
        "cancel_url" => "http://127.0.0.1:8000/deposits"
         ]);
 
@@ -302,7 +302,7 @@ class HomeController extends Controller
                 ])
             ->orderBy('id','desc')
             ->get();
-
+        
         //Get the local amount and isCredited and put in array
         $local_amount = [];
         $isCredited = [];
@@ -316,26 +316,24 @@ class HomeController extends Controller
 
         for($i = 0; $i < count($transact_details); $i++){
 
-            DB::table('portfolios')
+           $portfolio = DB::table('portfolios')
             ->where('user_id', '=', auth()->user()->id)
             ->update([
                 'balance' =>  auth()->user()->portfolio->balance + $local_amount[$i]
             ]);
             
-            DB::table('deposits')
-            ->where([
-                ['code', '=', $code[$i]]
-                ])
-            ->update([
-                'isCredited' =>  1
-            ]);
+            if($portfolio){
+               
+                DB::table('deposits')
+                    ->where([
+                        ['code', '=', $code[$i]]
+                        ])
+                    ->update([
+                        'isCredited' =>  1
+                    ]);
+            }
+           
         }
-
-        // $balance = 0;
-
-        // for($i = 0; $i < count($transact_details); $i++){
-        //     $balance = $balance + $rois[$i];
-        // }
 
         return view('home', compact('ticket_number','current_roi'));
     }
