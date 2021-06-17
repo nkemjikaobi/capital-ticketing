@@ -171,30 +171,13 @@ class HomeController extends Controller
 
         //Do the increments accordingly
         for($i = 0; $i < count($tickets); $i++){
-//            if($new_roi[$i] == $max_amount[$i]){
-//                //Actually update the database with the exact roi
-//                    DB::table('soccer_pays')
-//                        ->where('id', '=', $id[$i])
-//                        ->update([
-//                            'roi' => $max_amount[$i]
-//                        ]);
-//            }
-//            else if($new_roi[$i] > $max_amount[$i]){
-//                //Actually update the database with the exact roi
-//                    DB::table('soccer_pays')
-//                        ->where('id', '=', $id[$i])
-//                        ->update([
-//                            'roi' => $max_amount[$i]
-//                        ]);
-//            }
-           // else{
-                //Actually update the database with the new roi
-                    DB::table('soccer_pays')
-                        ->where('id', '=', $id[$i])
-                        ->update([
-                            'roi' => $new_roi[$i]
-                        ]);
-            //}
+
+        //Actually update the database with the new roi
+            DB::table('soccer_pays')
+                ->where('id', '=', $id[$i])
+                ->update([
+                    'roi' => $new_roi[$i]
+                ]);
         }
     }
 
@@ -309,6 +292,50 @@ class HomeController extends Controller
                     'account_status' => 0
                 ]);
         }
+
+        //Monitor for confirmed payments and update user balance
+        $transact_details = DB::table('deposits')
+            ->where([
+                ['customer_email', '=', auth()->user()->email],
+                ['isCredited', '=', 0],
+                ['transaction_status', '=', 'charge:confirmed']
+                ])
+            ->orderBy('id','desc')
+            ->get();
+
+        //Get the local amount and isCredited and put in array
+        $local_amount = [];
+        $isCredited = [];
+        $code = [];
+
+        foreach($transact_details as $tr){
+            $local_amount[] = $tr->local_amount; 
+            $isCredited[] = $tr->isCredited; 
+            $code[] = $tr->code; 
+        }
+
+        for($i = 0; $i < count($transact_details); $i++){
+
+            DB::table('portfolios')
+            ->where('user_id', '=', auth()->user()->id)
+            ->update([
+                'balance' =>  auth()->user()->portfolio->balance + $local_amount[$i]
+            ]);
+            
+            DB::table('deposits')
+            ->where([
+                ['code', '=', $code[$i]]
+                ])
+            ->update([
+                'isCredited' =>  1
+            ]);
+        }
+
+        // $balance = 0;
+
+        // for($i = 0; $i < count($transact_details); $i++){
+        //     $balance = $balance + $rois[$i];
+        // }
 
         return view('home', compact('ticket_number','current_roi'));
     }

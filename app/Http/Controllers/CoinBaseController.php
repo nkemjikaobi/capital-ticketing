@@ -12,16 +12,17 @@ class CoinBaseController extends Controller
 
         $result = $request->all();
 
-       DB::table('deposits')
+        DB::table('deposits')
             ->where('code', '=', $result['event']['data']['code'])
             ->update([
                 'transaction_status' => $result['event']['type'],
                 'updated_at' => $result['event']['data']['created_at']
             ]);
+ 
             
-            
-        return response()->json([
-            'code' => $result['event']['data']['code']
-        ]);
+        // return response()->json([
+        //     'code' => $result['event']['data']['code']
+        // ]);
+        return $request->all();
     }
 }
