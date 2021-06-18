@@ -48,3 +48,4 @@ Route::get('/buy_tickets/basketball/{id}/{fixture}', [App\Http\Controllers\Baske
 Route::post('/buy_tickets/basketball/pay', [App\Http\Controllers\BasketballController::class, 'buy_tickets_basketball_pay'])->name('buy_tickets_basketball_pay');
 Route::post('/buy_tickets/basketball/pay/process', [App\Http\Controllers\BasketballController::class, 'buy_tickets_basketball_pay_process'])->name('buy_tickets_basketball_pay_process');
 Route::get('/calculate_basketball_roi', [App\Http\Controllers\BasketballController::class, 'calculate_basketball_roi'])->name('calculate_basketball_roi');
+
