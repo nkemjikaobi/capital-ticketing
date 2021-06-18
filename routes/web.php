@@ -48,3 +48,18 @@ Route::get('/buy_tickets/basketball/{id}/{fixture}', [App\Http\Controllers\Baske
 Route::post('/buy_tickets/basketball/pay', [App\Http\Controllers\BasketballController::class, 'buy_tickets_basketball_pay'])->name('buy_tickets_basketball_pay');
 Route::post('/buy_tickets/basketball/pay/process', [App\Http\Controllers\BasketballController::class, 'buy_tickets_basketball_pay_process'])->name('buy_tickets_basketball_pay_process');
 Route::get('/calculate_basketball_roi', [App\Http\Controllers\BasketballController::class, 'calculate_basketball_roi'])->name('calculate_basketball_roi');
+
+
+//Football Routes
+Route::get('/buy_tickets/football', [App\Http\Controllers\FootBallController::class, 'buy_tickets_football'])->name('buy_tickets_football');
+Route::get('/buy_tickets/football/{id}/{fixture}', [App\Http\Controllers\FootballController::class, 'buy_tickets_football_fixture'])->name('buy_tickets_football_fixture');
+Route::post('/buy_tickets/football/pay', [App\Http\Controllers\FootballController::class, 'buy_tickets_football_pay'])->name('buy_tickets_football_pay');
+Route::post('/buy_tickets/football/pay/process', [App\Http\Controllers\FootballController::class, 'buy_tickets_football_pay_process'])->name('buy_tickets_football_pay_process');
+Route::get('/calculate_football_roi', [App\Http\Controllers\FootballController::class, 'calculate_football_roi'])->name('calculate_football_roi');
+
+//Cricket Routes
+Route::get('/buy_tickets/cricket', [App\Http\Controllers\CricketController::class, 'buy_tickets_cricket'])->name('buy_tickets_cricket');
+Route::get('/buy_tickets/cricket/{id}/{fixture}', [App\Http\Controllers\CricketController::class, 'buy_tickets_cricket_fixture'])->name('buy_tickets_cricket_fixture');
+Route::post('/buy_tickets/cricket/pay', [App\Http\Controllers\CricketController::class, 'buy_tickets_cricket_pay'])->name('buy_tickets_cricket_pay');
+Route::post('/buy_tickets/cricket/pay/process', [App\Http\Controllers\CricketController::class, 'buy_tickets_cricket_pay_process'])->name('buy_tickets_cricket_pay_process');
+Route::get('/calculate_cricket_roi', [App\Http\Controllers\CricketController::class, 'calculate_cricket_roi'])->name('calculate_cricket_roi');
