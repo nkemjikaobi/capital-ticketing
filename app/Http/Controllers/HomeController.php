@@ -6,6 +6,8 @@ use App\Models\Deposit;
 use App\Models\Portfolio;
 use App\Models\SoccerPay;
 use App\Models\BasketBallPay;
+use App\Models\FootBallPay;
+use App\Models\CricketPay;
 use App\Models\SoccerTeam;
 use App\Models\SoccerTicket;
 use App\Models\User;
@@ -121,7 +123,23 @@ class HomeController extends Controller
                             ])
                             ->get();
 
-        $ticket_number = (count($soccer_ticket_details)) + (count($basketball_ticket_details));
+        //Get football ticket details
+        $football_ticket_details = DB::table('foot_ball_pays')
+                            ->where([
+                                ['email', '=', auth()->user()->email],
+                                ['isSold', '=', 0]
+                            ])
+                            ->get();
+
+        //Get basketball ticket details
+        $cricket_ticket_details = DB::table('cricket_pays')
+                            ->where([
+                                ['email', '=', auth()->user()->email],
+                                ['isSold', '=', 0]
+                            ])
+                            ->get();
+
+        $ticket_number = (count($soccer_ticket_details)) + (count($basketball_ticket_details)) + (count($football_ticket_details)) + (count($cricket_ticket_details));
 
         $current_roi = 0;
 
@@ -134,14 +152,13 @@ class HomeController extends Controller
                 ])
                 ->get();
 
-        //Get the roi and put in array
+        //Get the soccer roi and put in array
         $soccer_rois = [];
         foreach($soccer_roi as $sr){
             $soccer_rois[] = $sr->roi; 
         }
         
         
-
         for($i = 0; $i < count($soccer_rois); $i++){
             $current_roi = $current_roi + $soccer_rois[$i];
         }
@@ -155,17 +172,57 @@ class HomeController extends Controller
                 ])
                 ->get();
 
-        //Get the roi and put in array
+        //Get the basketball roi and put in array
         $basketball_rois = [];
         foreach($basketball_roi as $br){
             $basketball_rois[] = $br->roi; 
         }
-        
-        
+         
 
         for($i = 0; $i < count($basketball_rois); $i++){
             $current_roi = $current_roi + $basketball_rois[$i];
         }
+
+        //Get all football roi's
+        $football_roi = DB::table('foot_ball_pays')
+                ->where([
+                    ['email', '=', auth()->user()->email],
+                    ['transaction_status', '=', 1],
+                    ['isSold', '=', 0]
+                ])
+                ->get();
+
+        //Get the football roi and put in array
+        $football_rois = [];
+        foreach($football_roi as $sr){
+            $football_rois[] = $sr->roi; 
+        }
+        
+        
+        for($i = 0; $i < count($football_rois); $i++){
+            $current_roi = $current_roi + $football_rois[$i];
+        }
+
+        //Get all cricket roi's
+        $cricket_roi = DB::table('cricket_pays')
+                ->where([
+                    ['email', '=', auth()->user()->email],
+                    ['transaction_status', '=', 1],
+                    ['isSold', '=', 0]
+                ])
+                ->get();
+
+        //Get the cricket roi and put in array
+        $cricket_rois = [];
+        foreach($cricket_roi as $br){
+            $cricket_rois[] = $br->roi; 
+        }
+         
+
+        for($i = 0; $i < count($cricket_rois); $i++){
+            $current_roi = $current_roi + $cricket_rois[$i];
+        }
+
 
         //Check if balance is zero, then update account status
         if(auth()->user()->portfolio->balance != 0){
@@ -244,13 +301,28 @@ class HomeController extends Controller
                  ->update([
                      'isSold' => 1
                  ]);
+
              //Change sold status for basketball
              $basketball_sold = DB::table('basket_ball_pays')
                  ->where('id','=', request('id'))
                  ->update([
                      'isSold' => 1
                  ]);
-             if($soccer_sold || $basketball_sold){
+
+             //Change sold status for football
+             $football_sold = DB::table('foot_ball_pays')
+                 ->where('id','=', request('id'))
+                 ->update([
+                     'isSold' => 1
+                 ]);
+
+             //Change sold status for cricket
+             $cricket_sold = DB::table('cricket_pays')
+                 ->where('id','=', request('id'))
+                 ->update([
+                     'isSold' => 1
+                 ]);
+             if($soccer_sold || $basketball_sold || $football_sold || $cricket_sold){
                  return redirect("/home");
              }
          }
@@ -316,7 +388,15 @@ class HomeController extends Controller
                     ->where('email', '=', auth()->user()->email)
                     ->get();
 
-        return view("dashboard.view_tickets", compact('soccer_tickets','basketball_tickets'));
+        $football_tickets = DB::table('foot_ball_pays')
+                    ->where('email', '=', auth()->user()->email)
+                    ->get();
+
+        $cricket_tickets = DB::table('cricket_pays')
+                    ->where('email', '=', auth()->user()->email)
+                    ->get();
+
+        return view("dashboard.view_tickets", compact('soccer_tickets','basketball_tickets','football_tickets','cricket_tickets'));
     }
 
     public function withdrawals(){
