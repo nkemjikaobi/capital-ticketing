@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Deposit;
 use App\Models\Portfolio;
 use App\Models\SoccerPay;
+use App\Models\BasketBallPay;
 use App\Models\SoccerTeam;
 use App\Models\SoccerTicket;
 use App\Models\User;
@@ -104,18 +105,28 @@ class HomeController extends Controller
 
     public function index()
     {
-        //Get ticket details
-        $ticket_details = DB::table('soccer_pays')
+        //Get soccer ticket details
+        $soccer_ticket_details = DB::table('soccer_pays')
                             ->where([
                                 ['email', '=', auth()->user()->email],
                                 ['isSold', '=', 0]
                             ])
                             ->get();
 
-        $ticket_number = (count($ticket_details));
+        //Get basketball ticket details
+        $basketball_ticket_details = DB::table('basket_ball_pays')
+                            ->where([
+                                ['email', '=', auth()->user()->email],
+                                ['isSold', '=', 0]
+                            ])
+                            ->get();
 
-        //Get all roi's
-        $roi = DB::table('soccer_pays')
+        $ticket_number = (count($soccer_ticket_details)) + (count($basketball_ticket_details));
+
+        $current_roi = 0;
+
+        //Get all soccer roi's
+        $soccer_roi = DB::table('soccer_pays')
                 ->where([
                     ['email', '=', auth()->user()->email],
                     ['transaction_status', '=', 1],
@@ -124,15 +135,36 @@ class HomeController extends Controller
                 ->get();
 
         //Get the roi and put in array
-        $rois = [];
-        foreach($roi as $r){
-            $rois[] = $r->roi; 
+        $soccer_rois = [];
+        foreach($soccer_roi as $sr){
+            $soccer_rois[] = $sr->roi; 
         }
         
-        $current_roi = 0;
+        
 
-        for($i = 0; $i < count($rois); $i++){
-            $current_roi = $current_roi + $rois[$i];
+        for($i = 0; $i < count($soccer_rois); $i++){
+            $current_roi = $current_roi + $soccer_rois[$i];
+        }
+
+        //Get all basketball roi's
+        $basketball_roi = DB::table('basket_ball_pays')
+                ->where([
+                    ['email', '=', auth()->user()->email],
+                    ['transaction_status', '=', 1],
+                    ['isSold', '=', 0]
+                ])
+                ->get();
+
+        //Get the roi and put in array
+        $basketball_rois = [];
+        foreach($basketball_roi as $br){
+            $basketball_rois[] = $br->roi; 
+        }
+        
+        
+
+        for($i = 0; $i < count($basketball_rois); $i++){
+            $current_roi = $current_roi + $basketball_rois[$i];
         }
 
         //Check if balance is zero, then update account status
@@ -206,13 +238,19 @@ class HomeController extends Controller
                 'balance' =>  auth()->user()->portfolio->balance + request('roi'),
             ]);
          if($balance){
-             //Change sold status
-             $sold = DB::table('soccer_pays')
+             //Change sold status for soccer
+             $soccer_sold = DB::table('soccer_pays')
                  ->where('id','=', request('id'))
                  ->update([
                      'isSold' => 1
                  ]);
-             if($sold){
+             //Change sold status for basketball
+             $basketball_sold = DB::table('basket_ball_pays')
+                 ->where('id','=', request('id'))
+                 ->update([
+                     'isSold' => 1
+                 ]);
+             if($soccer_sold || $basketball_sold){
                  return redirect("/home");
              }
          }
@@ -269,10 +307,16 @@ class HomeController extends Controller
     }
 
     public function view_tickets(){
-        $tickets = DB::table('soccer_pays')
+
+        $soccer_tickets = DB::table('soccer_pays')
                     ->where('email', '=', auth()->user()->email)
                     ->get();
-        return view("dashboard.view_tickets", compact('tickets'));
+
+        $basketball_tickets = DB::table('basket_ball_pays')
+                    ->where('email', '=', auth()->user()->email)
+                    ->get();
+
+        return view("dashboard.view_tickets", compact('soccer_tickets','basketball_tickets'));
     }
 
     public function withdrawals(){

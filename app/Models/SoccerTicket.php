@@ -14,4 +14,6 @@ class SoccerTicket extends Model
         return $this->belongsToMany(SoccerTeam::class,  'soccer_team_soccer_ticket', 'soccer_team_id', 'soccer_ticket_id');
 
     }
+
+    protected $guarded = [];
 }
