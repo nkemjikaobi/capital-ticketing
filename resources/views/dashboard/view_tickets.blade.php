@@ -30,7 +30,7 @@
             <!--TABLE STARTS -->
             <div class='card-body'>
                 <div class='table-responsive'>
-                @if(count($soccer_tickets) > 0 && count($basketball_tickets))
+                @if(count($soccer_tickets) > 0 || count($basketball_tickets) || count($football_tickets) > 0 || count($cricket_tickets))
                     <!-- Table -->
                     <table id='dataTable' class='table table-bordered table-hover' width='100%' cellspacing='0'>
                         <thead>
@@ -97,8 +97,8 @@
                                         @endif
                                     </td>
                                 </tr>
-                            @endforeach
-                            @foreach($basketball_tickets as $basketball_ticket)
+                        @endforeach
+                        @foreach($basketball_tickets as $basketball_ticket)
                             <tr>
                                 <td>{{$basketball_ticket->home_team}} - {{$basketball_ticket->away_team}}</td>
                                 <td>{{$basketball_ticket->country}}</td>
@@ -126,6 +126,82 @@
                                                 <input type="hidden" value={{$basketball_ticket->id}} name="id"/>
                                                 <input type="hidden" value={{$basketball_ticket->roi}} name="roi"/>
                                                 <input type="hidden" value={{$basketball_ticket->tickets_available}} name="tickets_available"/>
+                                                <button type="submit" style='color: white;background:#003699;border-radius:5px;padding:10px;' id='sell'>SELL</button>
+                                            </form>
+
+                                        @else
+                                            <button href="#!" style='color: white;background:red;border-radius:5px;padding:10px;' id='sell'>CAN'T SELL</button>
+                                        @endif
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                        @foreach($football_tickets as $football_ticket)
+                                <tr>
+                                    <td>{{$football_ticket->home_team}} - {{$football_ticket->away_team}}</td>
+                                    <td>{{$football_ticket->country}}</td>
+                                    <td>${{$football_ticket->ticket_price}}</td>
+                                    <td>{{$football_ticket->purchase_number}}</td>
+                                    <td>{{$football_ticket->final_pay}}</td>
+                                    <td>{{$football_ticket->fixture_time}}</td>
+                                    <td>{{$football_ticket->fixture_date}}</td>
+                                    <td>{{$football_ticket->expected_profit}}%</td>
+                                    <td>{{$football_ticket->roi}}</td>
+                                    <td>
+                                        @if($football_ticket->transaction_status == 1)
+                                            <button style='color: white;background:green;border-radius:5px;padding:10px;' id='status'>ACTIVE</button>
+                                        @else
+                                            <button style='color: white;background:red;border-radius:5px;padding:10px;' id='status'>INACTIVE</button>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($football_ticket->isSold == 1)
+                                            <button href="#!" style='color: white;background:green;border-radius:5px;padding:10px;' id='sell'>SOLD</button>
+                                        @else
+                                            @if($football_ticket->transaction_status == 1)
+                                                <form method="POST" action="/sell_tickets">
+                                                    @csrf
+                                                    <input type="hidden" value={{$football_ticket->id}} name="id"/>
+                                                    <input type="hidden" value={{$football_ticket->roi}} name="roi"/>
+                                                    <input type="hidden" value={{$football_ticket->tickets_available}} name="tickets_available"/>
+                                                    <button type="submit" style='color: white;background:#003699;border-radius:5px;padding:10px;' id='sell'>SELL</button>
+                                                </form>
+
+                                            @else
+                                                <button href="#!" style='color: white;background:red;border-radius:5px;padding:10px;' id='sell'>CAN'T SELL</button>
+                                            @endif
+                                        @endif
+                                    </td>
+                                </tr>
+                        @endforeach
+                        @foreach($cricket_tickets as $cricket_ticket)
+                            <tr>
+                                <td>{{$cricket_ticket->home_team}} - {{$cricket_ticket->away_team}}</td>
+                                <td>{{$cricket_ticket->country}}</td>
+                                <td>${{$cricket_ticket->ticket_price}}</td>
+                                <td>{{$cricket_ticket->purchase_number}}</td>
+                                <td>{{$cricket_ticket->final_pay}}</td>
+                                <td>{{$cricket_ticket->fixture_time}}</td>
+                                <td>{{$cricket_ticket->fixture_date}}</td>
+                                <td>{{$cricket_ticket->expected_profit}}%</td>
+                                <td>{{$cricket_ticket->roi}}</td>
+                                <td>
+                                    @if($cricket_ticket->transaction_status == 1)
+                                        <button style='color: white;background:green;border-radius:5px;padding:10px;' id='status'>ACTIVE</button>
+                                    @else
+                                        <button style='color: white;background:red;border-radius:5px;padding:10px;' id='status'>INACTIVE</button>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($cricket_ticket->isSold == 1)
+                                        <button href="#!" style='color: white;background:green;border-radius:5px;padding:10px;' id='sell'>SOLD</button>
+                                    @else
+                                        @if($cricket_ticket->transaction_status == 1)
+                                            <form method="POST" action="/sell_tickets">
+                                                @csrf
+                                                <input type="hidden" value={{$cricket_ticket->id}} name="id"/>
+                                                <input type="hidden" value={{$cricket_ticket->roi}} name="roi"/>
+                                                <input type="hidden" value={{$cricket_ticket->tickets_available}} name="tickets_available"/>
                                                 <button type="submit" style='color: white;background:#003699;border-radius:5px;padding:10px;' id='sell'>SELL</button>
                                             </form>
 
