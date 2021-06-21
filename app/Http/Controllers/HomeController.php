@@ -323,45 +323,38 @@ class HomeController extends Controller
                      'isSold' => 1
                  ]);
              if($soccer_sold || $basketball_sold || $football_sold || $cricket_sold){
-                 return redirect("/home");
+                return redirect("/home")->with('success','Ticket sold successfully');
              }
+         }
+         else{
+             return redirect("/home")->with('error','Balance could not be updated...Please try again later');
          }
     }
 
     public function update_profile(Request $request){
 
-        $data = request()->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-        ]);
+       
+        // //Get Ip Address
+        // $ip_address = $request->ip();
 
-        $user_id = auth()->user()->id;
+        // //Get operating system, device and browser details
+        // $agent = new Agent();
+        // $operating_system = $agent->platform();
+        // $browser = $agent->browser();
+        // $device = $agent->device();
 
-        $user = User::find($user_id);
-
-        $user->firstname = $data['firstname'];
-        $user->lastname = $data['lastname'];
-        $user->username = $user->username;
-        $user->email = $user->email;
-
-        $user->save();
-
-        //Get Ip Address
-        $ip_address = $request->ip();
-
-        //Get operating system, device and browser details
-        $agent = new Agent();
-        $operating_system = $agent->platform();
-        $browser = $agent->browser();
-        $device = $agent->device();
-
-        $success = "Profile Updated";
-
-       // return view('dashboard.profile', compact('user','ip_address','device','browser','operating_system','success'));
-
-        //return view('dashboard.profile')->with(['user' => $user,'ip_address' => $ip_address,'device' => $device,'browser' => $browser,'operating_system' => $operating_system, 'success' => $success]);
-        return view('dashboard.profile', compact('user','ip_address','device','browser','operating_system','success'));
-
+        
+        $update_profile = DB::table('users')
+                        ->where('email', '=', auth()->user()->email)
+                        ->update([
+                            'firstname' => request('firstname'),
+                            'lastname' => request('lastname')
+                        ]);
+     
+        if($update_profile){
+            return redirect()->back()->with('success','Profile Updated');
+        }
+        
     }
 
     public function view_profile(Request $request){

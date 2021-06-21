@@ -8,10 +8,6 @@
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
                 <strong class=''>Refresh page to see current transaction status</strong>
             </div>
-            @include('.inc.messages')
-            @if (!empty($success))
-                {{ $success }}
-            @endif
 
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-inverse">

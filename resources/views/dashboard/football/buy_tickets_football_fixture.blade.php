@@ -4,11 +4,7 @@
 @section('content')
 
         <div class="card-body">
-            @include('.inc.messages')
-            @if (!empty($success))
-                {{ $success }}
-            @endif
-
+         
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-inverse">
                     <li class="breadcrumb-item">

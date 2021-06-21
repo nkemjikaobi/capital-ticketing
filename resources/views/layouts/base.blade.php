@@ -201,7 +201,7 @@
 
         <div class="content-wrapper">
           <div class="content">
-
+            @include('inc.messages')
             @yield('content')
 
           </div>

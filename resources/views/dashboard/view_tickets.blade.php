@@ -4,13 +4,10 @@
 @section('content')
 
         <div class="card-body">
-            @include('.inc.messages')
-            @if (!empty($success))
-                {{ $success }}
-            @endif
+            
             <div class='alert alert-primary '>
                 <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                <strong class=''>Once you sell a ticket, the current ROI is what gets credited in your account.</strong>
+                <strong class=''>Once you sell a ticket, the current ROI of the ticket is used to top up your balance.</strong>
             </div>
 
             <nav aria-label="breadcrumb">

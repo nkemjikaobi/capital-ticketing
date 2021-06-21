@@ -108,9 +108,12 @@ class FootBallController extends Controller
                     }
                   }
                }
+               else{
+                return redirect("/view_tickets")->with('error','An error occurred..Try again later');
+               }
             }
         }
-            return redirect("/view_tickets");
+            return redirect("/view_tickets")->with('success','Ticket bought successfully');
     }
 
     public function calculate_football_roi(){
