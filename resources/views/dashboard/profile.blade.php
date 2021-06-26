@@ -9,7 +9,7 @@
                         <li class="breadcrumb-item">
                             <a href="#">Home</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        <li class="breadcrumb-item active-span" aria-current="page">Profile</li>
                     </ol>
                     </nav>
 
@@ -52,7 +52,7 @@
                                 <input type="text" name="email" class="form-control" id="exampleFormControlInput3" value={{auth()->user()->email}} disabled>
                             </div>
                             <div class="form-footer">
-                                <button type="submit"  name='btn-update' class="btn btn-primary btn-default">Update Profile</button>
+                                <button type="submit"  name='btn-update' class="btn btn-ticket btn-default">Update Profile</button>
                             </div>
                         </form>
                     </div>

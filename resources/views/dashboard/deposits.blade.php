@@ -14,7 +14,7 @@
                     <li class="breadcrumb-item">
                         <a href="#">Home</a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Deposits</li>
+                    <li class="breadcrumb-item active-span" aria-current="page">Deposits</li>
                 </ol>
             </nav>
 

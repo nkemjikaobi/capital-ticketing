@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Jenssegers\Agent\Agent;
 use App\Http\Controllers\View;
+use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
 {
@@ -53,7 +54,7 @@ class HomeController extends Controller
     }
 
     public function fund_wallet(){
-
+        //dd(Route::currentRouteName()); 
         return view ("dashboard.fund_wallet");
     }
 

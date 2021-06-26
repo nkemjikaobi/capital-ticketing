@@ -62,7 +62,8 @@ body {
   line-height: 1.5;
   color: #8a909d;
   text-align: left;
-  background-color: #f5f6fa; }
+  background-color: #f5f6fa; 
+}
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -1739,6 +1740,11 @@ fieldset:disabled a.btn {
   color: #ffffff;
   background-color: #4c84ff;
   border-color: #4c84ff; }
+  .btn-ticket {
+    color: #ffffff;
+    background-color: #fe6309;
+    border-color: #fe6309; 
+  }
   .btn-primary:hover {
     color: #ffffff;
     background-color: #266aff;
@@ -7128,7 +7134,10 @@ label {
 
 .breadcrumb.breadcrumb-inverse {
   border-color: #4c84ff;
-  background-color: rgba(228, 237, 255, 0.6); }
+  /* background-color: rgba(228, 237, 255, 0.6);  */
+  /* background-color: rgb(82, 78, 78);  */
+  background-color: black;
+}
   .breadcrumb.breadcrumb-inverse .breadcrumb-item {
     color: #4c84ff; }
     .breadcrumb.breadcrumb-inverse .breadcrumb-item:before {
@@ -8814,7 +8823,9 @@ div.copied {
   height: 100%;
   z-index: 1050;
   min-height: 100vh;
-  position: relative; }
+  position: relative; 
+  background: black;
+}
   .sidebar .sidebar-inner {
     display: flex;
     flex-direction: column;
@@ -8841,7 +8852,8 @@ div.copied {
 .sidebar .sidebar-inner > li.active > a {
   position: relative;
   z-index: 10;
-  color: #ffffff; }
+  /* color: #ffffff; */
+ }
   .sidebar .sidebar-inner > li.active > a:before {
     opacity: 1; }
 
@@ -8873,7 +8885,10 @@ div.copied {
 .app-brand {
   position: relative;
   display: block;
-  background-color: #4c84ff; }
+  /* background-color: #4c84ff;  */
+  background-color: #FE6309; 
+  /* background-color: #855438;  */
+}
   .app-brand a {
     display: flex;
     flex-direction: row;
@@ -8907,7 +8922,47 @@ div.copied {
   font-size: 1.5rem; }
 
 .sidebar .nav > li.active > a i {
-  color: #4c84ff; }
+  color: #FE6309; 
+}
+  .active-span {
+    color: #fe6309 !important;
+  }
+.sidebar .nav > li.active > a i:hover {
+  color: #FE6309; 
+}
+  .active-span:hover {
+    color: #fe6309 !important;
+  }
+  .has-sub:hover{
+    color: #fe6309 !important;
+  }
+  #sidebar-menu li a:hover {
+    color: #fe6309 !important;
+  }
+
+  /* MY STYLES START */
+.card-body .mdi-wallet{
+  color: #fe6309;
+  font-size: 3rem;
+}
+.card-body .fa-ticket-alt{
+  color: #fe6309;
+  font-size: 3rem;
+}
+.card-body .fa-bitcoin{
+  color: #fe6309;
+  font-size: 3rem;
+}
+.card-body .fa-user-check{
+  color: #fe6309;
+  font-size: 3rem;
+}
+.card-body .fa-user-slash{
+  color: #fe6309;
+  font-size: 3rem;
+}
+
+  /* MY STYLES END */
 
 /* Caret styles */
 .sidebar li > a .caret {
@@ -9352,8 +9407,8 @@ div.copied {
   color: #ffffff; }
 
 .sidebar-dark .sidebar .nav > li.active > a {
-  color: #ffffff; }
-
+  color: #ffffff; 
+}
 .sidebar-dark .separator {
   border-color: rgba(229, 233, 242, 0.2); }
 

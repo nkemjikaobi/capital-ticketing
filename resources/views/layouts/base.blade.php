@@ -23,7 +23,8 @@
   <!-- SLEEK CSS -->
   <link id="sleek-css" rel="stylesheet" href="{{ asset('dashboard/assets/css/sleek.css') }}" />
 
-
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- FAVICON -->
   <link href="{{ asset('dashboard/assets/img/favicon.png') }}" rel="shortcut icon" />
@@ -62,8 +63,9 @@
                 >
                   <g fill="none" fill-rule="evenodd">
                     <path
-                      class="logo-fill-blue"
-                      fill="#7DBCFF"
+                      class="logo-fill-blu"
+                      {{-- fill="#7DBCFF" --}}
+                      fill="#855438"
                       d="M0 4v25l8 4V0zM22 4v25l8 4V0z"
                     />
                     <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
@@ -78,69 +80,73 @@
               <!-- sidebar menu -->
               <ul class="nav sidebar-inner" id="sidebar-menu">
 
-
-
-                  <li  class="has-sub active expand" >
+                  <li  class="has-sub expand {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('home') }}"
                       aria-expanded="false" aria-controls="dashboard">
                       <i class="mdi mdi-view-dashboard-outline"></i>
-                      <span class="nav-text">Dashboard</span>
+                      <span class="nav-text {{ Route::currentRouteName() == 'home' ? 'active-span' : '' }}">Dashboard</span>
                     </a>
                   </li>
 
-                  <li  class="has-sub" >
+                  <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('fund_wallet') }}"
                       aria-expanded="false" aria-controls="ui-elements">
                       <i class="mdi mdi-wallet"></i>
-                      <span class="nav-text">Fund Wallet</span>
+                      <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">Fund Wallet</span>
                     </a>
                   </li>
-                  <li  class="has-sub" >
+                  <li  class="has-sub {{ Route::currentRouteName() == 'buy_tickets' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('buy_tickets') }}"
                       aria-expanded="false" aria-controls="ui-elements">
-                      <i class="mdi mdi-credit-card"></i>
-                      <span class="nav-text">Buy Tickets</span>
+                      {{-- <i class="mdi mdi-credit-card"></i> --}}
+                      <i class="fas fa-futbol"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'buy_tickets' ? 'active-span' : '' }}">Buy Tickets</span>
                     </a>
                   </li>
                  
-                  <li  class="has-sub" >
+                  <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('deposits') }}"
                       aria-expanded="false" aria-controls="charts">
-                      <i class="mdi mdi-currency-btc"></i>
-                      <span class="nav-text">Deposits</span>
+                      <i class="fab fa-bitcoin"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Deposits</span>
                     </a>
                   </li>
 
-                  <li  class="has-sub" >
+                  <li  class="has-sub {{ Route::currentRouteName() == 'withdrawals' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('withdrawals') }}"
                       aria-expanded="false" aria-controls="pages">
-                      <i class="mdi mdi-currency-usd"></i>
-                      <span class="nav-text">Withdrawals</span>
+                      <i class="far fa-credit-card"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'withdrawals' ? 'active-span' : '' }}">Withdrawals</span>
                     </a>
                   </li>
 
-                  <li  class="has-sub" >
+                  <li  class="has-sub {{ Route::currentRouteName() == 'view_tickets' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('view_tickets') }}"
                       aria-expanded="false" aria-controls="pages">
-                      <i class="mdi mdi-currency-usd"></i>
-                      <span class="nav-text">View Tickets</span>
+                      <i class="fas fa-ticket-alt"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'view_tickets' ? 'active-span' : '' }}">View Tickets</span>
                     </a>
                   </li>
 
-                  <li  class="has-sub" >
+                  <li  class="has-sub {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('profile') }}"
                       aria-expanded="false" aria-controls="documentation">
                       <i class="mdi mdi-account"></i>
-                      <span class="nav-text">Profile</span>
+                      <span class="nav-text {{ Route::currentRouteName() == 'profile' ? 'active-span' : '' }}">Profile</span>
                     </a>
                   </li>
 
                   <li  class="has-sub" >
-                    <a class="sidenav-item-link" href="../../logout.php"
-                      aria-expanded="false" aria-controls="documentation">
+                    <a class="sidenav-item-link" href="{{ route('logout') }}"
+                      aria-expanded="false" aria-controls="documentation"
+                      onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
                       <i class="mdi mdi-logout"></i>
                       <span class="nav-text">Log Out</span>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                    </form>
                   </li>
 
               </ul>

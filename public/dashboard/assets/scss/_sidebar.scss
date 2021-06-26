@@ -103,7 +103,8 @@
 .app-brand {
   position: relative;
   display: block;
-  background-color: $primary;
+  background-color: #FE6309 !important;
+  // background-color: $primary;
 
   a {
     display: flex;
