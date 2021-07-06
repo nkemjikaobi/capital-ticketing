@@ -28,6 +28,8 @@ class CricketTicketFactory extends Factory
             'fixture_date' => $this->faker->date(),
             'fixture_time' => $this->faker->time(),
             'competition' => $this->faker->word(),
+            'home_team_logo' => $this->faker->imageUrl($width = 25, $height = 25),
+            'away_team_logo' => $this->faker->imageUrl($width = 25, $height = 25),
             'ticket_price' => $this->faker->numberBetween($min = 30, $max= 100),
             'expected_profit' => $this->faker->numberBetween($min = 10, $max= 50),
             'tickets_available' => $this->faker->numberBetween($min = 10, $max= 50),
