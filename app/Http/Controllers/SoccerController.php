@@ -35,7 +35,7 @@ class SoccerController extends Controller
     public function buy_tickets_soccer(){
       
         //Get Soccer Tickets
-        $tickets = SoccerTicket::all();
+        $tickets = SoccerTicket::paginate(6);
 
         return view("dashboard.soccer.buy_tickets_soccer",compact('tickets'));
     }

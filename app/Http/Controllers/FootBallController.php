@@ -29,7 +29,7 @@ class FootBallController extends Controller
      public function buy_tickets_football(){
 
         //Get FootBall Tickets
-        $tickets = FootBallTicket::all();
+        $tickets = FootBallTicket::paginate(6);
 
         return view("dashboard.football.buy_tickets_football",compact('tickets'));
 

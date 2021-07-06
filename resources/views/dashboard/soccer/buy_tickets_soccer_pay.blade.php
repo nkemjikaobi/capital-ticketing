@@ -11,9 +11,9 @@
                     <li class="breadcrumb-item">
                         <a href="#">Home</a>
                     </li>
-                    <li class="breadcrumb-item" aria-current="page"><a href="/buy_tickets" style="text-decoration: none !important;color:#4c84ff;">Buy Tickets</a></li>
-                    <li class="breadcrumb-item" aria-current="page"><a href="/buy_tickets/soccer" style="text-decoration: none !important;color:#4c84ff;">Soccer</a></li>
-                    <li class="breadcrumb-item" aria-current="page"><a href="/buy_tickets/soccer/pay" style="text-decoration: none !important;color:#4c84ff;">Pay</a></li>
+                    <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets" >Buy Tickets</a></li>
+                    <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets/soccer" >Soccer</a></li>
+                    <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets/soccer/pay" >Pay</a></li>
                 </ol>
             </nav>
 
@@ -47,7 +47,7 @@
                         </div>
 
                         <div class="form-footer">
-                            <button type="submit"  class="btn btn-primary btn-default">PAY</button>
+                            <button type="submit"  class="btn btn-ticket btn-default">PAY</button>
                         </div>
                     </form>
                 </div>

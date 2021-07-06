@@ -9,6 +9,42 @@
     margin-left: 10px !important;
   }
 
+  .left-bar span {
+    padding: 1rem 1rem !important;
+    font-size: 1rem !important;
+  }
+  .left-bar::before {
+    position: absolute;
+    bottom: 45% !important;
+    left: 0;
+    width: 50% !important;
+    text-align: center;
+    content: attr(data-title);
+    font-size: 0.2em !important;
+  }
+
+  .details-body {
+    padding: 0.1rem !important;
+  }
+
+  .travel-details {
+    padding: 0rem !important;
+    font-size: 10px !important;
+  }
+
+  .details-section {
+    flex-grow: 1;
+    padding: 0.2rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .details-section .details-logo {
+    margin-top: 0rem !important;
+    font-size: 1rem !important;
+  }
+
   footer {
     padding: 0px !important;
   }
@@ -22,6 +58,14 @@ html {
 }
 *::after, *::before {
   box-sizing: border-box;
+}
+
+.surround {
+  text-decoration: none !important;
+}
+
+.surround:visited {
+  color: black !important;
 }
 
 .breadcrumb {
@@ -135,7 +179,7 @@ footer {
 }
 #ticket .back .left .details-section .details-body .details-travel .from-to div {
   position: relative;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 #ticket .back .left .details-section .details-body .details-travel .from-to span {
@@ -171,7 +215,6 @@ footer {
   left: 0;
   width: 100%;
   content: attr(data-title);
-  font-size: 0.5em;
   text-transform: lowercase;
   font-weight: normal;
 }

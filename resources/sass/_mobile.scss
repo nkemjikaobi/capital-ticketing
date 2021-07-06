@@ -10,9 +10,109 @@
 	.breadcrumb {
 		margin-left: 10px !important;
 	}
+
+    .left-bar{
+
+        span {
+            padding: 1rem 1rem !important;
+            font-size: 1rem !important;
+        }
+            &::before {
+              position: absolute;
+              bottom: 45% !important;
+              left: 0;
+              width: 50% !important;
+              text-align: center;
+              content: attr(data-title);
+              font-size: 0.2em !important;
+            }
+    }
+
+    .details-body {
+        padding: 0.1rem !important;
+      }
+      .travel-details
+      {
+          padding: 0rem !important;
+          font-size: 10px !important;
+      }
+      .details-section {
+        flex-grow: 1;
+        padding: 0.2rem 1rem 0 1rem;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              
+        .details-logo {
+            margin-top: 0rem !important;
+            font-size: 1rem !important;
+        }
+      }
+      
 	
 	footer {
 		padding: 0px !important;
 	}
 	
 }
+
+// @media(max-width: 576px){
+
+//     #ticket {
+
+// 		.back {
+// 			margin: 20px 15px 20px 10px !important;
+// 		}
+// 	}
+	
+// 	.breadcrumb {
+// 		margin-left: 10px !important;
+// 	}
+
+
+//     .left-bar{
+
+//         span {
+//             padding: 0.4rem 0.5rem !important;
+//             font-size: 1rem !important;
+//         }
+//             &::before {
+//               position: absolute;
+//               bottom: 45% !important;
+//               left: 0;
+//               width: 50% !important;
+//               text-align: center;
+//               content: attr(data-title);
+//               font-size: 0.2em !important;
+//             }
+//     }
+
+//     .details-body {
+//         padding: 0rem !important;
+//       }
+//       .travel-details
+//       {
+//           padding: 0rem !important;
+//           font-size: 10px !important;
+//       }
+//       .details-section {
+//         flex-grow: 1;
+//         padding: 0.2rem 1rem 0 1rem;
+//               display: flex;
+//               flex-direction: column;
+//               justify-content: center;
+//               align-items: center;
+              
+//         .details-logo {
+//             margin-top: -10px !important;
+//             font-size: 1rem !important;
+//         }
+//       }
+
+//       footer {
+// 		padding: 0px !important;
+// 	}
+
+	
+// }

@@ -29,7 +29,7 @@ class BasketBallController extends Controller
      public function buy_tickets_basketball(){
 
         //Get BasketBall Tickets
-        $tickets = BasketBallTicket::all();
+        $tickets = BasketBallTicket::paginate(6);
 
         return view("dashboard.basketball.buy_tickets_basketball",compact('tickets'));
 

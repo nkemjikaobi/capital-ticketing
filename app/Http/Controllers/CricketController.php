@@ -29,7 +29,7 @@ class CricketController extends Controller
      public function buy_tickets_cricket(){
 
         //Get Cricket Tickets
-        $tickets = CricketTicket::all();
+        $tickets = CricketTicket::paginate(6);
 
         return view("dashboard.cricket.buy_tickets_cricket",compact('tickets'));
 
