@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Jenssegers\Agent\Agent;
 use App\Http\Controllers\View;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ChargeCreatedMail;
 use Illuminate\Support\Facades\Route;
 
 class HomeController extends Controller
@@ -80,7 +82,7 @@ class HomeController extends Controller
                 "customer_email" => auth()->user()->email
        ],
        "redirect_url" => "https://capitalticketing.herokuapp.com/deposits",
-       "cancel_url" => "http://127.0.0.1:8000/deposits"
+       "cancel_url" => "https://capitalticketing.herokuapp.com/deposits"
         ]);
 
         //Store relevant details in the deposits table
@@ -96,9 +98,11 @@ class HomeController extends Controller
         ]);
 
         $redirect_url = $result['data']['hosted_url'];
+        $price = $result['data']['pricing']['local']['amount'];
 
         if($deposits){
             //redirect the users to make payment
+            Mail::to(auth()->user()->email)->send(new ChargeCreatedMail($price));
             return redirect("$redirect_url");
         }
         else{

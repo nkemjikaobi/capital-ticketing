@@ -1,7 +1,9 @@
 <?php
 
+use App\Mail\ChargeCreatedMail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,10 @@ Auth::routes();
 
 //Home Page
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcome');
+
+// Route::get('/email', function(){
+//     return new ChargeCreatedMail(500);
+// });
 
 //User Dashboard
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
