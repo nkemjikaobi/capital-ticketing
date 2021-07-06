@@ -21,6 +21,8 @@ class CreateCricketTicketsTable extends Migration
             $table->date("fixture_date");
             $table->time("fixture_time");
             $table->string("competition");
+            $table->string("home_team_logo");
+            $table->string("away_team_logo");
             $table->decimal("ticket_price","10","2");
             $table->integer("expected_profit");
             $table->integer("tickets_available");

@@ -40,7 +40,7 @@
                                           <div class='from-to'>
                                             <div class="from" :data-code='depart.code' data-title=''>
                                               <img 
-                                                src="{{ asset('images/manu-logo.png') }}"
+                                                src="{{ $ticket->home_team_logo }}"
                                                 width="25px"
                                                 height="25px"
                                                 alt="">
@@ -49,7 +49,7 @@
                                             <span class="line"></span>
                                             <div class="to":data-code='arrive.code' data-title=''>
                                               <img 
-                                                src="{{ asset('images/chelsea-logo.png') }}"
+                                                src="{{ $ticket->away_team_logo }}"
                                                 width="25px"
                                                 height="25px"
                                                 alt="">

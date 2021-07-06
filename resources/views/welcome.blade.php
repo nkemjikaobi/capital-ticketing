@@ -671,7 +671,7 @@
           }
         </style>
         <header class="css-1rj0lsg">
-          <a href="https://www.binance.com/en-NG"
+          <a href="/"
             ><style data-emotion-css="tsyi71">
               .css-tsyi71 {
                 box-sizing: border-box;
@@ -838,13 +838,13 @@
           ><a
             target="_self"
             id="ba-tableMarkets"
-            href="tickets.html"
+            href="/buy_tickets"
             class="css-1ke7bwx"
             >Buy Tickets</a
           ><a
             target="_self"
             id="ba-tableMarkets"
-            href="markets.html"
+            href="#!"
             class="css-1ke7bwx"
             >Contact</a
           >
@@ -1254,10 +1254,15 @@
                   display: -ms-flexbox;
                   display: flex;
                 }
+                .btn-ticket {
+                  color: #ffffff !important;
+                  background-color: #fe6309 !important;
+                  border-color: #fe6309 !important; 
+                }
               }
             </style>
             <div class="css-1xuvfhq"></div>
-            <a href="{{ route('register') }}" style="height: 35px !important;color:white !important;" class="css-o3h2xh">Register</a>
+            <a href="{{ route('register') }}" style="height: 35px !important;" class="css-o3h2xh btn-ticket">Register</a>
           </div>
         </header>
         <style data-emotion-css="1wr4jig">
@@ -1510,8 +1515,8 @@
                       padding-right: 8px;
                       background-image: linear-gradient(
                         180deg,
-                        #6C63FF 0%,
-                        #6C63FF 100%
+                        #fe6309 0%,
+                        #fe6309 100%
                       );
                       padding-left: 24px;
                       padding-right: 24px;
@@ -1539,8 +1544,8 @@
                       box-shadow: none;
                       background-image: linear-gradient(
                         180deg,
-                        #7069f1 0%,
-                        #7069f1 100%
+                        #fe6309 0%,
+                        #fe6309 100%
                       );
                     }
                     @media screen and (min-width: 767px) {
@@ -1549,7 +1554,7 @@
                         width: auto;
                       }
                     }</style
-                  ><a href="{{ route('login') }}"
+                  ><a href="/buy_tickets"
                     data-bn-type="button"
                     aria-label="register"
                     class="css-o3h2xh"
@@ -1646,6 +1651,7 @@
                   display: none;
                   padding-left: 4px;
                   width: 0%;
+                  background-image: url("/images/bg-fans.jpg") !important;
                 }
                 @media screen and (min-width: 767px) {
                   .css-115yac6 {
@@ -1817,7 +1823,7 @@
               }
               .css-fb4d44 > a:hover,
               .css-fb4d44 > a:hover > svg {
-                color: #6C63FF;
+                color: #fe6309;
               }
             </style>
             <div class="css-fb4d44">
@@ -1833,7 +1839,7 @@
                   color: #212833;
                 }</style
               ><a
-                href="support/announcement/2d3c845143cd4f94814f256fa2d7e352.html"
+                href="/buy_tickets/soccer"
                 aria-label="detail"
                 class="css-n876bn"
                 ><style data-emotion-css="1mjkd2n">
@@ -1916,46 +1922,7 @@
                   -ms-flex: none;
                   flex: none;
                 }</style
-              ><a
-                aria-label="more announcement"
-                href="support/announcement.html"
-                class="css-mmpluh"
-                ><style data-emotion-css="16enr5p">
-                  .css-16enr5p {
-                    box-sizing: border-box;
-                    margin: 0;
-                    min-width: 0;
-                    white-space: nowrap;
-                  }
-                </style>
-                <div data-bn-type="text" class="css-16enr5p">More.</div>
-                <style data-emotion-css="9ykz47">
-                  .css-9ykz47 {
-                    box-sizing: border-box;
-                    margin: 0;
-                    min-width: 0;
-                    color: currentColor;
-                    width: 16px;
-                    height: 16px;
-                    font-size: 16px;
-                    fill: #1e2329;
-                    fill: currentColor;
-                    margin-left: 4px;
-                    font-weight: 600;
-                    width: 1em;
-                    height: 1em;
-                  }</style
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  class="icon-dir css-9ykz47"
-                >
-                  <path
-                    d="M13.5 12L7 18.6 8.4 20l8-8-8-8L7 5.4l6.5 6.6z"
-                    fill="currentColor"
-                  ></path></svg
-              ></a>
+              >
             </div>
           </div>
           <style data-emotion-css="1e4ahw9">
@@ -2084,6 +2051,7 @@
                     }
                   }
                 </style>
+                @foreach ($tickets as $ticket)
                 <div class="css-1uyxoac">
                   <style data-emotion-css="u39uqy">
                     .css-u39uqy {
@@ -2103,7 +2071,7 @@
                     .css-u39uqy:hover {
                       box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
                     }</style
-                  ><a href="trade/BNB_USDT.html" class="css-u39uqy"
+                  ><a href="/buy_tickets/soccer/{{$ticket->id}}/{{$ticket->home_team}}_{{$ticket->away_team}}" class="css-u39uqy"
                     ><style data-emotion-css="prp3gn">
                       .css-prp3gn {
                         box-sizing: border-box;
@@ -2166,6 +2134,7 @@
                             .css-1i04fkn {
                               box-sizing: border-box;
                               margin: 0;
+                              margin-bottom: 20px;
                               min-width: 0;
                               display: -webkit-box;
                               word-break: break-word;
@@ -2178,9 +2147,9 @@
                             style="overflow: hidden; -webkit-line-clamp: 1"
                             class="css-1i04fkn"
                           >
-                            <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
-                            <span style="">MANCITY</span> - CHELSEA
-                            <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
+                            <img src={{ $ticket->home_team_logo }}}}" height="20px" width="20px">
+                            <span style="">{{ $ticket->home_team }}</span> - {{ $ticket->away_team }}
+                            <img src="{{ $ticket->away_team_logo }}" height="20px" width="20px">
                           </div>
                           <style data-emotion-css="gvje9d">
                             .css-gvje9d {
@@ -2227,12 +2196,13 @@
                             .css-t3k8fk {
                               box-sizing: border-box;
                               margin: 0;
+                              font-size: 16px;
                               min-width: 0;
                               margin-right: 2px;
                             }
                           </style>
                           <div data-bn-type="text" class="css-t3k8fk">
-                            Tuesday 18:00
+                            {{ $ticket->fixture_date }} {{ $ticket->fixture_time }}
                           </div>
                           <div
                             data-bn-type="text"
@@ -2283,7 +2253,8 @@
                         style="overflow: hidden; -webkit-line-clamp: 1;"
                         class="css-n30qbt"
                       >
-                        $48.99
+                        ${{ $ticket->ticket_price }}
+                        
                       </div>
                       <style data-emotion-css="1vv3pu9">
                         .css-1vv3pu9 {
@@ -2318,7 +2289,7 @@
                       <div
                         class="lozad-load css-ehk8d3"
                         alt="BNBUSDT"
-                        data-src="https://bin.bnbstatic.com/kline/BNBUSDT.svg"
+                        data-src="/buy_tickets/soccer/{{$ticket->id}}/{{$ticket->home_team}}_{{$ticket->away_team}}"
                       ></div>
                       <style data-emotion-css="171njq0">
                         .css-171njq0 {
@@ -2337,12 +2308,13 @@
                           -webkit-justify-content: center;
                           -ms-flex-pack: center;
                           justify-content: center;
-                          background-color: #6c63ff;
+                          background-color: #fe6309;
                           width: 24px;
                           height: 24px;
                           border-radius: 99999px;
                         }
                       </style>
+                      {{ $ticket->competition }}
                       <div class="css-171njq0">
                         <style data-emotion-css="hfx4ru">
                           .css-hfx4ru {
@@ -2372,234 +2344,7 @@
                       </div></div
                   ></a>
                 </div>
-                <div class="css-1uyxoac">
-                  <a href="trade/USDT_NGN.html" class="css-u39uqy"
-                    ><div class="css-prp3gn">
-                      <div class="lozad-load css-12a6ugn" alt=""></div>
-                      <div class="css-yp2i5k">
-                        <div class="css-3j2kqe">
-                          <div
-                            data-bn-type="text"
-                            title="USDT/NGN"
-                            style="overflow: hidden; -webkit-line-clamp: 1"
-                            class="css-1i04fkn"
-                          >
-                          <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
-                          </div>
-                          <div
-                            data-bn-type="text"
-                            style="direction: ltr"
-                            class="css-1bvcra4"
-                          >
-
-                          </div>
-                        </div>
-                        <div class="css-e8qat">
-                          <div data-bn-type="text" class="css-t3k8fk">
-                            Tuesday 18:00
-                          </div>
-                          <div
-                            data-bn-type="text"
-                            title="0.00 NGN"
-                            style="overflow: hidden; -webkit-line-clamp: 1"
-                            class="css-1i04fkn"
-                          >
-                            GMT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="css-1in3b22">
-                      <div
-                        data-bn-type="text"
-                        title="0.0000000"
-                        style="overflow: hidden; -webkit-line-clamp: 1"
-                        class="css-n30qbt"
-                      >
-                        $34.96
-                      </div>
-                      <div
-                        data-bn-type="text"
-                        title="–"
-                        style="overflow: hidden; -webkit-line-clamp: 1"
-                        class="css-1vv3pu9"
-                      >
-
-                      </div>
-                    </div>
-                    <div class="css-3j2kqe">
-                      <div
-                        class="lozad-load css-ehk8d3"
-                        alt="USDTNGN"
-                        data-src="https://bin.bnbstatic.com/kline/USDTNGN.svg"
-                      ></div>
-                      <div class="css-171njq0">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          class="css-hfx4ru"
-                        >
-                          <path
-                            d="M14.65 12.24l-4.24 4.24L9 15.06l2.82-2.82L9 9.42 10.41 8l4.24 4.24z"
-                            fill="currentColor"
-                          ></path>
-                        </svg>
-                      </div></div
-                  ></a>
-                </div>
-                <div class="css-1uyxoac">
-                  <a href="trade/BTC_NGN.html" class="css-u39uqy"
-                    ><div class="css-prp3gn">
-                      <div class="lozad-load css-12a6ugn" alt=""></div>
-                      <div class="css-yp2i5k">
-                        <div class="css-3j2kqe">
-                          <div
-                            data-bn-type="text"
-                            title="BTC/NGN"
-                            style="overflow: hidden; -webkit-line-clamp: 1"
-                            class="css-1i04fkn"
-                          >
-                          <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
-                          </div>
-                          <div
-                            data-bn-type="text"
-                            style="direction: ltr"
-                            class="css-1bvcra4"
-                          >
-
-                          </div>
-                        </div>
-                        <div class="css-e8qat">
-                          <div data-bn-type="text" class="css-t3k8fk">
-                            Tuesday 18:00
-                          </div>
-                          <div
-                            data-bn-type="text"
-                            title="0.00 NGN"
-                            style="overflow: hidden; -webkit-line-clamp: 1"
-                            class="css-1i04fkn"
-                          >
-                            GMT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="css-1in3b22">
-                      <div
-                        data-bn-type="text"
-                        title="0.0000000"
-                        style="overflow: hidden; -webkit-line-clamp: 1"
-                        class="css-n30qbt"
-                      >
-                        $32.44
-                      </div>
-                      <div
-                        data-bn-type="text"
-                        title="–"
-                        style="overflow: hidden; -webkit-line-clamp: 1"
-                        class="css-1vv3pu9"
-                      >
-
-                      </div>
-                    </div>
-                    <div class="css-3j2kqe">
-                      <div
-                        class="lozad-load css-ehk8d3"
-                        alt="BTCNGN"
-                        data-src="https://bin.bnbstatic.com/kline/BTCNGN.svg"
-                      ></div>
-                      <div class="css-171njq0">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          class="css-hfx4ru"
-                        >
-                          <path
-                            d="M14.65 12.24l-4.24 4.24L9 15.06l2.82-2.82L9 9.42 10.41 8l4.24 4.24z"
-                            fill="currentColor"
-                          ></path>
-                        </svg>
-                      </div></div
-                  ></a>
-                </div>
-                <div class="css-1uyxoac">
-                  <a href="trade/BTC_USDT.html" class="css-u39uqy"
-                    ><div class="css-prp3gn">
-                      <div class="lozad-load css-12a6ugn" alt=""></div>
-                      <div class="css-yp2i5k">
-                        <div class="css-3j2kqe">
-                          <div
-                            data-bn-type="text"
-                            title="BTC/USDT"
-                            style="overflow: hidden; -webkit-line-clamp: 1"
-                            class="css-1i04fkn"
-                          >
-                          <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">  MANCITY - CHELSEA <img src="{{ asset('/images/manu-logo.png') }}" height="20px" width="20px">
-                          </div>
-                          <div
-                            data-bn-type="text"
-                            style="direction: ltr"
-                            class="css-1bvcra4"
-                          >
-
-                          </div>
-                        </div>
-                        <div class="css-e8qat">
-                          <div data-bn-type="text" class="css-t3k8fk">
-                            Tuesday 18:00
-                          </div>
-                          <div
-                            data-bn-type="text"
-                            title="0.00 USDT"
-                            style="overflow: hidden; -webkit-line-clamp: 1"
-                            class="css-1i04fkn"
-                          >
-                            GMT
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="css-1in3b22">
-                      <div
-                        data-bn-type="text"
-                        title="0.0000000"
-                        style="overflow: hidden; -webkit-line-clamp: 1"
-                        class="css-n30qbt"
-                      >
-                        $24.56
-                      </div>
-                      <div
-                        data-bn-type="text"
-                        title="–"
-                        style="overflow: hidden; -webkit-line-clamp: 1"
-                        class="css-1vv3pu9"
-                      >
-
-                      </div>
-                    </div>
-                    <div class="css-3j2kqe">
-                      <div
-                        class="lozad-load css-ehk8d3"
-                        alt="BTCUSDT"
-                        data-src="https://bin.bnbstatic.com/kline/BTCUSDT.svg"
-                      ></div>
-                      <div class="css-171njq0">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          class="css-hfx4ru"
-                        >
-                          <path
-                            d="M14.65 12.24l-4.24 4.24L9 15.06l2.82-2.82L9 9.42 10.41 8l4.24 4.24z"
-                            fill="currentColor"
-                          ></path>
-                        </svg>
-                      </div></div
-                  ></a>
-                </div>
+                @endforeach
               </div>
             </div>
           </div>
@@ -2757,7 +2502,7 @@
                         background-color: #f5f5f5;
                       }
                       .css-82f717.active {
-                        background-color: #6363ff;
+                        background-color: #fe6309;
                         color: #1e2329;
                       }
                     </style>
@@ -2926,7 +2671,7 @@
                         }
                       </style>
                       <div class="css-1dj8jan" >
-                        Safest marketplace to buy and sell bitcoin
+                        Safest marketplace to buy and sell tickets
                         with different payment methods.
                       </div>
                       <style data-emotion-css="m39jj3">
@@ -2991,8 +2736,8 @@
                             padding-right: 24px;
                             background-image: linear-gradient(
                               180deg,
-                              #6C63FF 0%,
-                              #7069f1 100%
+                              #fe6309 0%,
+                              #fe6309 100%
                             );
                             min-width: 80px;
                           }
@@ -3017,8 +2762,8 @@
                             box-shadow: none;
                             background-image: linear-gradient(
                               180deg,
-                              #6C63FF 0%,
-                              #7069f1 100%
+                              #fe6309 0%,
+                              #fe6309 100%
                             );
                           }</style
                         ><button data-bn-type="button" class="css-7p353z" style="color:white !important;">
@@ -3144,7 +2889,7 @@
                       padding-right: 24px;
                     }
                   }</style
-                ><a href="https://t.me/binancenigeria" class="css-1pcqvr2"
+                ><a href="#!" class="css-1pcqvr2"
                   ><style data-emotion-css="qx5d4q">
                     .css-qx5d4q {
                       box-sizing: border-box;
@@ -3246,13 +2991,13 @@
                     }
                   </style>
                   <div class="css-be8fvo">Telegram</div></a
-                ><a href="https://twitter.com/BinanceAfrica" class="css-1pcqvr2"
+                ><a href="#!" class="css-1pcqvr2"
                   ><div class="css-qx5d4q">
                     <i class="fab fa-twitter" style="font-size:300% !important;color:#00acee;"></i>
                   </div>
                   <div class="css-be8fvo">Twitter</div></a
                 ><a
-                  href="https://www.facebook.com/BinanceNigeria/"
+                  href="#!"
                   class="css-1pcqvr2"
                   ><div class="css-qx5d4q">
                     <i class="fab fa-facebook" style="font-size:300% !important;color:#3b5998;"></i>
@@ -3271,7 +3016,7 @@
 
                     }
                 </style><a
-                  href="https://www.instagram.com/binanceafrican"
+                  href="#!"
                   class="css-1pcqvr2"
                   ><div class="css-qx5d4q">
                     <i class="fab fa-instagram" id="insta" style="font-size:300% !important;"></i>
@@ -3393,7 +3138,7 @@
                       FAQS<!-- -->
                     </div></a
                   ><a
-                    href="https://www.binance.com/en-NG/fee/schedule"
+                    href="/buy_tickets"
                     class="css-1myvhw3"
                     ><div data-bn-type="text"  class="css-1cjl26j footer_links">
                       Buy Tickets<!-- -->
@@ -3420,7 +3165,7 @@
                   min-width: 0;
                   -webkit-text-decoration: none;
                   text-decoration: none;
-                  /* margin-bottom: 8px; */
+                  margin-bottom: 20px;
                   display: block;
                   color: #707a8a;
                   -webkit-align-items: center;
@@ -3574,19 +3319,19 @@
                   </style>
                   <div data-bn-type="text" class="css-1jsf87b">Quick Links</div>
                   <a
-                    href="https://www.binance.com/en-NG/about"
+                    href="/"
                     class="css-1myvhw3"
                     ><div data-bn-type="text" class="css-1cjl26j">
                       Home<!-- -->
                     </div></a
                   ><a
-                    href="https://www.binance.com/en-NG/career"
+                    href="#!"
                     class="css-1myvhw3"
                     ><div data-bn-type="text" class="css-1cjl26j">
                       FAQS<!-- -->
                     </div></a
                   ><a
-                    href="https://www.binance.com/en-NG/about#email"
+                    href="/buy_tickets"
                     class="css-1myvhw3"
                     ><div data-bn-type="text" class="css-1cjl26j">
                       Buy Tickets<!-- -->
@@ -3620,19 +3365,19 @@
                 <div class="css-vurnku">
                   <div data-bn-type="text" class="css-1jsf87b">Get in Touch</div>
                   <a
-                    href="https://www.binance.com/en-NG/my/user-support/feedback/entry"
+                    href="#!"
                     class="css-1myvhw3"
                     ><div data-bn-type="text" class="css-1cjl26j">
                       Give Us Feedback<!-- -->
                     </div></a
                   ><a
-                    href="https://www.binance.com/en-NG/support"
+                    href="#!"
                     class="css-1myvhw3"
                     ><div data-bn-type="text" class="css-1cjl26j">
                       Support Center<!-- -->
                     </div></a
                   ><a
-                    href="https://www.binance.com/en-NG/chat"
+                    href="#!"
                     class="css-1myvhw3"
                     ><div data-bn-type="text" class="css-1cjl26j">
                       Submit a request<!-- -->
@@ -3704,11 +3449,11 @@
                   .css-wyeq5d svg {
                     display: inline-block;
                   }</style
-                ><a href="https://www.telegram.com/binance" class="css-wyeq5d"
+                ><a href="#!" class="css-wyeq5d"
                   ><i class="fab fa-telegram" style="color:#0088cc;"></i></a
-                ><a href="https://www.facebook.com/binance" class="css-wyeq5d"
+                ><a href="#!" class="css-wyeq5d"
                   ><i class="fab fa-facebook" style="color:#3b5998;"></i></a
-                ><a href="https://twitter.com/binance" class="css-wyeq5d"
+                ><a href="#!" class="css-wyeq5d"
                   ><i class="fab fa-twitter" style="color:#00acee;"></i></a
                 >
                 <style>
@@ -3787,8 +3532,8 @@
                     padding-right: 8px;
                     background-image: linear-gradient(
                       180deg,
-                      #6C63FF 0%,
-                      #7069f1 100%
+                      #fe6309 0%,
+                      #fe6309 100%
                     );
                     outline: none;
                     padding-top: 8px;
@@ -3820,8 +3565,8 @@
                     box-shadow: none;
                     background-image: linear-gradient(
                       180deg,
-                      #6C63FF 0%,
-                      #7069f1 100%
+                      #fe6309 0%,
+                      #fe6309 100%
                     );
                   }
                   .css-1w92vad:hover {
@@ -4062,8 +3807,8 @@
                     padding-right: 8px;
                     background-image: linear-gradient(
                       180deg,
-                      #6C63FF 0%,
-                      #7069f1 100%
+                      #fe6309 0%,
+                      #fe6309 100%
                     );
                     outline: none;
                     padding-top: 8px;
@@ -4097,8 +3842,8 @@
                     box-shadow: none;
                     background-image: linear-gradient(
                       180deg,
-                      #6C63FF 0%,
-                      #7069f1 100%
+                      #fe6309 0%,
+                      #fe6309 100%
                     );
                   }
                   .css-1bbpiq1:hover {
@@ -4229,12 +3974,12 @@
                   box-shadow: none;
                   background-image: linear-gradient(
                     180deg,
-                    #6363ff 0%,
-                    #7069f1 100%
+                    #fe6309 0%,
+                    #fe6309 100%
                   );
                 }
                 .css-1vzfcz1:hover {
-                  border: 1px solid #48515d;
+                  border: 1px solid #fe6309;
                   background: transparent !important;
                 }
                 @media screen and (min-width: 767px) {
