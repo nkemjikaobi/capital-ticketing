@@ -1,0 +1,309 @@
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+@import '_mobile.scss';
+
+html {
+  font-size: 12px;
+}
+
+* {
+  box-sizing: border-box;
+
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
+
+.surround {
+	text-decoration: none !important;
+}
+.surround:visited{
+	color: black !important;
+}
+
+$color: #fe6309;
+
+.breadcrumb {
+	margin-left: 60px;
+}
+
+footer {
+	padding: 20px 50px;
+}
+
+#ticket {
+
+  font-family: "Poppis";
+	
+ .back
+ {
+ 	border-radius: 0.3rem;
+	box-shadow: 0 0 2rem rgba(0,0,0,0.2);
+	height: 30vmin;
+	display: flex;
+  	overflow: hidden;
+	background-color: white;
+ 	color: darken($color, 35%);
+	margin: 20px 15px 20px 60px;
+	
+  .left {
+    width: 75%;
+    display: flex;
+
+    .left-bar {
+      background-color: $color;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      span {
+        padding: 1.4rem 2rem;
+        position: relative;
+        font-size: 1.2rem;
+        font-weight: bold;
+
+        &::before {
+          position: absolute;
+          bottom: 75%;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          content: attr(data-title);
+          font-size: 0.5em;
+          text-transform: capitalize;
+        }
+      }
+    }
+
+    .details-section {
+      flex-grow: 1;
+      padding: 0.2rem 1rem 0 1rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			
+      .details-logo {
+            width: auto;
+			display: flex;
+			align-items: center;
+			border-radius: 0.4rem 0.4rem 0 0;
+			background-color: lighten($color, 25%);
+			padding: 0.5em 1em 0.2em 1em;
+				
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			margin-top: 1rem;
+			font-size: 1.2rem;
+				
+        .logo-text {
+          		position: relative;
+				text-transform: uppercase;
+        	}
+				
+				.logo
+				{
+					height: 1.5em;
+					width: 1.5em;
+					margin-right: 0.5em;
+				}
+
+        .class {
+          margin-left: auto;
+          font-weight: bold;
+          text-transform: uppercase;
+					text-align: center;
+					width: 100%;
+					display: none;
+        }
+      }
+
+      .details-body {
+        padding: 2rem 0.5rem 0rem 0.5rem;
+        position: relative;
+				display: flex;
+				flex-grow: 1;
+				 color: darken($color, 35%);
+				width: 100%;
+				
+				.details-travel
+				{
+					width: 60%;
+					display: flex;
+					justify-content: space-between;
+					flex-direction: column;
+					flex-grow: 1;
+					
+		
+				
+
+				.from-to
+				{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 1rem 1rem 1rem 0;
+					
+					div
+					{
+						position: relative;
+						font-size: 1rem;
+						font-weight: bold;
+					
+					}
+					span
+					{
+						position:relative;
+						padding: 0 0.5rem;
+						
+						&::before
+						{
+							content: "→";
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							font-size: 1.5rem;
+							position: relative;
+						}
+					}
+				}
+				}
+				
+      }
+    }
+  }
+
+  .right {
+    border-left: 1px dashed darken($color, 25%);
+    width: 25%;
+		display: flex;
+		flex-direction: column;
+		
+		span
+		{
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				font-weight: bold;
+				
+				&.flight-time::after
+				{
+					content: attr(data-date);
+					text-align: center;
+				}
+				&::before
+						{
+								//position: absolute;
+								bottom: 80%;
+								left: 0;
+								width: 100%;
+								content: attr(data-title);
+								
+								text-transform: lowercase;
+								font-weight: normal;
+						}
+						
+						&::after
+						{
+								//position: absolute;
+								top: 75%;
+								left: 0;
+								width: 100%;
+								content: attr(data-code);
+								font-size: 0.7em;
+								text-transform: uppercase;
+								font-weight: normal;
+						}
+		}
+		
+		.details-logo
+		{
+			background-color: lighten($color, 20%);
+			padding: 0.5rem;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+			.logo
+			{
+				height: 2rem;
+				width: 2rem;
+			}
+		}
+		
+		.travel-details
+		{
+			padding: 1rem;
+			font-size: 1rem;
+			flex-grow: 1;
+			
+			div
+			{
+				padding: 0.3rem 0;
+				display: flex;
+				justify-content: space-between;
+				font-weight: bold;
+			}
+		}
+		
+		.bottom-bar
+		{
+			display: flex;
+			justify-content: space-around;
+			margin-top: auto;
+			font-size: 1.3rem;
+			background-color: $color;
+			
+			span
+			{
+				text-align: center;
+				display: flex;
+				align-items: flex-end;
+				justify-content: flex-end;
+				padding: 0.2rem;
+			}
+		}
+		// a {
+		// 	text-decoration: none !important;
+		// }
+  }
+}
+
+.front
+{
+	margin-top: 6vmin;
+	border-radius: 0.3rem;
+  box-shadow: 0 0 2rem rgba(0,0,0,0.2);
+  height: 30vmin;
+	 display: flex;
+  overflow: hidden;
+	background-color: $color;
+ 	color: darken($color, 35%);
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	$white: rgba(255,255,255,0.2);
+	
+	background-image: linear-gradient(120deg, transparent 20%, $white 20%, $white, 25%, transparent 25%, transparent 26%, $white 26%, $white 28%, transparent 28%, transparent 70%, $white 70%, $white 72%, transparent 72%, transparent 73%, $white 73%, $white 74%, transparent 74%, transparent 74.8%, $white 74.8%, $white 76%, transparent 76%);
+	.logo
+	{
+		height: 2em;
+		width: 2em;
+		font-size: 5em;
+	}
+	
+	.text
+	{
+		font-size: 2em;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+}
+}

@@ -29,7 +29,7 @@ class FootBallController extends Controller
      public function buy_tickets_football(){
 
         //Get FootBall Tickets
-        $tickets = FootBallTicket::all();
+        $tickets = FootBallTicket::paginate(6);
 
         return view("dashboard.football.buy_tickets_football",compact('tickets'));
 
@@ -108,9 +108,12 @@ class FootBallController extends Controller
                     }
                   }
                }
+               else{
+                return redirect("/view_tickets")->with('error','An error occurred..Try again later');
+               }
             }
         }
-            return redirect("/view_tickets");
+            return redirect("/view_tickets")->with('success','Ticket bought successfully');
     }
 
     public function calculate_football_roi(){

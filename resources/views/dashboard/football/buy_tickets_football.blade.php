@@ -1,21 +1,18 @@
+ <!---APP CSS -->
+ <link  rel="stylesheet" href="{{ asset('css/app.css') }}" />
 @extends('layouts.base')
 @section('title', 'FootBall Tickets')
 
 @section('content')
 
         <div class="card-body">
-            @include('.inc.messages')
-            @if (!empty($success))
-                {{ $success }}
-            @endif
-
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-inverse">
                     <li class="breadcrumb-item">
                         <a href="#">Home</a>
                     </li>
-                    <li class="breadcrumb-item" aria-current="page"><a href="/buy_tickets" style="text-decoration: none !important;color:#4c84ff;">Buy Tickets</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">FootBall</li>
+                    <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets">Buy Tickets</a></li>
+                    <li class="breadcrumb-item active-span" aria-current="page">FootBall</li>
                 </ol>
             </nav>
 
@@ -24,35 +21,79 @@
         <div class='row'>
             @foreach($tickets as $ticket)
                     <div class="col-md-6">
-                        <div class="card text-center">
-                            <div class="card-header">
-                                {{ucwords($ticket->country)}} : {{ucwords($ticket->competition)}}
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <img
-                                        src="{{ asset('/images/arsenal-logo.png') }}"
-                                        height="30px"
-                                        width="30px"
-                                        alt="">
-                                    {{$ticket->home_team }} - {{$ticket->away_team}}
-                                    <img
-                                        src="{{asset('/images/chelsea-logo.png')}}"
-                                        height="30px"
-                                        width="30px"
-                                        alt="">
-                                </h5>
-                                <p class="card-text">{{$ticket->fixture_date}} | {{$ticket->fixture_time}} GMT</p>
-                                <h3 class="card-text">${{$ticket->ticket_price}}</h3>
-                                <p class="card-text">Expected Profit: {{$ticket->expected_profit}}%</p>
-                                <p class="card-text">Tickets Available: {{$ticket->tickets_available}}</p>
-                                <a href="/buy_tickets/football/{{$ticket->id}}/{{$ticket->home_team}}_{{$ticket->away_team}}" class="btn btn-primary">BUY NOW</a>
-                            </div>
-                            <div class="card-footer text-muted">
-                                {{$ticket->time_left}} days left to expire
-                            </div>
-                        </div>
+                        <a href="/buy_tickets/soccer/{{$ticket->id}}/{{$ticket->home_team}}_{{$ticket->away_team}}" class="surround">
+                            <div id='ticket'>
+                                <div class='back'>
+                                  <div class='left'>
+                                    <div class="left-bar">
+                                      <span class='time' data-title='time'>{{ $ticket->fixture_time }}</span>
+                                      <span class='gate' data-title='available'>{{ $ticket->tickets_available }}</span>
+                                      <span class='seat' data-title='date'>{{ $ticket->fixture_date }}</span>
+                                    </div>
+                                    <div class='details-section'>
+                                
+                                      <div class='details-body'>
+                                        <div class='details-travel'>
+                                          
+                                
+                                          <div class='from-to'>
+                                            <div class="from" :data-code='depart.code' data-title=''>
+                                              <img 
+                                                src="{{ asset('images/manu-logo.png') }}"
+                                                width="25px"
+                                                height="25px"
+                                                alt="">
+                                              {{ $ticket->home_team }}
+                                            </div>
+                                            <span class="line"></span>
+                                            <div class="to":data-code='arrive.code' data-title=''>
+                                              <img 
+                                                src="{{ asset('images/chelsea-logo.png') }}"
+                                                width="25px"
+                                                height="25px"
+                                                alt="">
+                                                {{ $ticket->away_team }}
+                                              </div>
+                                          </div>
+                                        </div>
+                                
+                                      </div>
+                                      <div class='details-logo'>
+                                     
+                                        <div class="logo-text">{{ $ticket->country }}</div>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class='right'>
+                                       <div class='details-logo'>
+                                        <span class='logo-text'>{{ $ticket->competition }}</span>
+                                      </div>
+                                      <div class="travel-details">
+                                        <span class="name" data-title='profit'>{{ $ticket->expected_profit }}%</span>
+                                        <div class="flight">
+                                          
+                                           <span class='flight-time' data-title='expires in' :data-date='travelDate'>{{ $ticket->time_left }} days</span>
+                                        </div>
+                                       
+                                        <div class='ticket-id'>
+                                        ${{ $ticket->ticket_price }}
+                                      </div>
+                                      </div>
+                                      
+                                  </div>
+                                </div>
+                               
+                                </div>
+                    </a>
                     </div>
             @endforeach
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-8 offset-4">
+                    {{$tickets->links("pagination::bootstrap-4")}}
+                  </div>
+                </div>
+              </div>
         
 @endsection

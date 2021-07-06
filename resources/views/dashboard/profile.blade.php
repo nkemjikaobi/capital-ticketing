@@ -3,17 +3,13 @@
 
 @section('content')
 				<div class="card-body">
-                    @include('inc.messages')
-                    @if (!empty($success))
-                        {{ $success }}
-                    @endif
-
+                   
 				<nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-inverse">
                         <li class="breadcrumb-item">
                             <a href="#">Home</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        <li class="breadcrumb-item active-span" aria-current="page">Profile</li>
                     </ol>
                     </nav>
 
@@ -55,16 +51,8 @@
                                 <label for="exampleFormControlInput3">Email</label>
                                 <input type="text" name="email" class="form-control" id="exampleFormControlInput3" value={{auth()->user()->email}} disabled>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlPassword3">Plan</label>
-                                <input type="text" class="form-control" id="exampleFormControlPassword3" value="" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput3">Referred By:</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput3" value="" disabled>
-                            </div>
                             <div class="form-footer">
-                                <button type="submit"  name='btn-update' class="btn btn-primary btn-default">Update Profile</button>
+                                <button type="submit"  name='btn-update' class="btn btn-ticket btn-default">Update Profile</button>
                             </div>
                         </form>
                     </div>

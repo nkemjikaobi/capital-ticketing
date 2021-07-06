@@ -29,7 +29,7 @@ class CricketController extends Controller
      public function buy_tickets_cricket(){
 
         //Get Cricket Tickets
-        $tickets = CricketTicket::all();
+        $tickets = CricketTicket::paginate(6);
 
         return view("dashboard.cricket.buy_tickets_cricket",compact('tickets'));
 
@@ -108,9 +108,12 @@ class CricketController extends Controller
                     }
                   }
                }
+               else{
+                return redirect("/view_tickets")->with('error','An error occurred..Try again later');
+               }
             }
         }
-            return redirect("/view_tickets");
+            return redirect("/view_tickets")->with('success','Ticket bought successfully');
     }
 
     public function calculate_cricket_roi(){

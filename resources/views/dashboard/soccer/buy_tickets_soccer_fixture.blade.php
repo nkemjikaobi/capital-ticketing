@@ -4,19 +4,15 @@
 @section('content')
 
 <div class="card-body">
-    @include('.inc.messages')
-    @if (!empty($success))
-        {{ $success }}
-    @endif
-
+   
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-inverse">
             <li class="breadcrumb-item">
                 <a href="#">Home</a>
             </li>
-            <li class="breadcrumb-item" aria-current="page"><a href="/buy_tickets" style="text-decoration: none !important;color:#4c84ff;">Buy Tickets</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="/buy_tickets/soccer" style="text-decoration: none !important;color:#4c84ff;">Soccer</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{$fixture_details->home_team}}_{{$fixture_details->away_team}}</li>
+            <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets" >Buy Tickets</a></li>
+            <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets/soccer" >Soccer</a></li>
+            <li class="breadcrumb-item active-span" aria-current="page">{{$fixture_details->home_team}}_{{$fixture_details->away_team}}</li>
         </ol>
     </nav>
 
@@ -82,7 +78,7 @@
                     <input type="hidden" name='balance' class="form-control" id="exampleFormControlPassword3" value={{auth()->user()->portfolio->balance}} >
                 </div>
                 <div class="form-footer">
-                    <button type="submit"  class="btn btn-primary btn-default">PROCEED</button>
+                    <button type="submit"  class="btn btn-ticket btn-default">PROCEED</button>
                 </div>
             </form>
         </div>
