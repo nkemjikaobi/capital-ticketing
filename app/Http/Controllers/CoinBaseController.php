@@ -28,12 +28,12 @@ class CoinBaseController extends Controller
             $price = $result['data']['pricing']['local']['amount'];
 
             //send mails in accordance to status update
-            if($result['event']['type'] == "charge:confirmed"){
-                Mail::to($email)->send(new ChargeConfirmedMail($price));
-            }
-            else if($result['event']['type'] == "charge:failed"){
-                Mail::to($email)->send(new ChargeFailedMail($price));
-            }
+            // if($result['event']['type'] == "charge:confirmed"){
+            //     Mail::to($email)->send(new ChargeConfirmedMail($price));
+            // }
+            // else if($result['event']['type'] == "charge:failed"){
+            //     Mail::to($email)->send(new ChargeFailedMail($price));
+            // }
             
         return response()->json([
             'code' => $result['event']['data']['code']
