@@ -102,7 +102,7 @@ class HomeController extends Controller
 
         if($deposits){
             //redirect the users to make payment
-            Mail::to(auth()->user()->email)->send(new ChargeCreatedMail($price));
+            //Mail::to(auth()->user()->email)->send(new ChargeCreatedMail($price));
             return redirect("$redirect_url");
         }
         else{
