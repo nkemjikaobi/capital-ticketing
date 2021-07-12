@@ -104,16 +104,19 @@ class FootBallController extends Controller
                        DB::table('foot_ball_pays')
                            ->where('transaction_status', '=', 0)
                            ->delete();
-
                     }
                   }
+
+                  return redirect("/view_tickets")->with('success','Tickets bought successfully');
                }
                else{
                 return redirect("/view_tickets")->with('error','An error occurred..Try again later');
                }
             }
         }
-            return redirect("/view_tickets")->with('success','Ticket bought successfully');
+        else{
+            return redirect("/view_tickets")->with('error','Insufficient Funds');
+        }
     }
 
     public function calculate_football_roi(){
