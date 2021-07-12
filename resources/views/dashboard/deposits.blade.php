@@ -14,7 +14,6 @@
     overflow-y:hidden;
     -ms-overflow-style:-ms-autohiding-scrollbar;
     border:1px solid #ddd;
-    color: blue !important;
     }
     .table-responsive>.table {
     margin-bottom:0
