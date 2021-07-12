@@ -136,6 +136,17 @@
                     </a>
                   </li>
 
+                  <!---Show if admin-->
+                  @if (auth()->user()->account_type == 2)
+                     <li  class="has-sub {{ Route::currentRouteName() == 'transfer_funds' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('transfer_funds') }}"
+                      aria-expanded="false" aria-controls="documentation">
+                      <i class="mdi mdi-account"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'transfer_funds' ? 'active-span' : '' }}">Transfer Funds</span>
+                    </a>
+                  </li>
+                  @endif
+
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="{{ route('logout') }}"
                       aria-expanded="false" aria-controls="documentation"
