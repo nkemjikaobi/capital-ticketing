@@ -336,18 +336,62 @@ class HomeController extends Controller
          }
     }
 
-    public function update_profile(Request $request){
+    public function transfer_funds(){
+        return view('dashboard.transfer_funds');
+    }
 
-       
-        // //Get Ip Address
-        // $ip_address = $request->ip();
+    public function transfer_funds_transfer(){
 
-        // //Get operating system, device and browser details
-        // $agent = new Agent();
-        // $operating_system = $agent->platform();
-        // $browser = $agent->browser();
-        // $device = $agent->device();
+        $recepient_user_details = DB::table('users')
+                                            ->where('email', '=', request('email'))
+                                            ->get('id');
+                                            //dd($recepient_user_details);
+            if(count($recepient_user_details) > 0){
+           
+            if(request('balance') >= request('amount')){
+                        $calculate_seller_balance = DB::table('portfolios')
+                                                ->where('user_id', '=', auth()->user()->id)
+                                                ->update([
+                                                    'balance' => request('balance') - request('amount')
+                                                ]);
 
+                            if($calculate_seller_balance){
+                                
+                                if($recepient_user_details){
+                                    foreach($recepient_user_details as $rac){
+                                            $recepient_portfolio_details = DB::table('portfolios')
+                                                                        ->where('user_id', '=', $rac->id)
+                                                                        ->get();
+
+                                                foreach($recepient_portfolio_details as $rpd){
+                                                    $calaculate_receipient_update = DB::table('portfolios')
+                                                                                ->where('user_id', '=', $rac->id)
+                                                                                ->update([
+                                                                                    'balance' => $rpd->balance + request('amount')
+                                                                                ]);
+                                                }
+                                        
+                                        }
+                            
+                                        if($calaculate_receipient_update){
+                                            return redirect('/home')->with('success','Transfer Successful');
+                                        }
+                                }
+                            
+                                
+                            }
+                    }
+                    else{
+                        return redirect('/transfer_funds')->with('error','Insufficient Funds');
+                    }
+            }
+            else{
+                return redirect('/transfer_funds')->with('error','Check that the email is valid and registered');
+            }
+           
+    }
+
+    public function update_profile(){
         
         $update_profile = DB::table('users')
                         ->where('email', '=', auth()->user()->email)

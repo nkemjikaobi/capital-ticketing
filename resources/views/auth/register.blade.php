@@ -98,6 +98,20 @@
                         @enderror
 					</div>
 
+                    <div class="wrap-input100 validate-input" data-validate = "Account Type">
+						<select name="account_type" class="input100 @error('account_type') is-invalid @enderror" id="">
+							<option value="" selected disabled>Select Account Type</option>
+							<option value="1">User</option>
+							<option value="2">Agent</option>
+						</select>
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+						@error('account_type')
+							<span class="invalid-feedback input100" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+                        @enderror
+					</div>
+
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<input id="password" min="8" class="input100 @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" required>
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>

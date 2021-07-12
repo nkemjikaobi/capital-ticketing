@@ -36,6 +36,8 @@ Route::get('/buy_tickets/football', [App\Http\Controllers\HomeController::class,
 Route::get('/buy_tickets/cricket', [App\Http\Controllers\HomeController::class, 'buy_tickets_cricket'])->name('buy_tickets_cricket');
 Route::post('/sell_tickets', [App\Http\Controllers\HomeController::class, 'sell_tickets'])->name('sell_tickets');
 Route::get('/deposits', [App\Http\Controllers\HomeController::class, 'deposits'])->name('deposits');
+Route::get('/transfer_funds', [App\Http\Controllers\HomeController::class, 'transfer_funds'])->name('transfer_funds')->middleware('seller');
+Route::post('/transfer_funds/transfer', [App\Http\Controllers\HomeController::class, 'transfer_funds_transfer'])->name('transfer_funds_transfer')->middleware('seller');
 Route::get('/view_tickets', [App\Http\Controllers\HomeController::class, 'view_tickets'])->name('view_tickets');
 Route::get('/withdrawals', [App\Http\Controllers\HomeController::class, 'withdrawals'])->name('withdrawals');
 Route::post('/webhook', [App\Http\Controllers\CoinBaseController::class, 'webhook'])->name('webhook');
