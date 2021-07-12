@@ -118,7 +118,7 @@ class SoccerController extends Controller
                }
             }
         }
-            return redirect("/view_tickets")->with('success','Ticket bought successfully');
+            return redirect("/view_tickets")->with('error','Insufficient Funds');
     }
 
     public function calculate_soccer_roi(){
