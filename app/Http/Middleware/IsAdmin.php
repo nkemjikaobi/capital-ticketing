@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsSeller
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class IsSeller
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->id !== 2){
+        if(auth()->user()->id !== 3){
             return redirect('/home');
         }
-        
+
         return $next($request);
     }
 }

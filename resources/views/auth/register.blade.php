@@ -55,7 +55,7 @@
 				<span class="login100-form-title p-b-41">
 					Account Register
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5" method='POST' action="{{ route('register') }}">
+				<form class="login100-form validate-form p-b-33 p-t-5" enctype="multipart/form-data" method='POST' action="{{ route('register') }}">
                     @csrf
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter firstname">
@@ -99,7 +99,7 @@
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Account Type">
-						<select name="account_type" class="input100 @error('account_type') is-invalid @enderror" id="">
+						<select onchange="yesnoCheck(this)" name="account_type" class="input100 @error('account_type') is-invalid @enderror" id="" style="border:none !important; outline:none !important;">
 							<option value="" selected disabled>Select Account Type</option>
 							<option value="1">User</option>
 							<option value="2">Agent</option>
@@ -111,6 +111,12 @@
 							</span>
                         @enderror
 					</div>
+
+					 <div class="wrap-input100 " id="ifVerification" style="display: none;">
+						<input class="input100 " type="file" name="verification" >
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<input id="password" min="8" class="input100 @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" required>
@@ -148,6 +154,18 @@
 	
 
 	<div id="dropDownSelect1"></div>
+
+	<script>
+		const yesnoCheck = that => {
+			if(that.value === "2"){
+				document.getElementById("ifVerification").style.display = "block";
+				alert('Upload a valid ID(Drivers license, International Passport or National Identification)')
+			}
+			else{
+				document.getElementById("ifVerification").style.display = "none";
+			}
+		}
+	</script>
 	
 <!--===============================================================================================-->
 	<script src="{{ asset('auth/vendor/jquery/jquery-3.2.1.min.js') }}"></script>

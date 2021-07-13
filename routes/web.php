@@ -25,6 +25,11 @@ Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->nam
 //     return new ChargeCreatedMail(500);
 // });
 
+//Admin
+Route::middleware(['admin', 'auth'])->group(function () {
+   Route::get('/admin/index', [App\Http\Controllers\AdminController::class, 'index'])->name('admin_index'); 
+});
+
 //User Dashboard
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'view_profile'])->name('profile');

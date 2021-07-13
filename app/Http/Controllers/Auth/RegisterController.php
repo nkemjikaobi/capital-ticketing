@@ -11,6 +11,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class RegisterController extends Controller
 {
@@ -32,8 +36,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+    protected $redirectTo = '/login';
+   
     /**
      * Create a new controller instance.
      *
@@ -69,16 +73,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'account_type' => $data['account_type'],
-            'password' => Hash::make($data['password']),
-        ]);
 
-        $id = $user->id; // Get current user id
+        $user = new User;
+        $user->firstname = $data['firstname'];
+        $user->lastname = $data['lastname'];
+        $user->username = $data['username'];
+        $user->email = $data['email'];
+        $user->account_type = $data['account_type'];
+        $user->password = Hash::make($data['password']);
+
+            if(array_key_exists("verification", $data)){
+                $imagePath = request('verification')->store('verifications','public');
+                $user->verification = $imagePath;
+                $user->isVerified = false;
+                $user->save();
+            }
+            else{
+                $user->save();
+            }
+
+        $id = $user->id;
 
         Portfolio::create([
             'user_id' => $id,
@@ -89,5 +103,14 @@ class RegisterController extends Controller
         return $user;
 
 
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($this->create($request->all())));
+
+        return redirect($this->redirectPath());
     }
 }
