@@ -4,10 +4,24 @@
 @section('content')
 
     <div class="card-body">
-        {{-- <div class='alert alert-primary '>
-            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-            <strong class=''>Your investments would become active  if (at least 2) confirmations have been made from the Blockchain network</strong>
-        </div> --}}
+       @if(auth()->user()->isDisabled == '1')
+          <div class='alert alert-primary '>
+                  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                  <strong class=''>Account has been suspended..Contact us for more info</strong>
+          </div>
+        @endif
+       @if(auth()->user()->isVerified == '0')
+          <div class='alert alert-primary '>
+                  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                  <strong class=''>ID has not been verfied</strong>
+          </div>
+        @endif
+       @if(auth()->user()->verfication == 'not agent' && auth()->user()->account_type == '2')
+          <div class='alert alert-primary '>
+                  <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                  <strong class=''>Upload a valid ID</strong>
+          </div>
+        @endif
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-inverse">
                 <li class="breadcrumb-item">
@@ -105,34 +119,6 @@
                     </div>
                   </div>
                 </div>
-                {{-- <div class="col-xl-6 col-sm-4">
-                  <div class="card card-mini mb-4">
-                    <div class="card-body">
-                      <style>
-                        
-                      </style>
-                      <div id="clock">
-                          <div>
-                            <span class="days"></span>
-                            <div class="smalltext">Days</div>
-                          </div>
-                          <div>
-                            <span class="hours"></span>
-                            <div class="smalltext">Hours</div>
-                          </div>
-                          <div>
-                            <span class="minutes"></span>
-                            <div class="smalltext">Minutes</div>
-                          </div>
-                          <div>
-                            <span class="seconds"></span>
-                            <div class="smalltext">Seconds</div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                </div> --}}
-
               </div>
     <script>
      function getTimeRemaining(endtime) {

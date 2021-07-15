@@ -4,7 +4,12 @@
 @section('content')
 
         <div class="card-body">
-           
+           @if(auth()->user()->isDisabled == '1')
+                <div class='alert alert-primary '>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong class=''>Account has been suspended.. Contact us for more info.</strong>
+                </div>
+            @endif
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-inverse">
                     <li class="breadcrumb-item">
@@ -52,7 +57,12 @@
                             </div>
 
                         </div>
-                        <a href='{{route('buy_tickets_soccer')}}' class='btn btn-ticket fun'><span class='select_plan'>VIEW TICKETS</span></a>
+                        <a href=
+                        '{{ auth()->user()->isVerified == '0' ? route('profile') : route('buy_tickets_soccer')}}' class='btn btn-ticket fun {{ auth()->user()->isDisabled == '1' ? 'disabled' : ''}}'>
+                            <span class='select_plan'>
+                                VIEW TICKETS
+                            </span>
+                        </a>
 
                     </div>
                 </div>
@@ -75,7 +85,7 @@
 
                         </div>
 
-                        <a href='{{route('buy_tickets_basketball')}}' class='btn btn-ticket fun'><span class='select_plan'>VIEW TICKETS</span></a>
+                        <a href='{{ auth()->user()->isVerified == '0' ? route('profile') : route('buy_tickets_basketball')}}' class='btn btn-ticket fun {{ auth()->user()->isDisabled == '1' ? 'disabled' : ''}}'><span class='select_plan'>VIEW TICKETS</span></a>
                     </div>
                 </div>
             </div>
@@ -97,7 +107,7 @@
 
                         </div>
 
-                        <a href='{{route('buy_tickets_football')}}' class='btn btn-ticket fun'><span class='select_plan'>VIEW TICKETS</span></a>
+                        <a href='{{ auth()->user()->isVerified == '0' ? route('profile') : route('buy_tickets_football')}}' class='btn btn-ticket fun {{ auth()->user()->isDisabled == '1' ? 'disabled' : ''}}'><span class='select_plan'>VIEW TICKETS</span></a>
                     </div>
                 </div>
             </div>
@@ -119,7 +129,7 @@
 
                         </div>
 
-                        <a href='{{route('buy_tickets_cricket')}}' class='btn btn-ticket fun'><span class='select_plan'>VIEW TICKETS</span></a>
+                        <a href='{{ auth()->user()->isVerified == '0' ? route('profile') : route('buy_tickets_cricket')}}' class='btn btn-ticket fun {{ auth()->user()->isDisabled == '1' ? 'disabled' : ''}}'><span class='select_plan'>VIEW TICKETS</span></a>
                     </div>
                 </div>
             </div>

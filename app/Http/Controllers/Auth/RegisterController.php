@@ -82,12 +82,14 @@ class RegisterController extends Controller
         $user->account_type = $data['account_type'];
         $user->password = Hash::make($data['password']);
 
+        if($user->account_type == '2'){
             if(array_key_exists("verification", $data)){
                 $imagePath = request('verification')->store('verifications','public');
                 $user->verification = $imagePath;
-                $user->isVerified = false;
-                $user->save();
             }
+            $user->isVerified = false;
+            $user->save();
+        }
             else{
                 $user->save();
             }

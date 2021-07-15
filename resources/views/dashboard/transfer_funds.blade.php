@@ -3,7 +3,24 @@
 
 @section('content')
         <div class="card-body">
-            
+            @if(auth()->user()->isVerified == '0')
+                <div class='alert alert-primary '>
+                        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                        <strong class=''>ID is not yet verified</strong>
+                </div>
+            @endif
+            @if(auth()->user()->verification == 'not agent')
+                <div class='alert alert-primary '>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong class=''>Upload a valid ID</strong>
+                </div>
+            @endif
+            @if(auth()->user()->isDisabled == '1')
+                <div class='alert alert-primary '>
+                    <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                    <strong class=''>Account Suspended....Contact us for more info.</strong>
+                </div>
+            @endif
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-inverse">
                 <li class="breadcrumb-item">
@@ -37,13 +54,16 @@
                                       name="amount" placeholder="Enter the amount you wish to transfer" required>
                             </div>
                             <div class="form-footer">
-                                <button type="submit"  name='btn-transfer' class="btn btn-ticket btn-default">Transfer Funds</button>
+                                @if(auth()->user()->isDisabled == '1' || auth()->user()->isVerified == '0')
+                                    <a href="#!" class='btn btn-ticket fun disabled'>Transfer Funds</a>
+                                @else
+                                    <button type="submit"  name='btn-transfer' class='btn btn-ticket btn-default'>Transfer Funds</button>
+                                @endif
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-   
             </div>
 
  @endsection

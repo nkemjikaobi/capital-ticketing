@@ -62,51 +62,65 @@ class HomeController extends Controller
 
     public function fund_wallet_create(Request $request){
 
-        $customer_id = rand(100000,999999);
+        if(auth()->user()->isDisabled == '1'){
+            return redirect('/home')->with('error', 'Account has been suspended..Contact us for more info');
+        }
 
-        //Create a charge
-        $result = Http::withHeaders([
-            "Content-Type" => "application/json",
-            "X-CC-Api-Key" => "ba6e8f85-1992-44a8-9aa6-e5ac2b102423",
-            "X-CC-Version" => "2018-03-22"
-        ])->post("https://api.commerce.coinbase.com/charges", [
-            "name" => "Wallet TopUp",
-            "description" => "Funds top up for your account on Capital Ticketing",
-            "pricing_type" => "fixed_price",
-            "local_price" => [
-                "amount" => request('amount'),
-                "currency" => "USD"
-            ],
-            "metadata" => [
-            "customer_id" => $customer_id,
-                "customer_email" => auth()->user()->email
-       ],
-       "redirect_url" => "https://capitalticketing.herokuapp.com/deposits",
-       "cancel_url" => "https://capitalticketing.herokuapp.com/deposits"
-        ]);
-
-        //Store relevant details in the deposits table
-        $deposits = Deposit::create([
-            'code' => $result['data']['code'],
-            'transaction_id' => $result['data']['id'],
-            'customer_id' => $result['data']['metadata']['customer_id'],
-            'customer_email' => $result['data']['metadata']['customer_email'],
-            'description' => $result['data']['name'],
-            'local_amount' => $result['data']['pricing']['local']['amount'],
-            'transaction_status' => "charge:created",
-            'created_at' => $result['data']['created_at'],
-        ]);
-
-        $redirect_url = $result['data']['hosted_url'];
-        $price = $result['data']['pricing']['local']['amount'];
-
-        if($deposits){
-            //redirect the users to make payment
-            //Mail::to(auth()->user()->email)->send(new ChargeCreatedMail($price));
-            return redirect("$redirect_url");
+        if(auth()->user()->isVerified == '0'){
+            if(auth()->user()->verification == 'not agent'){
+                return redirect('/profile')->with('error', 'Upload a valid identification');
+            }
+            else{
+                return redirect('/profile')->with('error', 'Your ID has not been verified yet');
+            }
         }
         else{
-            return redirect("/home");
+            $customer_id = rand(100000,999999);
+
+                //Create a charge
+                $result = Http::withHeaders([
+                    "Content-Type" => "application/json",
+                    "X-CC-Api-Key" => "ba6e8f85-1992-44a8-9aa6-e5ac2b102423",
+                    "X-CC-Version" => "2018-03-22"
+                ])->post("https://api.commerce.coinbase.com/charges", [
+                    "name" => "Wallet TopUp",
+                    "description" => "Funds top up for your account on Capital Ticketing",
+                    "pricing_type" => "fixed_price",
+                    "local_price" => [
+                        "amount" => request('amount'),
+                        "currency" => "USD"
+                    ],
+                    "metadata" => [
+                    "customer_id" => $customer_id,
+                        "customer_email" => auth()->user()->email
+            ],
+            "redirect_url" => "https://capitalticketing.herokuapp.com/deposits",
+            "cancel_url" => "https://capitalticketing.herokuapp.com/deposits"
+                ]);
+
+                //Store relevant details in the deposits table
+                $deposits = Deposit::create([
+                    'code' => $result['data']['code'],
+                    'transaction_id' => $result['data']['id'],
+                    'customer_id' => $result['data']['metadata']['customer_id'],
+                    'customer_email' => $result['data']['metadata']['customer_email'],
+                    'description' => $result['data']['name'],
+                    'local_amount' => $result['data']['pricing']['local']['amount'],
+                    'transaction_status' => "charge:created",
+                    'created_at' => $result['data']['created_at'],
+                ]);
+
+                $redirect_url = $result['data']['hosted_url'];
+                $price = $result['data']['pricing']['local']['amount'];
+
+                if($deposits){
+                    //redirect the users to make payment
+                    //Mail::to(auth()->user()->email)->send(new ChargeCreatedMail($price));
+                    return redirect("$redirect_url");
+                }
+                else{
+                    return redirect("/home");
+                }
         }
     }
 
@@ -399,9 +413,20 @@ class HomeController extends Controller
                             'firstname' => request('firstname'),
                             'lastname' => request('lastname')
                         ]);
-     
+        if(request('verification') !== null){
+            $imagePath = request('verification')->store('verifications','public');
+            $verification = DB::table('users')
+                        ->where('email', '=', auth()->user()->email)
+                        ->update([
+                            'verification' => $imagePath,   
+                        ]);
+        }
+
         if($update_profile){
             return redirect()->back()->with('success','Profile Updated');
+        }
+        else if($verification){
+            return redirect()->back()->with('success','Image Upload Successful');
         }
         
     }

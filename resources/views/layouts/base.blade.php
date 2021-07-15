@@ -203,8 +203,17 @@
                           <i class="mdi mdi-account"></i> My Profile
                         </a>
                       </li>
-                      <li class="dropdown-footer">
-                        <a href="../../logout.php"> <i class="mdi mdi-logout"></i> Log Out </a>
+                       <li  class="has-sub" >
+                          <a class="sidenav-item-link" href="{{ route('logout') }}"
+                            aria-expanded="false" aria-controls="documentation"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <i class="mdi mdi-logout"></i>
+                            <span class="nav-text">Log Out</span>
+                          </a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                          </form>
                       </li>
                     </ul>
                   </li>

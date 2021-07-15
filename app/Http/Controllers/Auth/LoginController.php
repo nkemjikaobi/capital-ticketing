@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -60,4 +63,30 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+      /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    // protected function sendFailedLoginResponse(Request $request)
+    // {
+    //     $errors = [$this->username() => trans('auth.failed')];
+    
+    //     // Load user from database
+    //     $user = User::where($this->username(), $request->{$this->username()})->first();
+    
+    //     if ($user && !Hash::check($request->password, $user->password)) {
+    //         $errors = ['password' => 'Wrong password'];
+    //     }
+    
+    //     if ($request->expectsJson()) {
+    //         return response()->json($errors, 422);
+    //     }
+    
+    //     return redirect()->back()
+    //         ->withInput($request->only($this->username(), 'remember'))
+    //         ->withErrors($errors);
+    // }
 }

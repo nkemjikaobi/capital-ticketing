@@ -16,7 +16,7 @@ class IsSeller
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->id !== 2){
+        if(auth()->user()->account_type !== 2){
             return redirect('/home');
         }
         

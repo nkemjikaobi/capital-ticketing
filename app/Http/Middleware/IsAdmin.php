@@ -16,7 +16,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->id !== 3){
+        if(auth()->user()->account_type !== 3){
             return redirect('/home');
         }
 

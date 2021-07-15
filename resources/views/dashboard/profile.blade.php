@@ -3,7 +3,18 @@
 
 @section('content')
 				<div class="card-body">
-                   
+                    
+                    @if(auth()->user()->verification == 'not agent' && auth()->user()->account_type == '2')
+                        <div class='alert alert-primary '>
+                                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                                <strong class=''>ID is not yet verified</strong>
+                        </div>
+                    @elseif(auth()->user()->isVerified == '0')
+                        <div class='alert alert-primary '>
+                            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                            <strong class=''>Upload a valid ID</strong>
+                        </div>
+                    @endif
 				<nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-inverse">
                         <li class="breadcrumb-item">
@@ -24,7 +35,7 @@
                         <h2>User Profile</h2>
                     </div>
                     <div class="card-body">
-                        <form class="form-pill" method='POST' action="/profile">
+                        <form class="form-pill" method='POST' enctype="multipart/form-data" action="/profile">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
@@ -51,6 +62,26 @@
                                 <label for="exampleFormControlInput3">Email</label>
                                 <input type="text" name="email" class="form-control" id="exampleFormControlInput3" value={{auth()->user()->email}} disabled>
                             </div>
+                            @if(auth()->user()->verification !== 'not agent' && auth()->user()->account_type == '2' && auth()->user()->isVerified == '0')
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput3">Verification Status</label>
+                                    <input type="text"  class="form-control" id="exampleFormControlInput3" value='VERIFICATION IN PROGRESS' disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput3">Upoad Different ID</label>
+                                    <input type="file" name="verification" class="form-control" id="exampleFormControlInput3">
+                                </div>
+                            @elseif(auth()->user()->verification == 'not agent' && auth()->user()->account_type == '2')
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput3">Upload ID</label>
+                                    <input type="file" name="verification" class="form-control" id="exampleFormControlInput3">
+                                </div>
+                            @elseif(auth()->user()->verification !== 'not agent' && auth()->user()->account_type == '2' && auth()->user()->isVerified == '1')
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput3">Verification Status</label>
+                                    <input type="text" name="verification" class="form-control" value='ID VERIFIED' disabled id="exampleFormControlInput3">
+                                </div>
+                            @endif
                             <div class="form-footer">
                                 <button type="submit"  name='btn-update' class="btn btn-ticket btn-default">Update Profile</button>
                             </div>
