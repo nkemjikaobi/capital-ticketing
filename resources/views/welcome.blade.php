@@ -2685,7 +2685,7 @@
                         }</style
                       ><a
                         data-bn-type="link"
-                        href="https://p2p.binance.com/en-NG"
+                        href="/buy_tickets"
                         class="css-m39jj3"
                         ><style data-emotion-css="7p353z">
                           .css-7p353z {

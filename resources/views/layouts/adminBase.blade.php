@@ -80,11 +80,19 @@
               <!-- sidebar menu -->
               <ul class="nav sidebar-inner" id="sidebar-menu">
 
-                  <li  class="has-sub expand {{ Route::currentRouteName() == 'home' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('home') }}"
+                  <li  class="has-sub expand " >
+                    <a class="sidenav-item-link" href="{{ route('admin_index') }}"
                       aria-expanded="false" aria-controls="dashboard">
                       <i class="mdi mdi-view-dashboard-outline"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'home' ? 'active-span' : '' }}">Dashboard</span>
+                      <span class="nav-text">Users</span>
+                    </a>
+                  </li>
+
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="{{ route('admin_deposits') }}"
+                      aria-expanded="false" aria-controls="pages">
+                      <i class="far fa-credit-card"></i>
+                      <span class="nav-text">Deposits</span>
                     </a>
                   </li>
 
@@ -92,7 +100,7 @@
                     <a class="sidenav-item-link" href="{{ route('fund_wallet') }}"
                       aria-expanded="false" aria-controls="ui-elements">
                       <i class="mdi mdi-wallet"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">Fund Wallet</span>
+                      <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">Soccer Teams</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'buy_tickets' ? 'active' : '' }}" >
@@ -100,7 +108,7 @@
                       aria-expanded="false" aria-controls="ui-elements">
                       {{-- <i class="mdi mdi-credit-card"></i> --}}
                       <i class="fas fa-futbol"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'buy_tickets' ? 'active-span' : '' }}">Buy Tickets</span>
+                      <span class="nav-text {{ Route::currentRouteName() == 'buy_tickets' ? 'active-span' : '' }}">Soccer Tickets</span>
                     </a>
                   </li>
                  
@@ -108,44 +116,80 @@
                     <a class="sidenav-item-link" href="{{ route('deposits') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Deposits</span>
+                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Soccer Pays</span>
+                    </a>
+                  </li>
+                  <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('fund_wallet') }}"
+                      aria-expanded="false" aria-controls="ui-elements">
+                      <i class="mdi mdi-wallet"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">BasketBall Teams</span>
+                    </a>
+                  </li>
+                  <li  class="has-sub {{ Route::currentRouteName() == 'buy_tickets' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('buy_tickets') }}"
+                      aria-expanded="false" aria-controls="ui-elements">
+                      {{-- <i class="mdi mdi-credit-card"></i> --}}
+                      <i class="fas fa-futbol"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'buy_tickets' ? 'active-span' : '' }}">BasketBall Tickets</span>
+                    </a>
+                  </li>
+                 
+                  <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('deposits') }}"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="fab fa-bitcoin"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">BasketBall Pays</span>
+                    </a>
+                  </li>
+                  <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('fund_wallet') }}"
+                      aria-expanded="false" aria-controls="ui-elements">
+                      <i class="mdi mdi-wallet"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">Football Teams</span>
+                    </a>
+                  </li>
+                  <li  class="has-sub {{ Route::currentRouteName() == 'buy_tickets' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('buy_tickets') }}"
+                      aria-expanded="false" aria-controls="ui-elements">
+                      {{-- <i class="mdi mdi-credit-card"></i> --}}
+                      <i class="fas fa-futbol"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'buy_tickets' ? 'active-span' : '' }}">Football Tickets</span>
+                    </a>
+                  </li>
+                 
+                  <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('deposits') }}"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="fab fa-bitcoin"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Football Pays</span>
+                    </a>
+                  </li>
+                  <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('fund_wallet') }}"
+                      aria-expanded="false" aria-controls="ui-elements">
+                      <i class="mdi mdi-wallet"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">Cricket Teams</span>
+                    </a>
+                  </li>
+                  <li  class="has-sub {{ Route::currentRouteName() == 'buy_tickets' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('buy_tickets') }}"
+                      aria-expanded="false" aria-controls="ui-elements">
+                      {{-- <i class="mdi mdi-credit-card"></i> --}}
+                      <i class="fas fa-futbol"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'buy_tickets' ? 'active-span' : '' }}">Cricket Tickets</span>
+                    </a>
+                  </li>
+                 
+                  <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('deposits') }}"
+                      aria-expanded="false" aria-controls="charts">
+                      <i class="fab fa-bitcoin"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Cricket Pays</span>
                     </a>
                   </li>
 
-                  <li  class="has-sub {{ Route::currentRouteName() == 'withdrawals' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('withdrawals') }}"
-                      aria-expanded="false" aria-controls="pages">
-                      <i class="far fa-credit-card"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'withdrawals' ? 'active-span' : '' }}">Withdrawals</span>
-                    </a>
-                  </li>
-
-                  <li  class="has-sub {{ Route::currentRouteName() == 'view_tickets' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('view_tickets') }}"
-                      aria-expanded="false" aria-controls="pages">
-                      <i class="fas fa-ticket-alt"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'view_tickets' ? 'active-span' : '' }}">View Tickets</span>
-                    </a>
-                  </li>
-
-                  <li  class="has-sub {{ Route::currentRouteName() == 'profile' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('profile') }}"
-                      aria-expanded="false" aria-controls="documentation">
-                      <i class="mdi mdi-account"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'profile' ? 'active-span' : '' }}">Profile</span>
-                    </a>
-                  </li>
-
-                  <!---Show if admin-->
-                  @if (auth()->user()->account_type == 2)
-                     <li  class="has-sub {{ Route::currentRouteName() == 'transfer_funds' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('transfer_funds') }}"
-                      aria-expanded="false" aria-controls="documentation">
-                      <i class="mdi mdi-account"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'transfer_funds' ? 'active-span' : '' }}">Transfer Funds</span>
-                    </a>
-                  </li>
-                  @endif
+      
 
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="{{ route('logout') }}"
@@ -203,9 +247,19 @@
                           <i class="mdi mdi-account"></i> My Profile
                         </a>
                       </li>
-                      <li class="dropdown-footer">
-                        <a href="../../logout.php"> <i class="mdi mdi-logout"></i> Log Out </a>
+                        <li  class="dropdown-footer" >
+                          <a class="sidenav-item-link" href="{{ route('logout') }}"
+                            aria-expanded="false" aria-controls="documentation"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <i class="mdi mdi-logout"></i>
+                            <span class="nav-text">Log Out</span>
+                          </a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                          </form>
                       </li>
+                      
                     </ul>
                   </li>
                 </ul>

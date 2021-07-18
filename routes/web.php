@@ -28,6 +28,17 @@ Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->nam
 //Admin
 Route::middleware(['admin', 'auth'])->group(function () {
    Route::get('/admin/index', [App\Http\Controllers\AdminController::class, 'index'])->name('admin_index'); 
+   Route::post('/admin/index/verify', [App\Http\Controllers\AdminController::class, 'verify'])->name('admin_index_verify'); 
+   Route::post('/admin/index/unverify', [App\Http\Controllers\AdminController::class, 'unverify'])->name('admin_index_unverify'); 
+   Route::post('/admin/index/disable', [App\Http\Controllers\AdminController::class, 'disable'])->name('admin_index_disable'); 
+   Route::post('/admin/index/activate', [App\Http\Controllers\AdminController::class, 'activate'])->name('admin_index_activate'); 
+   Route::delete('/admin/index/delete', [App\Http\Controllers\AdminController::class, 'users_delete'])->name('admin_index_users_delete'); 
+   Route::get('/admin/index/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin_index_edit'); 
+   Route::put('/admin/index/edit', [App\Http\Controllers\AdminController::class, 'editUser'])->name('admin_index_edit_user'); 
+   Route::get('/admin/deposits', [App\Http\Controllers\AdminController::class, 'deposits'])->name('admin_deposits'); 
+   Route::delete('/admin/deposits/delete', [App\Http\Controllers\AdminController::class, 'deposits_delete'])->name('admin_deposits_delete'); 
+    Route::post('/admin/deposits/credit', [App\Http\Controllers\AdminController::class, 'credit'])->name('admin_deposits_credit'); 
+   Route::post('/admin/deposits/uncredit', [App\Http\Controllers\AdminController::class, 'uncredit'])->name('admin_deposits_uncredit'); 
 });
 
 //User Dashboard
