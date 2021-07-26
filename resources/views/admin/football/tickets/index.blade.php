@@ -51,7 +51,7 @@
         <!-- Top Statistics -->
         <div class="row">
             <div class="col-lg-12">
-                <a href={{ route('admin_Football_ticket_create') }} style='color: white;background:#003699;border-radius:5px;padding:10px;'>ADD FootBALL TICKET</a>
+                <a href={{ route('admin_football_ticket_create') }} style='color: white;background:#003699;border-radius:5px;padding:10px;'>ADD FootBALL TICKET</a>
                 <!--TABLE STARTS -->
                 <div class='card-body'>
                     <div class='table-responsive'>
@@ -85,8 +85,8 @@
                                         <td>{{$footballTicket->fixture_date}}</td>
                                         <td>{{$footballTicket->fixture_time}}</td>
                                         <td>{{$footballTicket->competition}}</td>
-                                        <td>{{$footballTicket->home_team_logo}}</td>
-                                        <td>{{$footballTicket->away_team_logo}}</td>
+                                        <td><img src="/storage/{{$basketballTicket->home_team_logo  }}" width="50px" height="50px" alt="team_logo" /></td>
+                                        <td><img src="/storage/{{$basketballTicket->away_team_logo  }}" width="50px" height="50px" alt="team_logo" /></td>
                                         <td>{{$footballTicket->ticket_price}}</td>
                                         <td>{{$footballTicket->expected_profit}}</td>
                                         <td>{{$footballTicket->tickets_available}}</td>

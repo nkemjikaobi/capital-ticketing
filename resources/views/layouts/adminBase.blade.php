@@ -120,14 +120,14 @@
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('fund_wallet') }}"
+                    <a class="sidenav-item-link" href="{{ route('admin_basketball_team_index') }}"
                       aria-expanded="false" aria-controls="ui-elements">
                       <i class="mdi mdi-wallet"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">BasketBall Teams</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'buy_tickets' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('buy_tickets') }}"
+                    <a class="sidenav-item-link" href="{{ route('admin_basketball_ticket_index') }}"
                       aria-expanded="false" aria-controls="ui-elements">
                       {{-- <i class="mdi mdi-credit-card"></i> --}}
                       <i class="fas fa-futbol"></i>
@@ -136,21 +136,21 @@
                   </li>
                  
                   <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('deposits') }}"
+                    <a class="sidenav-item-link" href=""
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">BasketBall Pays</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('fund_wallet') }}"
+                    <a class="sidenav-item-link" href="{{ route('admin_football_team_index') }}"
                       aria-expanded="false" aria-controls="ui-elements">
                       <i class="mdi mdi-wallet"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">Football Teams</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'buy_tickets' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('buy_tickets') }}"
+                    <a class="sidenav-item-link" href="{{ route('admin_football_ticket_index') }}"
                       aria-expanded="false" aria-controls="ui-elements">
                       {{-- <i class="mdi mdi-credit-card"></i> --}}
                       <i class="fas fa-futbol"></i>
@@ -159,21 +159,21 @@
                   </li>
                  
                   <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('deposits') }}"
+                    <a class="sidenav-item-link" href=""
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Football Pays</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('fund_wallet') }}"
+                    <a class="sidenav-item-link" href="{{ route('admin_cricket_team_index') }}"
                       aria-expanded="false" aria-controls="ui-elements">
                       <i class="mdi mdi-wallet"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'fund_wallet' ? 'active-span' : '' }}">Cricket Teams</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'buy_tickets' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('buy_tickets') }}"
+                    <a class="sidenav-item-link" href="{{ route('admin_cricket_ticket_index') }}"
                       aria-expanded="false" aria-controls="ui-elements">
                       {{-- <i class="mdi mdi-credit-card"></i> --}}
                       <i class="fas fa-futbol"></i>
@@ -182,7 +182,7 @@
                   </li>
                  
                   <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href="{{ route('deposits') }}"
+                    <a class="sidenav-item-link" href=""
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Cricket Pays</span>

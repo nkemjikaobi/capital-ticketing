@@ -66,7 +66,7 @@
                              <select name="home_team_logo" class="form-control" id="" required>
                                 <option value="">No team selected</option>
                                 @foreach ($teams as $team)
-                                    <option value="{{ $team->team_logo }}">{{ $team->team_name }}</option>
+                                    <option value="{{ $team->logo }}">{{ $team->team_name }}</option>
                                 @endforeach
                             </select>
                         </div>

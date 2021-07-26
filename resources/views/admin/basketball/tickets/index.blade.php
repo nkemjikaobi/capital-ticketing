@@ -85,8 +85,8 @@
                                         <td>{{$basketballTicket->fixture_date}}</td>
                                         <td>{{$basketballTicket->fixture_time}}</td>
                                         <td>{{$basketballTicket->competition}}</td>
-                                        <td>{{$basketballTicket->home_team_logo}}</td>
-                                        <td>{{$basketballTicket->away_team_logo}}</td>
+                                        <td><img src="/storage/{{$basketballTicket->home_team_logo  }}" width="50px" height="50px" alt="team_logo" /></td>
+                                        <td><img src="/storage/{{$basketballTicket->away_team_logo  }}" width="50px" height="50px" alt="team_logo" /></td>
                                         <td>{{$basketballTicket->ticket_price}}</td>
                                         <td>{{$basketballTicket->expected_profit}}</td>
                                         <td>{{$basketballTicket->tickets_available}}</td>

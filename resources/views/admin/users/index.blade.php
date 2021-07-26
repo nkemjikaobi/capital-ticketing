@@ -97,7 +97,7 @@
                                                 No
                                             @endif
                                         </td>
-                                        <td>{{$user->verification}}</td>
+                                        <td><img src="/storage/{{$user->verification  }}" width="50px" height="50px" alt="verification_id" /></td>
                                         <td>
                                             @if($user->isVerified == 1)
                                                 Yes
