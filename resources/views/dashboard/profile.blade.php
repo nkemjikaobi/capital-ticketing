@@ -14,6 +14,11 @@
                             <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
                             <strong class=''>Upload a valid ID</strong>
                         </div>
+                    @elseif(auth()->user()->mobile == 'null')
+                        <div class='alert alert-primary '>
+                            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+                            <strong class=''>Add a phone number</strong>
+                        </div>
                     @endif
 				<nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-inverse">

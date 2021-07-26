@@ -56,8 +56,17 @@ class HomeController extends Controller
     }
 
     public function fund_wallet(){
-        //dd(Route::currentRouteName()); 
-        return view ("dashboard.fund_wallet");
+        $sellers = DB::table('users')
+                ->join('portfolios', 'users.id', '=', 'portfolios.user_id')
+                ->where([
+                            ['account_type', '=', '2'],
+                            ['isVerified', '=', 1],
+                            ['isDisabled', '=', '0'],
+                            ['portfolios.balance','>','0'],
+                            ['mobile','!==','null']
+                        ])
+                ->get();
+        return view ("dashboard.fund_wallet", compact('sellers'));
     }
 
     public function fund_wallet_create(Request $request){
@@ -69,6 +78,9 @@ class HomeController extends Controller
         if(auth()->user()->isVerified == '0'){
             if(auth()->user()->verification == 'not agent'){
                 return redirect('/profile')->with('error', 'Upload a valid identification');
+            }
+            else if(auth()->user()->mobile == 'null'){
+                return redirect('/profile')->with('error', 'Add your phone number');
             }
             else{
                 return redirect('/profile')->with('error', 'Your ID has not been verified yet');

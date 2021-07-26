@@ -28,7 +28,7 @@
                     <form class="form-pill" method='POST' action="{{ route('fund_wallet_create') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleFormControlPassword3">Amount you wish to deposit($)</label>
+                            <label for="exampleFormControlPassword3">Amount you wish to deposit($)[CRYPTO METHOD]</label>
                             <input type="text" class="form-control @error('amount') is-invalid @enderror" id="exampleFormControlPassword3"
                                     name="amount" placeholder="400"   required>
                             @error('amount')
@@ -38,6 +38,30 @@
 
                         <div class="form-footer">
                             <button type="submit"  name='btn-update' class="btn btn-ticket btn-default">Deposit Now</button>
+                        </div>
+                        <div class='mt-2'>OR CONTACT AGENTS BELOW</div>
+                         <div class="form-group">
+                            <div class="row">
+                                 @foreach ($sellers as $seller)
+                                     <div class="col-xl-6 col-sm-6 col-md-6">
+                                        <div class="card card-mini mb-4">
+                                            <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                <h2 class="mb-1">
+                                                   {{ $seller->firstname }} {{ $seller->lastname }}
+                                                </h2>
+                                                <p>
+                                                 {{ $seller->mobile }}
+                                                </p>
+                                                </div>
+                                            </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                 @endforeach
+                            </div>
                         </div>
                     </form>
                 </div>
