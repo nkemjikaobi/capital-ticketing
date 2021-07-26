@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSoccerTeamSoccerTicket extends Migration
+class CreateFootBallTeamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateSoccerTeamSoccerTicket extends Migration
      */
     public function up()
     {
-        Schema::create('soccer_team_soccer_ticket', function (Blueprint $table) {
+        Schema::create('foot_ball_teams', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("soccer_team_id");
-            $table->unsignedBigInteger("soccer_ticket_id");
+            $table->string("team_name");
+            $table->string("logo")->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateSoccerTeamSoccerTicket extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('soccer_team_soccer_ticket');
+        Schema::dropIfExists('foot_ball_teams');
     }
 }
