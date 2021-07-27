@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->integer('account_type');
             $table->boolean('isDisabled')->default(false);
-            $table->string('verification')->nullable()->default('not agent');
+            $table->string('verification')->nullable()->default('not_agent');
             $table->boolean('isVerified')->default(true)->nullable();
-            $table->integer('mobile')->nullable();
+            $table->string('mobile')->default('no_phone_number')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

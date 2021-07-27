@@ -67,6 +67,12 @@
                                 <label for="exampleFormControlInput3">Email</label>
                                 <input type="text" name="email" class="form-control" id="exampleFormControlInput3" value={{auth()->user()->email}} disabled>
                             </div>
+                            @if(auth()->user()->account_type == '2')
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput3">Phone Number</label>
+                                    <input type="text" name="mobile" value={{ auth()->user()->mobile }} class="form-control" id="exampleFormControlInput3" required>
+                                </div>
+                            @endif
                             @if(auth()->user()->verification !== 'not agent' && auth()->user()->account_type == '2' && auth()->user()->isVerified == '0')
                                 <div class="form-group">
                                     <label for="exampleFormControlInput3">Verification Status</label>

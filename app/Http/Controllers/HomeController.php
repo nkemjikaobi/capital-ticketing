@@ -423,7 +423,8 @@ class HomeController extends Controller
                         ->where('email', '=', auth()->user()->email)
                         ->update([
                             'firstname' => request('firstname'),
-                            'lastname' => request('lastname')
+                            'lastname' => request('lastname'),
+                            'mobile' => request('mobile')
                         ]);
         if(request('verification') !== null){
             $imagePath = request('verification')->store('verifications','public');
@@ -453,7 +454,6 @@ class HomeController extends Controller
         $operating_system = $agent->platform();
         $browser = $agent->browser();
         $device = $agent->device();
-
         return view('dashboard.profile', compact('ip_address','device','browser','operating_system'));
     }
 
