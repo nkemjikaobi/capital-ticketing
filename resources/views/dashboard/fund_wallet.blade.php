@@ -42,17 +42,17 @@
                         <div class='mt-2'>OR CONTACT AGENTS BELOW</div>
                          <div class="form-group">
                             <div class="row">
-                                 @foreach ($sellers as $seller)
-                                     <div class="col-xl-6 col-sm-6 col-md-6">
+                                @if(count($sellers) < 1)
+                                    <div class="col-xl-6 col-sm-6 col-md-6">
                                         <div class="card card-mini mb-4">
                                             <div class="card-body">
                                             <div class="d-flex justify-content-between">
                                                 <div>
-                                                <h2 class="mb-1">
-                                                   {{ $seller->firstname }} {{ $seller->lastname }}
-                                                </h2>
+                                                <h4 class="mb-1">
+                                                   No agents available
+                                                </h4>
                                                 <p>
-                                                 {{ $seller->mobile }}
+                                                 Try again later...
                                                 </p>
                                                 </div>
                                             </div>
@@ -60,7 +60,27 @@
                                             </div>
                                         </div>
                                     </div>
-                                 @endforeach
+                                @else
+                                    @foreach ($sellers as $seller)
+                                        <div class="col-xl-6 col-sm-6 col-md-6">
+                                            <div class="card card-mini mb-4">
+                                                <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                    <h2 class="mb-1">
+                                                    {{ $seller->firstname }} {{ $seller->lastname }}
+                                                    </h2>
+                                                    <p>
+                                                    {{ $seller->mobile }}
+                                                    </p>
+                                                    </div>
+                                                </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </form>
