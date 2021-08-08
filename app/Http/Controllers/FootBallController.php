@@ -40,7 +40,7 @@ class FootBallController extends Controller
         $fixture_details = FootBallTicket::findorfail($id);
 
         if($fixture_details->time_left < 1){
-            return redirect('/buy_tickets/football')->with('error', 'Ticket expired');
+            return redirect('/buy_tickets/football')->with('error', 'Error: The Ticket has expired');
         }
 
         return view('dashboard.football.buy_tickets_football_fixture',compact('fixture_details'));

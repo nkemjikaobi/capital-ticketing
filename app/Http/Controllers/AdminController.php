@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Deposit;
+use App\Models\Withdrawal;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -172,7 +173,42 @@ class AdminController extends Controller
             return redirect('/admin/index')->with('error', 'An error occurred');
         }
     }
-   
-    
-   
+
+      public function withdrawals(){
+
+        $withdrawals = Withdrawal::paginate(10);
+
+        return view ('admin.withdrawals.index',compact('withdrawals'));
+    }
+
+    public function withdrawals_success(){
+       $done =  DB::table('withdrawals')
+                       ->where('id', '=', request('id'))
+                       ->update([
+                           'status' => 1,
+                       ]);
+        
+        if($done){
+            return redirect('/admin/withdrawals')->with('success', 'Status Changed');
+        }
+        else{
+            return redirect('/admin/withdrawals')->with('error', 'An error occurred');
+        }
+    }
+
+    public function withdrawals_fail(){
+        $done =  DB::table('withdrawals')
+                       ->where('id', '=', request('id'))
+                       ->update([
+                           'status' => -1,
+                       ]);
+        
+        if($done){
+            return redirect('/admin/withdrawals')->with('success', 'Status Changed');
+        }
+        else{
+            return redirect('/admin/withdrawals')->with('error', 'An error occurred');
+        }
+    }
+ 
 }

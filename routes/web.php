@@ -45,6 +45,11 @@ Route::middleware(['admin', 'auth'])->group(function () {
    Route::post('/admin/deposits/credit', [App\Http\Controllers\AdminController::class, 'credit'])->name('admin_deposits_credit'); 
    Route::post('/admin/deposits/uncredit', [App\Http\Controllers\AdminController::class, 'uncredit'])->name('admin_deposits_uncredit'); 
 
+   //Withdrawals
+   Route::get('/admin/withdrawals', [App\Http\Controllers\AdminController::class, 'withdrawals'])->name('admin_withdrawals'); 
+   Route::put('/admin/withdrawals/success', [App\Http\Controllers\AdminController::class, 'withdrawals_success'])->name('admin_withdrawals_success'); 
+   Route::put('/admin/withdrawals/fail', [App\Http\Controllers\AdminController::class, 'withdrawals_fail'])->name('admin_withdrawals_fail'); 
+
 
    //Soccer Tickets
    Route::get('/admin/soccer/tickets', [App\Http\Controllers\AdminSoccerController::class, 'soccerTicketIndex'])->name('admin_soccer_ticket_index'); 

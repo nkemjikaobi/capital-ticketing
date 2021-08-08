@@ -96,6 +96,14 @@
                     </a>
                   </li>
 
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="{{ route('admin_withdrawals') }}"
+                      aria-expanded="false" aria-controls="pages">
+                      <i class="far fa-credit-card"></i>
+                      <span class="nav-text">Withdrawals</span>
+                    </a>
+                  </li>
+
                   <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('admin_soccer_team_index') }}"
                       aria-expanded="false" aria-controls="ui-elements">
@@ -112,11 +120,11 @@
                     </a>
                   </li>
                  
-                  <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
+                  <li  class="has-sub" >
                     <a class="sidenav-item-link" href="{{ route('admin_soccer_pay_index') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Soccer Pays</span>
+                      <span class="nav-text">Soccer Pays</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
@@ -135,11 +143,11 @@
                     </a>
                   </li>
                  
-                  <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
+                  <li  class="has-sub" >
                     <a class="sidenav-item-link" href="{{ route('admin_basketball_pay_index') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">BasketBall Pays</span>
+                      <span class="nav-text">BasketBall Pays</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
@@ -158,11 +166,11 @@
                     </a>
                   </li>
                  
-                  <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
+                  <li  class="has-sub" >
                     <a class="sidenav-item-link" href="{{ route('admin_football_pay_index') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Football Pays</span>
+                      <span class="nav-text">Football Pays</span>
                     </a>
                   </li>
                   <li  class="has-sub {{ Route::currentRouteName() == 'fund_wallet' ? 'active' : '' }}" >
@@ -181,15 +189,13 @@
                     </a>
                   </li>
                  
-                  <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
+                  <li  class="has-sub" >
                     <a class="sidenav-item-link" href="{{ route('admin_cricket_pay_index') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
-                      <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Cricket Pays</span>
+                      <span class="nav-text">Cricket Pays</span>
                     </a>
                   </li>
-
-      
 
                   <li  class="has-sub" >
                     <a class="sidenav-item-link" href="{{ route('logout') }}"
