@@ -39,6 +39,10 @@ class BasketBallController extends Controller
 
         $fixture_details = BasketBallTicket::findorfail($id);
 
+        if($fixture_details->time_left < 1){
+            return redirect('/buy_tickets/basketball')->with('error', 'Ticket expired');
+        }
+
         return view('dashboard.basketball.buy_tickets_basketball_fixture',compact('fixture_details'));
      }
 

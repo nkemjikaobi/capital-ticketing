@@ -98,7 +98,7 @@
                                     <td>{{$soccer_ticket->final_pay}}</td>
                                     <td>{{$soccer_ticket->fixture_time}}</td>
                                     <td>{{$soccer_ticket->fixture_date}}</td>
-                                    <td>{{$soccer_ticket->expected_profit}}%</td>
+                                    <td>{{ $soccer_ticket->expected_profit - 3 }} - {{ $soccer_ticket->expected_profit + 3 }}%</td>
                                     <td>{{$soccer_ticket->roi}}</td>
                                     <td>
                                         @if($soccer_ticket->transaction_status == 1)
@@ -136,7 +136,7 @@
                                 <td>{{$basketball_ticket->final_pay}}</td>
                                 <td>{{$basketball_ticket->fixture_time}}</td>
                                 <td>{{$basketball_ticket->fixture_date}}</td>
-                                <td>{{$basketball_ticket->expected_profit}}%</td>
+                                <td>{{ $basketball_ticket->expected_profit - 3 }} - {{ $basketball_ticket->expected_profit + 3 }}%</td>
                                 <td>{{$basketball_ticket->roi}}</td>
                                 <td>
                                     @if($basketball_ticket->transaction_status == 1)
@@ -174,7 +174,7 @@
                                     <td>{{$football_ticket->final_pay}}</td>
                                     <td>{{$football_ticket->fixture_time}}</td>
                                     <td>{{$football_ticket->fixture_date}}</td>
-                                    <td>{{$football_ticket->expected_profit}}%</td>
+                                    <td>{{ $football_ticket->expected_profit - 3 }} - {{ $football_ticket->expected_profit + 3 }}%</td>
                                     <td>{{$football_ticket->roi}}</td>
                                     <td>
                                         @if($football_ticket->transaction_status == 1)
@@ -212,7 +212,7 @@
                                 <td>{{$cricket_ticket->final_pay}}</td>
                                 <td>{{$cricket_ticket->fixture_time}}</td>
                                 <td>{{$cricket_ticket->fixture_date}}</td>
-                                <td>{{$cricket_ticket->expected_profit}}%</td>
+                                <td>{{ $cricket_ticket->expected_profit - 3 }} - {{ $cricket_ticket->expected_profit + 3 }}%</td>
                                 <td>{{$cricket_ticket->roi}}</td>
                                 <td>
                                     @if($cricket_ticket->transaction_status == 1)

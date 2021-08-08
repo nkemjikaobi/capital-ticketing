@@ -107,6 +107,14 @@
                                         </td>
                                         <td><a href="/admin/index/edit/{{ $user->id }}" style='color: white;background:#003699;border-radius:5px;padding:10px;' id='sell'>EDIT</a></td>
                                         <td>
+                                            <form action="/admin/make_admin" method='POST'>
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="email" value={{ $user->email }}>
+                                                <button type='submit'  style='color: white;background:#003699;border-radius:5px;padding:10px;' id='sell'>MAKE ADMIN</button>
+                                            </form>
+                                        </td>
+                                        <td>
                                             @if($user->isVerified == '0')
                                                 <form action="/admin/index/verify" method="POST">
                                                     @csrf

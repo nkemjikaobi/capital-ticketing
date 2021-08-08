@@ -39,6 +39,10 @@ class CricketController extends Controller
 
         $fixture_details = CricketTicket::findorfail($id);
 
+        if($fixture_details->time_left < 1){
+            return redirect('/buy_tickets/cricket')->with('error', 'Ticket expired');
+        }
+
         return view('dashboard.cricket.buy_tickets_cricket_fixture',compact('fixture_details'));
      }
 

@@ -36,6 +36,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
    Route::delete('/admin/index/delete', [App\Http\Controllers\AdminController::class, 'users_delete'])->name('admin_index_users_delete'); 
    Route::get('/admin/index/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin_index_edit'); 
    Route::put('/admin/index/edit', [App\Http\Controllers\AdminController::class, 'editUser'])->name('admin_index_edit_user'); 
+   Route::put('/admin/make_admin', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('admin_make_admin'); 
 
 
    //Deposits
@@ -155,6 +156,8 @@ Route::get('/transfer_funds', [App\Http\Controllers\HomeController::class, 'tran
 Route::post('/transfer_funds/transfer', [App\Http\Controllers\HomeController::class, 'transfer_funds_transfer'])->name('transfer_funds_transfer')->middleware('seller');
 Route::get('/view_tickets', [App\Http\Controllers\HomeController::class, 'view_tickets'])->name('view_tickets');
 Route::get('/withdrawals', [App\Http\Controllers\HomeController::class, 'withdrawals'])->name('withdrawals');
+Route::get('/withdraw_funds', [App\Http\Controllers\HomeController::class, 'withdraw'])->name('withdraw');
+Route::post('/withdraw_funds', [App\Http\Controllers\HomeController::class, 'withdraw_funds'])->name('withdraw_funds');
 Route::post('/webhook', [App\Http\Controllers\CoinBaseController::class, 'webhook'])->name('webhook');
 
 //Soccer Routes

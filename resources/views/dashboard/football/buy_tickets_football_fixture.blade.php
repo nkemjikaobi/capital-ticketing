@@ -4,7 +4,6 @@
 @section('content')
 
         <div class="card-body">
-         
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-inverse">
                     <li class="breadcrumb-item">

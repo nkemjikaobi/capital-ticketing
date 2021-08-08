@@ -70,7 +70,7 @@
                                         <span class='logo-text'>{{ $ticket->competition }}</span>
                                       </div>
                                       <div class="travel-details">
-                                        <span class="name" data-title='profit'>{{ $ticket->expected_profit }}%</span>
+                                        <span class="name" data-title='profit'>{{ $ticket->expected_profit - 3 }} - {{ $ticket->expected_profit + 3 }}%</span>
                                         <div class="flight">
                                           
                                            <span class='flight-time' data-title='expires in' :data-date='travelDate'>{{ $ticket->time_left }} days</span>

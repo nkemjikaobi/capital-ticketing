@@ -112,6 +112,14 @@
                     </a>
                   </li>
 
+                  <li  class="has-sub {{ Route::currentRouteName() == 'withdraw' ? 'active' : '' }}" >
+                    <a class="sidenav-item-link" href="{{ route('withdraw') }}"
+                      aria-expanded="false" aria-controls="pages">
+                      <i class="far fa-credit-card"></i>
+                      <span class="nav-text {{ Route::currentRouteName() == 'withdraw' ? 'active-span' : '' }}">Withdraw Funds</span>
+                    </a>
+                  </li>
+
                   <li  class="has-sub {{ Route::currentRouteName() == 'withdrawals' ? 'active' : '' }}" >
                     <a class="sidenav-item-link" href="{{ route('withdrawals') }}"
                       aria-expanded="false" aria-controls="pages">

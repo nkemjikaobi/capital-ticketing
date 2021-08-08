@@ -101,6 +101,20 @@ class AdminController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    public function makeAdmin(){
+        $done =  DB::table('users')
+                       ->where('email', '=', request('email'))
+                       ->update([
+                           'account_type' => 3
+                       ]);
+            if($done){
+                return redirect('/admin/index')->with('success', 'User is now an admin');
+            }
+            else{
+                return redirect('/admin/index')->with('error', 'An error occurred');
+        }
+    }
+
      public function uncredit(){
 
          $unCredited =  DB::table('deposits')

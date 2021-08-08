@@ -11,6 +11,7 @@ use App\Models\CricketPay;
 use App\Models\SoccerTeam;
 use App\Models\SoccerTicket;
 use App\Models\User;
+use App\Models\Withdrawal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -313,6 +314,12 @@ class HomeController extends Controller
            
         }
 
+         $update_roi = DB::table('portfolios')
+                        ->where('user_id', '=', auth()->user()->id)
+                        ->update([
+                            'roi' => $current_roi
+                        ]);
+
         return view('home', compact('ticket_number','current_roi'));
     }
 
@@ -480,6 +487,42 @@ class HomeController extends Controller
 
     public function withdrawals(){
 
-        return view ('dashboard.withdrawals');
+        $withdrawals = DB::table('withdrawals')
+            ->where('email', '=', auth()->user()->email)
+            ->orderBy("id","desc")
+            ->get();
+
+        return view ('dashboard.withdrawals',compact('withdrawals'));
+    }
+
+    public function withdraw(){
+
+        return view ('dashboard.withdraw');
+    }
+
+    public function withdraw_funds(){
+
+        $roi = auth()->user()->portfolio->roi;
+
+        if(request('amount') <= $roi){
+            $withdraw = Withdrawal::create([
+                        'amount' => request('amount'),
+                        'payment_type' => request('payment_type'),
+                        'wallet_address' => request('wallet_address'),
+                        'email' => auth()->user()->email,
+                        'status' => 0
+                    ]);
+
+            if($withdraw){
+                return redirect('/withdrawals')->with('success','Withdrawal Initiated');
+            }
+            else{
+                return redirect()->back()->with('error','An error occurred');
+            }
+        }
+        else{
+            return redirect()->back()->with('error', 'Amount requested is greater than ROI');
+        }
+
     }
 }
