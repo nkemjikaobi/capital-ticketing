@@ -4,11 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SoccerTicket;
+use App\Models\SoccerPay;
 use App\Models\SoccerTeam;
 use Illuminate\Support\Facades\DB;
 
 class AdminSoccerController extends Controller
 {
+    public function editSoccerPay(){
+            $updatedPay =  DB::table('soccer_pays')
+                    ->where('id', '=', request('id'))
+                    ->update([
+                        'home_team' => request('home_team'),
+                        'away_team' => request('away_team'),
+                        'country' => request('country'),
+                        'purchase_number' => request('purchase_number'),
+                        'final_pay' => request('final_pay'),
+                        'fixture_date' => request('fixture_date'),
+                        'fixture_time' => request('fixture_time'),
+                        'competition' => request('competition'),
+                        'ticket_price' => request('ticket_price'),
+                        'expected_profit' => request('expected_profit'),
+                        'tickets_available' => request('tickets_available'),
+                        'time_left' => request('time_left'),
+                        'transaction_status' => request('transaction_status'),
+                        'email' => request('email'),
+                        'roi' => request('roi'),
+                        'isSold' => request('isSold')
+                    ]);
+
+            if($updatedPay){
+                return redirect('/admin/soccer/pays')->with('success', 'Soccer Pay Updated');
+            }
+            else
+            {
+                return redirect('/admin/soccer/pays')->with('error', 'An error occurred');
+            }
+    }
+
     public function editSoccerTeam(Request $request){
         if($request->hasFile('logo')){
             $imagePath = request('logo')->store('soccer_team_logos','public');
@@ -124,6 +156,17 @@ class AdminSoccerController extends Controller
                 return redirect('/admin/soccer/tickets')->with('error', 'An error occurred');
             }
     }
+
+    public function soccerPayIndex(){
+        $soccerPays = SoccerPay::paginate(10);
+        return view('admin.soccer.pays.index',compact('soccerPays'));
+    }
+
+    public function soccerPayEdit($id){
+        $pay = SoccerPay::find($id);
+        return view('admin.soccer.pays.edit',compact('pay'));
+    }
+
     public function soccerTicketAdd(){
 
             $createdTicket =  SoccerTicket::create([

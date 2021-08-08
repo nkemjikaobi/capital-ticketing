@@ -113,7 +113,7 @@
                   </li>
                  
                   <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href=""
+                    <a class="sidenav-item-link" href="{{ route('admin_soccer_pay_index') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Soccer Pays</span>
@@ -136,7 +136,7 @@
                   </li>
                  
                   <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href=""
+                    <a class="sidenav-item-link" href="{{ route('admin_basketball_pay_index') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">BasketBall Pays</span>
@@ -159,7 +159,7 @@
                   </li>
                  
                   <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href=""
+                    <a class="sidenav-item-link" href="{{ route('admin_football_pay_index') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Football Pays</span>
@@ -182,7 +182,7 @@
                   </li>
                  
                   <li  class="has-sub {{ Route::currentRouteName() == 'deposits' ? 'active' : '' }}" >
-                    <a class="sidenav-item-link" href=""
+                    <a class="sidenav-item-link" href="{{ route('admin_cricket_pay_index') }}"
                       aria-expanded="false" aria-controls="charts">
                       <i class="fab fa-bitcoin"></i>
                       <span class="nav-text {{ Route::currentRouteName() == 'deposits' ? 'active-span' : '' }}">Cricket Pays</span>

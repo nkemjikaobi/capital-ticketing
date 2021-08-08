@@ -4,11 +4,53 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CricketTicket;
+use App\Models\CricketPay;
 use App\Models\CricketTeam;
 use Illuminate\Support\Facades\DB;
 
 class AdminCricketController extends Controller
 {
+    public function cricketPayIndex(){
+        $cricketPays = CricketPay::paginate(10);
+        return view('admin.cricket.pays.index',compact('cricketPays'));
+    }
+
+    public function cricketPayEdit($id){
+        $pay = CricketPay::find($id);
+        return view('admin.cricket.pays.edit',compact('pay'));
+    }
+
+    public function editCricketPay(){
+           $updatedPay =  DB::table('cricket_pays')
+                    ->where('id', '=', request('id'))
+                    ->update([
+                        'home_team' => request('home_team'),
+                        'away_team' => request('away_team'),
+                        'country' => request('country'),
+                        'purchase_number' => request('purchase_number'),
+                        'final_pay' => request('final_pay'),
+                        'fixture_date' => request('fixture_date'),
+                        'fixture_time' => request('fixture_time'),
+                        'competition' => request('competition'),
+                        'ticket_price' => request('ticket_price'),
+                        'expected_profit' => request('expected_profit'),
+                        'tickets_available' => request('tickets_available'),
+                        'time_left' => request('time_left'),
+                        'transaction_status' => request('transaction_status'),
+                        'email' => request('email'),
+                        'roi' => request('roi'),
+                        'isSold' => request('isSold')
+                    ]);
+
+            if($updatedPay){
+                return redirect('/admin/cricket/pays')->with('success', 'Cricket Pay Updated');
+            }
+            else
+            {
+                return redirect('/admin/cricket/pays')->with('error', 'An error occurred');
+            }
+    }
+
      public function editCricketTeam(Request $request){
         if($request->hasFile('logo')){
             $imagePath = request('logo')->store('cricket_team_logos','public');

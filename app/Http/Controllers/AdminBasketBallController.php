@@ -4,11 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BasketBallTicket;
+use App\Models\BasketBallPay;
 use App\Models\BasketBallTeam;
 use Illuminate\Support\Facades\DB;
 
 class AdminBasketBallController extends Controller
 {
+    public function basketballPayIndex(){
+        $basketballPays = BasketBallPay::paginate(10);
+        return view('admin.basketball.pays.index',compact('basketballPays'));
+    }
+
+    public function basketballPayEdit($id){
+        $pay = BasketBallPay::find($id);
+        return view('admin.basketball.pays.edit',compact('pay'));
+    }
+
+    public function editbasketballPay(){
+           $updatedPay =  DB::table('basket_ball_pays')
+                    ->where('id', '=', request('id'))
+                    ->update([
+                        'home_team' => request('home_team'),
+                        'away_team' => request('away_team'),
+                        'country' => request('country'),
+                        'purchase_number' => request('purchase_number'),
+                        'final_pay' => request('final_pay'),
+                        'fixture_date' => request('fixture_date'),
+                        'fixture_time' => request('fixture_time'),
+                        'competition' => request('competition'),
+                        'ticket_price' => request('ticket_price'),
+                        'expected_profit' => request('expected_profit'),
+                        'tickets_available' => request('tickets_available'),
+                        'time_left' => request('time_left'),
+                        'transaction_status' => request('transaction_status'),
+                        'email' => request('email'),
+                        'roi' => request('roi'),
+                        'isSold' => request('isSold')
+                    ]);
+
+            if($updatedPay){
+                return redirect('/admin/basketball/pays')->with('success', 'BasketBall Pay Updated');
+            }
+            else
+            {
+                return redirect('/admin/basketball/pays')->with('error', 'An error occurred');
+            }
+    }
      public function editbasketballTeam(Request $request){
         if($request->hasFile('logo')){
             $imagePath = request('logo')->store('basket_ball_team_logos','public');

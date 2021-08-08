@@ -62,6 +62,11 @@ Route::middleware(['admin', 'auth'])->group(function () {
    Route::get('/admin/soccer/teams/add/create', [App\Http\Controllers\AdminSoccerController::class, 'soccerTeamCreate'])->name('admin_soccer_team_create'); 
    Route::post('/admin/soccer/teams/add', [App\Http\Controllers\AdminSoccerController::class, 'soccerTeamAdd'])->name('admin_soccer_team_add'); 
 
+   //Soccer Pays
+   Route::get('/admin/soccer/pays', [App\Http\Controllers\AdminSoccerController::class, 'soccerPayIndex'])->name('admin_soccer_pay_index'); 
+   Route::get('/admin/soccer/pays/edit/{id}', [App\Http\Controllers\AdminSoccerController::class, 'soccerPayEdit'])->name('admin_soccer_pay_edit'); 
+   Route::put('/admin/soccer/pays/edit', [App\Http\Controllers\AdminSoccerController::class, 'editSoccerPay'])->name('admin_soccer_pay_edit_soccer_pay'); 
+
 
    //BasketBall Tickets
    Route::get('/admin/basketball/tickets', [App\Http\Controllers\AdminBasketballController::class, 'basketballTicketIndex'])->name('admin_basketball_ticket_index'); 
@@ -81,6 +86,12 @@ Route::middleware(['admin', 'auth'])->group(function () {
    Route::post('/admin/basketball/teams/add', [App\Http\Controllers\AdminBasketballController::class, 'basketballTeamAdd'])->name('admin_basketball_team_add'); 
 
 
+   //BasketBall Pays
+   Route::get('/admin/basketball/pays', [App\Http\Controllers\AdminBasketballController::class, 'basketballPayIndex'])->name('admin_basketball_pay_index'); 
+   Route::get('/admin/basketball/pays/edit/{id}', [App\Http\Controllers\AdminBasketballController::class, 'basketballPayEdit'])->name('admin_basketball_pay_edit'); 
+   Route::put('/admin/basketball/pays/edit', [App\Http\Controllers\AdminBasketballController::class, 'editbasketballPay'])->name('admin_basketball_pay_edit_basketball_pay'); 
+
+
    //FootBall Tickets
    Route::get('/admin/football/tickets', [App\Http\Controllers\AdminFootBallController::class, 'footballTicketIndex'])->name('admin_football_ticket_index'); 
    Route::delete('/admin/football/delete', [App\Http\Controllers\AdminFootBallController::class, 'footballTicketDelete'])->name('admin_football_ticket_delete'); 
@@ -97,6 +108,11 @@ Route::middleware(['admin', 'auth'])->group(function () {
    Route::put('/admin/football/teams/edit', [App\Http\Controllers\AdminFootBallController::class, 'editfootballTeam'])->name('admin_football_team_edit_football_team'); 
    Route::get('/admin/football/teams/add/create', [App\Http\Controllers\AdminFootBallController::class, 'footballTeamCreate'])->name('admin_football_team_create'); 
    Route::post('/admin/football/teams/add', [App\Http\Controllers\AdminFootBallController::class, 'footballTeamAdd'])->name('admin_football_team_add'); 
+
+   //FootBall Pays
+   Route::get('/admin/football/pays', [App\Http\Controllers\AdminFootballController::class, 'footballPayIndex'])->name('admin_football_pay_index'); 
+   Route::get('/admin/football/pays/edit/{id}', [App\Http\Controllers\AdminFootballController::class, 'footballPayEdit'])->name('admin_football_pay_edit'); 
+   Route::put('/admin/football/pays/edit', [App\Http\Controllers\AdminFootballController::class, 'editfootballPay'])->name('admin_football_pay_edit_football_pay'); 
 
 
    //Cricket Tickets
@@ -115,6 +131,11 @@ Route::middleware(['admin', 'auth'])->group(function () {
    Route::put('/admin/cricket/teams/edit', [App\Http\Controllers\AdminCricketController::class, 'editcricketTeam'])->name('admin_cricket_team_edit_cricket_team'); 
    Route::get('/admin/cricket/teams/add/create', [App\Http\Controllers\AdminCricketController::class, 'cricketTeamCreate'])->name('admin_cricket_team_create'); 
    Route::post('/admin/cricket/teams/add', [App\Http\Controllers\AdminCricketController::class, 'cricketTeamAdd'])->name('admin_cricket_team_add'); 
+
+   //Cricket Pays
+   Route::get('/admin/cricket/pays', [App\Http\Controllers\AdminCricketController::class, 'cricketPayIndex'])->name('admin_cricket_pay_index'); 
+   Route::get('/admin/cricket/pays/edit/{id}', [App\Http\Controllers\AdminCricketController::class, 'cricketPayEdit'])->name('admin_cricket_pay_edit'); 
+   Route::put('/admin/cricket/pays/edit', [App\Http\Controllers\AdminCricketController::class, 'editCricketPay'])->name('admin_cricket_pay_edit_cricket_pay'); 
 });
 
 

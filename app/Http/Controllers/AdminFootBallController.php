@@ -4,11 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FootBallTicket;
+use App\Models\FootBallPay;
 use App\Models\FootBallTeam;
 use Illuminate\Support\Facades\DB;
 
 class AdminFootBallController extends Controller
 {
+     public function footballPayIndex(){
+        $footballPays = FootBallPay::paginate(10);
+        return view('admin.football.pays.index',compact('footballPays'));
+    }
+
+    public function footballPayEdit($id){
+        $pay = FootBallPay::find($id);
+        return view('admin.football.pays.edit',compact('pay'));
+    }
+
+    public function editfootballPay(){
+           $updatedPay =  DB::table('foot_ball_pays')
+                    ->where('id', '=', request('id'))
+                    ->update([
+                        'home_team' => request('home_team'),
+                        'away_team' => request('away_team'),
+                        'country' => request('country'),
+                        'purchase_number' => request('purchase_number'),
+                        'final_pay' => request('final_pay'),
+                        'fixture_date' => request('fixture_date'),
+                        'fixture_time' => request('fixture_time'),
+                        'competition' => request('competition'),
+                        'ticket_price' => request('ticket_price'),
+                        'expected_profit' => request('expected_profit'),
+                        'tickets_available' => request('tickets_available'),
+                        'time_left' => request('time_left'),
+                        'transaction_status' => request('transaction_status'),
+                        'email' => request('email'),
+                        'roi' => request('roi'),
+                        'isSold' => request('isSold')
+                    ]);
+
+            if($updatedPay){
+                return redirect('/admin/football/pays')->with('success', 'FootBall Pay Updated');
+            }
+            else
+            {
+                return redirect('/admin/football/pays')->with('error', 'An error occurred');
+            }
+    }
      public function editfootballTeam(Request $request){
         if($request->hasFile('logo')){
             $imagePath = request('logo')->store('foot_ball_team_logos','public');

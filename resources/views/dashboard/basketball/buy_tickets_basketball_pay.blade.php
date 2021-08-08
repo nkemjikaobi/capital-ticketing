@@ -11,8 +11,8 @@
                         <a href="#">Home</a>
                     </li>
                     <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets" style="text-decoration: none !important;color:#4c84ff;">Buy Tickets</a></li>
-                    <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets/soccer" style="text-decoration: none !important;color:#4c84ff;">BasketBall</a></li>
-                    <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets/soccer/pay" style="text-decoration: none !important;color:#4c84ff;">Pay</a></li>
+                    <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets/basketball" style="text-decoration: none !important;color:#4c84ff;">BasketBall</a></li>
+                    <li class="breadcrumb-item active-span" aria-current="page"><a href="/buy_tickets/basketball/pay" style="text-decoration: none !important;color:#4c84ff;">Pay</a></li>
                 </ol>
             </nav>
 

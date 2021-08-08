@@ -21,7 +21,7 @@
         <div class='row'>
             @foreach($tickets as $ticket)
                     <div class="col-md-6">
-                        <a href="/buy_tickets/soccer/{{$ticket->id}}/{{$ticket->home_team}}_{{$ticket->away_team}}" class="surround">
+                        <a href="/buy_tickets/football/{{$ticket->id}}/{{$ticket->home_team}}_{{$ticket->away_team}}" class="surround">
                             <div id='ticket'>
                                 <div class='back'>
                                   <div class='left'>
@@ -39,7 +39,7 @@
                                           <div class='from-to'>
                                             <div class="from" :data-code='depart.code' data-title=''>
                                               <img 
-                                              src="{{ $ticket->home_team_logo }}"
+                                              src="/storage/{{ $ticket->home_team_logo }}"
                                                 width="25px"
                                                 height="25px"
                                                 alt="">
@@ -48,7 +48,7 @@
                                             <span class="line"></span>
                                             <div class="to":data-code='arrive.code' data-title=''>
                                               <img 
-                                              src="{{ $ticket->away_team_logo }}"
+                                              src="/storage/{{ $ticket->away_team_logo }}"
                                                 width="25px"
                                                 height="25px"
                                                 alt="">
