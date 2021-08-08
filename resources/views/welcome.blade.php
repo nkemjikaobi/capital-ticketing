@@ -2147,9 +2147,9 @@
                             style="overflow: hidden; -webkit-line-clamp: 1"
                             class="css-1i04fkn"
                           >
-                            <img src={{ $ticket->home_team_logo }}}}" height="20px" width="20px">
+                            <img src="/storage/{{ $ticket->home_team_logo }}}}" height="20px" width="20px">
                             <span style="">{{ $ticket->home_team }}</span> - {{ $ticket->away_team }}
-                            <img src="{{ $ticket->away_team_logo }}" height="20px" width="20px">
+                            <img src="/storage/{{ $ticket->away_team_logo }}" height="20px" width="20px">
                           </div>
                           <style data-emotion-css="gvje9d">
                             .css-gvje9d {

@@ -85,8 +85,8 @@
                                         <td>{{$cricketTicket->fixture_date}}</td>
                                         <td>{{$cricketTicket->fixture_time}}</td>
                                         <td>{{$cricketTicket->competition}}</td>
-                                        <td><img src="/storage/{{$basketballTicket->home_team_logo  }}" width="50px" height="50px" alt="team_logo" /></td>
-                                        <td><img src="/storage/{{$basketballTicket->away_team_logo  }}" width="50px" height="50px" alt="team_logo" /></td>
+                                        <td><img src="/storage/{{$cricketTicket->home_team_logo  }}" width="50px" height="50px" alt="team_logo" /></td>
+                                        <td><img src="/storage/{{$cricketTicket->away_team_logo  }}" width="50px" height="50px" alt="team_logo" /></td>
                                         <td>{{$cricketTicket->ticket_price}}</td>
                                         <td>{{$cricketTicket->expected_profit}}</td>
                                         <td>{{$cricketTicket->tickets_available}}</td>

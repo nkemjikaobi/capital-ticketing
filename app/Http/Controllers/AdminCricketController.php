@@ -37,8 +37,30 @@ class AdminCricketController extends Controller
             }
     }
 
-    public function editCricketTicket(){
-        $updatedTicket =  DB::table('cricket_tickets')
+    public function editCricketTicket(Request $request){
+       if($request->hasFile('home_team_logo') && $request->hasFile('away_team_logo')){
+            $homeLogoPath = request('home_team_logo')->store('cricket_ticket_logos','public');
+            $awayLogoPath = request('away_team_logo')->store('cricket_ticket_logos','public');
+               $updatedTicket =  DB::table('cricket_tickets')
+                       ->where('id', '=', request('id'))
+                       ->update([
+                           'away_team' => request('away_team'),
+                           'country' => request('country'),
+                           'fixture_date' => request('fixture_date'),
+                           'fixture_time' => request('fixture_time'),
+                           'competition' => request('competition'),
+                           'home_team_logo' => $homeLogoPath,
+                           'away_team_logo' => $awayLogoPath,
+                           'ticket_price' => request('ticket_price'),
+                           'expected_profit' => request('expected_profit'),
+                           'tickets_available' => request('tickets_available'),
+                           'time_left' => request('time_left'),
+                       ]);
+        }
+        else if($request->hasFile('home_team_logo')){
+                $homeLogoPath = request('home_team_logo')->store('cricket_ticket_logos','public');
+
+               $updatedTicket =  DB::table('cricket_tickets')
                        ->where('id', '=', request('id'))
                        ->update([
                            'home_team' => request('home_team'),
@@ -47,13 +69,52 @@ class AdminCricketController extends Controller
                            'fixture_date' => request('fixture_date'),
                            'fixture_time' => request('fixture_time'),
                            'competition' => request('competition'),
-                           'home_team_logo' => request('home_team_logo'),
-                           'away_team_logo' => request('away_team_logo'),
+                           'home_team_logo' => $homeLogoPath,
+                            'away_team_logo' => request('away_team_logo_backup'),
                            'ticket_price' => request('ticket_price'),
                            'expected_profit' => request('expected_profit'),
                            'tickets_available' => request('tickets_available'),
                            'time_left' => request('time_left'),
                        ]);
+        }
+            else if($request->hasFile('away_team_logo')){
+                $awayLogoPath = request('away_team_logo')->store('cricket_ticket_logos','public');
+               $updatedTicket =  DB::table('cricket_tickets')
+                       ->where('id', '=', request('id'))
+                       ->update([
+                           'home_team' => request('home_team'),
+                           'away_team' => request('away_team'),
+                           'country' => request('country'),
+                           'fixture_date' => request('fixture_date'),
+                           'fixture_time' => request('fixture_time'),
+                           'competition' => request('competition'),
+                           'home_team_logo' => request('home_team_logo_backup'),
+                           'away_team_logo' => $awayLogoPath,
+                           'ticket_price' => request('ticket_price'),
+                           'expected_profit' => request('expected_profit'),
+                           'tickets_available' => request('tickets_available'),
+                           'time_left' => request('time_left'),
+                       ]);
+                }
+                else{
+                    $updatedTicket =  DB::table('cricket_tickets')
+                       ->where('id', '=', request('id'))
+                       ->update([
+                           'home_team' => request('home_team'),
+                           'away_team' => request('away_team'),
+                           'country' => request('country'),
+                           'fixture_date' => request('fixture_date'),
+                           'fixture_time' => request('fixture_time'),
+                           'competition' => request('competition'),
+                           'home_team_logo' => request('home_team_logo_backup'),
+                           'away_team_logo' => request('away_team_logo_backup'),
+                           'ticket_price' => request('ticket_price'),
+                           'expected_profit' => request('expected_profit'),
+                           'tickets_available' => request('tickets_available'),
+                           'time_left' => request('time_left'),
+                       ]);
+                    }
+        
 
             if($updatedTicket){
                 return redirect('/admin/cricket/tickets')->with('success', 'Cricket Ticket Updated');

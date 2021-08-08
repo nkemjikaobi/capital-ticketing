@@ -25,7 +25,7 @@
                     <h2>Edit Cricket Ticket</h2>
                 </div>
                 <div class="card-body">
-                    <form class="form-pill" method='POST' action="/admin/cricket/edit">
+                    <form class="form-pill" method='POST' action="/admin/cricket/edit" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="id" value={{ $ticket->id }}>
