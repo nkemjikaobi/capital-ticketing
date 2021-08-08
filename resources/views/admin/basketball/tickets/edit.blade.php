@@ -55,11 +55,13 @@
                         </div>
                         <div class="form-group">
                             <label>Home_Team_Logo</label>
-                            <input type="text" class="form-control" name="home_team_logo"  value={{ $ticket->home_team_logo }} required>
+                            <input type="file" class="form-control" name="home_team_logo">
+                            <input type="hidden" class="form-control" name="home_team_logo_backup"  value={{ $ticket->home_team_logo }} >
                         </div>
                         <div class="form-group">
                             <label>Away_Team_Logo</label>
-                            <input type="text" class="form-control" name="away_team_logo"  value={{ $ticket->away_team_logo }}   required>
+                            <input type="file" class="form-control" name="away_team_logo">
+                            <input type="hidden" class="form-control" name="away_team_logo_backup"  value={{ $ticket->away_team_logo }} >
                         </div>
                         <div class="form-group">
                             <label>Ticket_Price</label>
