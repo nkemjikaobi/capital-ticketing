@@ -52,6 +52,11 @@
 				<span class="login100-form-title p-b-41">
 					Account Login
 				</span>
+				@if ($errors->has('email'))
+					<span class="invalid-feedback">
+						<strong style="color: red;">{{ $errors->first('email') }}</strong>
+					</span>
+				@endif
 				<form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="{{ route('login') }}">
                     @csrf
 					<style>
@@ -64,7 +69,7 @@
 						<span class="focus-input100" data-placeholder="&#xe818;"></span>
 						@error('email')
 							<span class="invalid-feedback adjust" role="alert">
-								<strong>{{ $message }}</strong>
+								<strong style="color: red;margin-left: -20px;"></strong>
 							</span>
                         @enderror
 					</div>
@@ -74,7 +79,7 @@
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 						@error('password')
 							<span class="invalid-feedback adjust" role="alert">
-								<strong>{{ $message }}</strong>
+								<strong style="color: red;margin-left: -20px;"></strong>
 							</span>
                         @enderror
 					</div>

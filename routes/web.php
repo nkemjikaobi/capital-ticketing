@@ -20,6 +20,7 @@ Auth::routes();
 
 //Home Page
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'welcome'])->name('welcome');
+// Route::post('')
 
 // Route::get('/email', function(){
 //     return new ChargeCreatedMail(500);

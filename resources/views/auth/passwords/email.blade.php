@@ -57,12 +57,11 @@
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
 						<input class="input100 @error('email') is-invalid @enderror" type="text" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
-
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+						@error('email')
+							<span class="invalid-feedback input100" role="alert">
+								<strong style="color: red;margin-left: -20px;">{{ $message }}</strong>
+							</span>
+                        @enderror
 					</div>
 
 					<div class="container-login100-form-btn m-t-32">

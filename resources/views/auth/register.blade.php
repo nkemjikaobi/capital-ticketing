@@ -58,12 +58,13 @@
 				<form class="login100-form validate-form p-b-33 p-t-5" enctype="multipart/form-data" method='POST' action="{{ route('register') }}">
                     @csrf
 
+
                     <div class="wrap-input100 validate-input" data-validate = "Enter firstname">
                         <input id="firstname" type="text" class="input100 @error('firstname') is-invalid @enderror" name="firstname" placeholder="First name" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus>
                         <span class="focus-input100" data-placeholder="&#xe82a;"></span>
 						@error('firstname')
 							<span class="invalid-feedback input100" role="alert">
-								<strong>{{ $message }}</strong>
+								<strong style="color: red;margin-left: -20px;">{{ $message }}</strong>
 							</span>
                         @enderror
                     </div>
@@ -73,7 +74,7 @@
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 						@error('lastname')
 							<span class="invalid-feedback input100" role="alert">
-								<strong>{{ $message }}</strong>
+								<strong style="color: red;margin-left: -20px;">{{ $message }}</strong>
 							</span>
                         @enderror
 					</div>
@@ -83,7 +84,7 @@
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 						@error('username')
 							<span class="invalid-feedback input100" role="alert">
-								<strong>{{ $message }}</strong>
+								<strong style="color: red;margin-left: -20px;">{{ $message }}</strong>
 							</span>
                         @enderror
 					</div>
@@ -93,7 +94,7 @@
 						<span class="focus-input100" data-placeholder="&#xe818;"></span>
 						@error('email')
 							<span class="invalid-feedback input100" role="alert">
-								<strong>{{ $message }}</strong>
+								<strong style="color: red;margin-left: -20px;">{{ $message }}</strong>
 							</span>
                         @enderror
 					</div>
@@ -107,7 +108,7 @@
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 						@error('account_type')
 							<span class="invalid-feedback input100" role="alert">
-								<strong>{{ $message }}</strong>
+								<strong style="color: red;margin-left: -20px;">{{ $message }}</strong>
 							</span>
                         @enderror
 					</div>
@@ -123,7 +124,7 @@
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 						@error('password')
 							<span class="invalid-feedback input100" role="alert">
-								<strong>{{ $message }}</strong>
+								<strong style="color: red;margin-left: -20px;">{{ $message }}</strong>
 							</span>
                         @enderror
 					</div>
